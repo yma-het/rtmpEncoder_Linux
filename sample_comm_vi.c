@@ -64,6 +64,45 @@ VI_DEV_ATTR_S DEV_ATTR_BT656D1_1MUX =
     VI_DATA_TYPE_YUV
 };
 
+
+/*OV9732 DC 12bit input 720P@30fps*/
+VI_DEV_ATTR_S DEV_ATTR_OV9732_DC_720P_BASE =
+{
+    /* interface mode */
+    VI_MODE_DIGITAL_CAMERA,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFC0000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+    /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+    /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_FIELD, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
+
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {370,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     6,            720,        6,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB,
+    /* Data Reverse */
+    HI_FALSE,
+    {0, 0, 1280, 720}
+};
+
+
 /* BT1120 1080IÊäÈë */
 VI_DEV_ATTR_S DEV_ATTR_BT1120_1080I_1MUX =
 {
@@ -1797,6 +1836,14 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
             stViDevAttr.stDevRect.u32Height = 1536;
             break;
 
+        case OMNIVISION_OV9712_DC_720P_30FPS:
+            memcpy(&stViDevAttr,&DEV_ATTR_OV9732_DC_720P_BASE,sizeof(stViDevAttr));
+            stViDevAttr.stDevRect.s32X = 0;
+            stViDevAttr.stDevRect.s32Y = 0;
+            stViDevAttr.stDevRect.u32Width  = 1280;
+            stViDevAttr.stDevRect.u32Height = 720;
+            break;
+
         case OMNIVISION_OV4689_MIPI_1080P_30FPS:
             memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
             stViDevAttr.stDevRect.s32X = 0;
@@ -1820,7 +1867,7 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
             stViDevAttr.stDevRect.u32Width  = 2592;
             stViDevAttr.stDevRect.u32Height = 1944;
             break;
-
+	
         default:
             memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
     }
@@ -2288,7 +2335,8 @@ HI_S32 SAMPLE_COMM_VI_SetMipiAttr(SAMPLE_VI_CONFIG_S* pstViConfig)
     }
 
     if ((pstViConfig->enViMode == APTINA_9M034_DC_720P_30FPS)
-        || (pstViConfig->enViMode == APTINA_AR0130_DC_720P_30FPS))
+        || (pstViConfig->enViMode == APTINA_AR0130_DC_720P_30FPS)
+	|| (pstViConfig->enViMode == OMNIVISION_OV9712_DC_720P_30FPS))
     {
         pstcomboDevAttr = &MIPI_CMOS3V3_ATTR;
     }
@@ -2425,6 +2473,7 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
             case APTINA_AR0130_DC_720P_30FPS:
             case PANASONIC_MN34220_SUBLVDS_720P_120FPS:
             case PANASONIC_MN34220_MIPI_720P_120FPS:
+	    case OMNIVISION_OV9712_DC_720P_30FPS:
             case SONY_IMX117_LVDS_720P_30FPS:
                 stCapRect.u32Width = 1280;
                 stCapRect.u32Height = 720;
@@ -3513,6 +3562,7 @@ HI_S32 SAMPLE_COMM_VI_GetSizeBySensor(PIC_SIZE_E* penSize)
         case PANASONIC_MN34220_SUBLVDS_720P_120FPS:
         case PANASONIC_MN34220_MIPI_720P_120FPS:
         case SONY_IMX117_LVDS_720P_30FPS:
+	case OMNIVISION_OV9712_DC_720P_30FPS:
             *penSize = PIC_HD720;
             break;
         case PANASONIC_MN34220_SUBLVDS_1080P_30FPS:

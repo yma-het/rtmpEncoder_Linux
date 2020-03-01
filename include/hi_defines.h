@@ -33,6 +33,9 @@ extern "C"{
 #if HICHIP==HI3516A_V100
     #define CHIP_NAME    "Hi3516A"
     #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI3518E_V200
+    #define CHIP_NAME    "Hi3518EV200"
+    #define MPP_VER_PRIX "_MPP_V"
 #elif HICHIP==HI35xx_Vxxx
     #error HuHu, I am an dummy chip
 #else

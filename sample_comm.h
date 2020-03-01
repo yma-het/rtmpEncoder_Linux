@@ -91,8 +91,11 @@ extern "C" {
 
 
 #if (HICHIP == HI3516A_V100)
-#define SAMPLE_VO_DEV_DSD1 0
-#define SAMPLE_VO_DEV_DSD0 SAMPLE_VO_DEV_DSD1
+    #define SAMPLE_VO_DEV_DSD1 0
+    #define SAMPLE_VO_DEV_DSD0 SAMPLE_VO_DEV_DSD1
+#elif (HICHIP == HI3518E_V200) 
+    #define SAMPLE_VO_DEV_DSD1 0
+    #define SAMPLE_VO_DEV_DSD0 SAMPLE_VO_DEV_DSD1
 #else
 #error HICHIP define may be error
 #endif
@@ -176,6 +179,7 @@ typedef enum sample_vi_mode_e
     OMNIVISION_OV4689_MIPI_4M_30FPS,
     OMNIVISION_OV4689_MIPI_1080P_30FPS,
     OMNIVISION_OV5658_MIPI_5M_30FPS,
+    OMNIVISION_OV9712_DC_720P_30FPS,
 } SAMPLE_VI_MODE_E;
 
 typedef enum

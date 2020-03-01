@@ -219,6 +219,15 @@ HI_S32 SAMPLE_COMM_ISP_Init(WDR_MODE_E  enWDRMode)
             stPubAttr.stWndRect.u32Height   = 1944;
             break;
 
+        case OMNIVISION_OV9712_DC_720P_30FPS:
+            stPubAttr.enBayer               = BAYER_BGGR;
+            stPubAttr.f32FrameRate          = 30;
+            stPubAttr.stWndRect.s32X        = 0;
+            stPubAttr.stWndRect.s32Y        = 0;
+            stPubAttr.stWndRect.u32Width    = 1280;
+            stPubAttr.stWndRect.u32Height   = 720;
+            break;
+
         case SONY_IMX117_LVDS_1080P_30FPS:
             stPubAttr.enBayer				= BAYER_RGGB;
             stPubAttr.f32FrameRate          = 60;

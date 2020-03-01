@@ -61,7 +61,8 @@ int main(void)
 		return -1;
 	}	
 	printf("Connected\n");
-	ConnectToServer(rtmp, "rtmp://192.168.1.188/live/cav");
+	fixme
+	ConnectToServer(rtmp, "rtmp://moscow.restream.io/live/some_srteam_key");
 
 
 	memset(&MetaData, 0, sizeof(RTMPMetadata));
