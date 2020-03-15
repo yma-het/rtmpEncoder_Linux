@@ -1765,59 +1765,6 @@ END_VENC_MJPEG_JPEG_0:	//system exit
     return s32Ret;
 }
 
-
-
-/******************************************************************************
-* function    : main()
-* Description : video venc sample
-******************************************************************************/
-int main(int argc, char *argv[])
-{
-    HI_S32 s32Ret;
-    if ( (argc < 2) || (1 != strlen(argv[1])))
-    {
-        SAMPLE_VENC_Usage(argv[0]);
-        return HI_FAILURE;
-    }
-
-    signal(SIGINT, SAMPLE_VENC_HandleSig);
-    signal(SIGTERM, SAMPLE_VENC_HandleSig);
-    
-    switch (*argv[1])
-    {
-        case '0':/* H.264@1080p@30fps+H.265@1080p@30fps+H.264@D1@30fps */
-            s32Ret = SAMPLE_VENC_1080P_CLASSIC();
-            break;
-        case '1':/* 1*1080p mjpeg encode + 1*1080p jpeg  */
-            s32Ret = SAMPLE_VENC_1080P_MJPEG_JPEG();
-            break;
-        case '2':/* low delay */
-            s32Ret = SAMPLE_VENC_LOW_DELAY();
-            break;
-        case '3':/* roibg framerate */
-            s32Ret = SAMPLE_VENC_ROIBG_CLASSIC();
-            break;
-        case '4':/* Thumbnail of 1*1080p jpeg  */
-            s32Ret = SAMPLE_VENC_1080P_JPEG_Thumb();
-            break;
-#ifndef hi3518ev201			
-		case '5':/* H.264 Svc-t */
-			s32Ret = SAMPLE_VENC_SVC_H264();
-			break;
-#endif
-        default:
-            printf("the index is invaild!\n");
-            SAMPLE_VENC_Usage(argv[0]);
-            return HI_FAILURE;
-    }
-    
-    if (HI_SUCCESS == s32Ret)
-        printf("program exit normally!\n");
-    else
-        printf("program exit abnormally!\n");
-    exit(s32Ret);
-}
-
 #ifdef __cplusplus
 #if __cplusplus
 }
