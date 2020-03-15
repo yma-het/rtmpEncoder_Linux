@@ -41,26 +41,26 @@ typedef enum hiAWB_CTRL_CMD_E
 
 typedef struct hiAWB_DBG_ATTR_S
 {
-    HI_U16 u16WhiteLevel;
-    HI_U16 u16BlackLevel;
-    HI_U16 u16CrMax;
-    HI_U16 u16CrMin;
-    HI_U16 u16CbMax;
-    HI_U16 u16CbMin;
-    HI_U16 u16CrHigh;
-    HI_U16 u16CrLow;
-    HI_U16 u16CbHigh;
-    HI_U16 u16CbLow;
+    HI_U16 u16WhiteLevel;                 /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16BlackLevel;                 /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CrMax;                      /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CrMin;                      /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CbMax;                      /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CbMin;                      /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CrHigh;                     /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CrLow;                      /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CbHigh;                     /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16CbLow;                      /*Hi3518EV200 does't support, fixed to 0*/
     HI_U16 u16RawWhiteLevel;
     HI_U16 u16RawBlackLevel;
     HI_U16 u16RawCrMax;
     HI_U16 u16RawCrMin;
     HI_U16 u16RawCbMax;
     HI_U16 u16RawCbMin;
-    HI_U16 u16RawCrHigh;
-    HI_U16 u16RawCrLow;
-    HI_U16 u16RawCbHigh;
-    HI_U16 u16RawCbLow;
+    HI_U16 u16RawCrHigh;                  /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16RawCrLow;                   /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16RawCbHigh;                  /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16RawCbLow;                   /*Hi3518EV200 does't support, fixed to 0*/
 
     HI_U16 u16WDRMode;
     HI_U16 u16Enable;
@@ -84,9 +84,9 @@ typedef struct hiAWB_DBG_ATTR_S
 
 typedef struct hiAWB_ZONE_DBG_S
 {
-    HI_U16 u16Sum;
-    HI_U16 u16Rg;
-    HI_U16 u16Bg;
+    HI_U16 u16Sum;                        /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16Rg;                         /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16Bg;                         /*Hi3518EV200 does't support, fixed to 0*/
     HI_U16 u16CountAll;
     HI_U16 u16CountMin;
     HI_U16 u16CountMax;
@@ -101,9 +101,9 @@ typedef struct hiAWB_ZONE_DBG_S
 typedef struct hiAWB_DBG_STATUS_S
 {
     HI_U32 u32FrmNumBgn;
-    HI_U32 u32GlobalSum;
-    HI_U16 u16GlobalRgSta;
-    HI_U16 u16GlobalBgSta;
+    HI_U32 u32GlobalSum;                  /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16GlobalRgSta;                /*Hi3518EV200 does't support, fixed to 0*/
+    HI_U16 u16GlobalBgSta;                /*Hi3518EV200 does't support, fixed to 0*/
     HI_U16 u16GlobalCountAll;
     HI_U16 u16GlobalCountMin;
     HI_U16 u16GlobalCountMax;

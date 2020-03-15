@@ -40,9 +40,6 @@ HI_S32 HI_MPI_AE_SensorUnRegCallBack(ISP_DEV IspDev, ALG_LIB_S *pstAeLib, SENSOR
 HI_S32 HI_MPI_ISP_SetExposureAttr(ISP_DEV IspDev, const ISP_EXPOSURE_ATTR_S *pstExpAttr);
 HI_S32 HI_MPI_ISP_GetExposureAttr(ISP_DEV IspDev, ISP_EXPOSURE_ATTR_S *pstExpAttr);
 
-HI_S32 HI_MPI_ISP_SetWDRExposureAttr(ISP_DEV IspDev, const ISP_WDR_EXPOSURE_ATTR_S *pstWDRExpAttr);
-HI_S32 HI_MPI_ISP_GetWDRExposureAttr(ISP_DEV IspDev, ISP_WDR_EXPOSURE_ATTR_S *pstWDRExpAttr);
-
 HI_S32 HI_MPI_ISP_SetAERouteAttr(ISP_DEV IspDev, const ISP_AE_ROUTE_S *pstAERouteAttr);
 HI_S32 HI_MPI_ISP_GetAERouteAttr(ISP_DEV IspDev, ISP_AE_ROUTE_S *pstAERouteAttr);
 

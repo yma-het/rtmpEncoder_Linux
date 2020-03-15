@@ -414,7 +414,7 @@ typedef struct hiVPSS_CHN_MODE_S
     VPSS_CHN_MODE_E  enChnMode;   /*Vpss channel's work mode*/
     HI_U32 u32Width;              /*Width of target image*/
     HI_U32 u32Height;             /*Height of target image*/
-    HI_BOOL bDouble;              /*Field-frame transfer£¬only valid for VPSS_PRE0_CHN*/
+    HI_BOOL bDouble;              /*Field-frame transfer,only valid for VPSS_PRE0_CHN*/
     PIXEL_FORMAT_E  enPixelFormat;/*Pixel format of target image*/
     COMPRESS_MODE_E enCompressMode;   /*Compression mode of the output*/
 }VPSS_CHN_MODE_S;
@@ -467,6 +467,96 @@ typedef struct hiVPSS_PARAM_MOD_S
 {
     HI_BOOL bOneBufForLowDelay;
 }VPSS_MOD_PARAM_S;
+
+/****************************VPSS 3DNR B interface ***********start********************/
+
+/* for Hi3518EV200 3DNR B interface */
+typedef struct
+{
+  HI_U8 SDS;        /*[0, 255]*/
+  HI_U8 SDT;        /*[0, 64]*/
+  HI_U8 EDM;        /*[0, 3]*/
+  HI_U8 SHP;        /*[0, 32]*/
+  HI_U8 SBS;        /*[0, 255]*/
+  HI_U8 SBT;        /*[0, 64]*/
+  HI_U8 SFB;        /*[0, 255]*/
+  HI_U8 SBF;        /*[0, 3]*/
+} NRB_SF_PARAM_V1_S;  
+
+typedef struct
+{
+  HI_U8 TFR;        /*[0, 31]*/
+  HI_U8 TFP;        /*[0, 31]*/
+  HI_U8 TFS;        /*[0, 15]*/
+  HI_U8 MSHP;       /*[0, 16]*/
+  HI_U8 MTFR;       /*[0, 16]*/
+  HI_U8 MDZ;        /*[0, 127]*/
+} NRB_TF_PARAM_V1_S;  
+
+typedef struct
+{
+  HI_S16 IES;       /*[-255,64]*/
+  HI_U8  ISHT;      /*[0, 64]*/
+  HI_U8  SFC;       /*[0, 80]*/
+  HI_U8  IEX[3];    /*[0, 127]*/
+  HI_U8  TFC;       /*[0, 32]*/
+
+  NRB_SF_PARAM_V1_S sf[3];
+  NRB_TF_PARAM_V1_S tf[2];
+
+  HI_U16 MATH : 9;  /*[0, 511]*/
+  HI_U16 MDAF : 3;  /*[0, 7]*/
+  HI_U16 MATW : 3;  /*[0, 5]*/
+  HI_U16 MABW : 1;  /*[0, 1]*/ 
+
+  HI_U8 PSFS;       /*[0, 8]*/
+
+} NRB_PARAM_V1_S;
+
+/* for Hi3519V100 3DNR B interface */
+typedef VPSS_GRP_VPPNRB_S NRB_PARAM_V2_S;
+
+/****************************VPSS 3DNR B interface ***********end**********************/
+
+
+/****************************VPSS 3DNR S interface ***********start********************/
+
+/* for Hi3518EV200 3DNR S interface */
+typedef VPSS_NR_PARAM_V1_S NRS_PARAM_V1_S;
+
+
+/****************************VPSS 3DNR S interface ***********end*********************/
+
+
+typedef enum hiVPSS_NR_VER_E   
+{
+    VPSS_NR_V1 = 1, 
+    VPSS_NR_V2 = 2, 
+    VPSS_NR_V3 = 3,
+    VPSS_NR_BUTT  
+}VPSS_NR_VER_E;
+
+typedef struct hiVPSS_GRP_NRB_PARAM_S
+{
+    VPSS_NR_VER_E enNRVer;
+    union
+    {
+        NRB_PARAM_V1_S stNRBParam_V1;   /* for Hi3518EV200 interface B V1 */
+        NRB_PARAM_V2_S stNRBParam_V2;   /* for Hi3519V100  interface B V1 */
+    };
+    
+}VPSS_GRP_NRB_PARAM_S;
+
+typedef struct hiVPSS_GRP_NRS_PARAM_S
+{
+    VPSS_NR_VER_E enNRVer;
+    union
+    {
+        NRS_PARAM_V1_S stNRSParam_V1;   /* for Hi3518EV200 interface S V1 */
+    };
+    
+}VPSS_GRP_NRS_PARAM_S;
+
 
 #ifdef __cplusplus
 #if __cplusplus

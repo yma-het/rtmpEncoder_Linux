@@ -51,13 +51,6 @@ extern "C"{
 
 /*The VQE EQ Band num.*/
 #define VQE_EQ_BAND_NUM  10
-#define VQE_PEQ_BAND_NUM 10
-
-#define AI_HIFIVQE_MASK_HPF		0x1
-#define AI_HIFIVQE_MASK_RNR		0x2
-#define AI_HIFIVQE_MASK_HDR		0x4
-#define AI_HIFIVQE_MASK_AVC		0x8
-#define AI_HIFIVQE_MASK_PEQ		0x10
 
 typedef enum hiAUDIO_SAMPLE_RATE_E 
 { 
@@ -273,18 +266,18 @@ typedef struct hiAI_AEC_CONFIG_S
                                                                 
     HI_S16 s16DTHnlSortQTh;                       /* the threshold of judging single or double talk, recommend 16384, [0, 32767] */
  
-    HI_S16 s16EchoBandLow;                       /* voice processing band1, low frequency parameter, [1, 63] for 8k, [1, 127] for 16k, recommend 10 */
+    HI_S16 s16EchoBandLow;                       /* voice processing band1, low frequency parameter, [1, 63) for 8k, [1, 127) for 16k, recommend 10 */
     HI_S16 s16EchoBandHigh;                      /* voice processing band1, high frequency parameter, (s16EchoBandLow, 63] for 8k, (s16EchoBandLow, 127] for 16k, recommend 41 */
                                                    /* s16EchoBandHigh must be greater than s16EchoBandLow */
-    HI_S16 s16EchoBandLow2;                      /* voice processing band2, low frequency parameter, [1, 63] for 8k, [1, 127] for 16k, recommend 47 */
+    HI_S16 s16EchoBandLow2;                      /* voice processing band2, low frequency parameter, [1, 63) for 8k, [1, 127) for 16k, recommend 47 */
     HI_S16 s16EchoBandHigh2;                     /* voice processing band2, high frequency parameter, (s16EchoBandLow2, 63] for 8k, (s16EchoBandLow2, 127] for 16k, recommend 72 */
                                                    /* s16EchoBandHigh2 must be greater than s16EchoBandLow2 */
 
     HI_S16 s16ERLBand[6];                        /* ERL protect area, [1, 63] for 8k, [1, 127] for 16k, frequency band calculated by s16ERLBand * 62.5 */
                                                   /* besides, s16ERLBand[n+1] should be greater than s16ERLBand[n] */
     HI_S16 s16ERL[7];                            /* ERL protect value of ERL protect area, the smaller its value, the more strength its protect ability£¬[0, 18]*/
-    HI_S16 s16VioceProtectFreqL;                 /* protect area of near-end low frequency, [1, 63] for 8k, [1, 127] for 16k, recommend 3 */
-    HI_S16 s16VioceProtectFreqL1;                /* protect area of near-end low frequency1, [s16VioceProtectFreqL, 63] for 8k, [s16VioceProtectFreqL, 127] for 16k, recommend 6 */
+    HI_S16 s16VioceProtectFreqL;                 /* protect area of near-end low frequency, [1, 63) for 8k, [1, 127) for 16k, recommend 3 */
+    HI_S16 s16VioceProtectFreqL1;                /* protect area of near-end low frequency1, (s16VioceProtectFreqL, 63] for 8k, (s16VioceProtectFreqL, 127] for 16k, recommend 6 */
     HI_S32 s32Reserved;                          /* s16VioceProtectFreqL1 must be greater than s16VioceProtectFreqL */
 } AI_AEC_CONFIG_S;
 
@@ -356,29 +349,6 @@ typedef struct hiAI_HDR_CONFIG_S
     pFuncGainCallBack pcallback;    /* the callback function pointer of CODEC gain adjustment */
 } AI_HDR_CONFIG_S;
 
-typedef struct hiAI_AVC_CONFIG_S
-{
-    HI_BOOL bUsrMode;   /* enable user mode or not£¬default 0: disable user mode£¬1: user mode.*/
-
-    HI_S16  s16AttackTime;   /*time of signal change from large to small (ms), range[20, 2000]ms*/
-    HI_S16  s16ReleaseTime;  /*time of signal change from small to large (ms), range[20, 2000]ms*/
-    HI_S16  s16StartLevel;   /*original regulating voltage level, range[-40, -20]dB*/
-    HI_S16  s16CornerLevel;  /*truning voltage level when uplift gain is maximum, range[-39, -17]dB, muse be greater than original regulating voltage level*/
-    HI_S16  s16MaxGain;      /*the maximum uplift gain, range[0, 8]dB*/
-    HI_S16  s16TargetLevel;  /*target voltage level, range[-16, 6]dB, the value of truning voltage level add the maximum uplift gain must be lower than target voltage level.*/ 
-} AI_AVC_CONFIG_S;
-
-/*defines the configure parameters of PEQ*/
-typedef struct hiAI_PEQ_CONFIG_S
-{
-	HI_BOOL bUsrMode;   /* enable user mode or not£¬default 0: disable user mode£¬1: user mode.*/
-	HI_U32 u32BandNum;                          /*Band number, range(0, 10]*/
-    HI_U8  u8FilterType[VQE_PEQ_BAND_NUM]; /*the filter type, range: [0: HP, 1: LS, 2: PK, 3: HS 4: LP]*/
-	HI_S8  s8GaindB[VQE_PEQ_BAND_NUM];    /*PEQ band gain adjustment, the gain of HP/LP filter are 0dB, the gain range of other filter are [-15, 15]dB*/
-    HI_U16 u16Frequency[VQE_PEQ_BAND_NUM]; /*center frequency(Hz), range: HP and LS[20, 4000], PK[20, 22000],HS and LP[4000, 22000]*/
-    HI_U16 u16Q[VQE_PEQ_BAND_NUM];          /*Q value, range: HS and LS[7, 10], PK[5, 100], HP/LP is 7*/
-} AI_PEQ_CONFIG_S;
-
 
 /**Defines the configure parameters of VQE.*/
 typedef struct hiAI_VQE_CONFIG_S
@@ -390,7 +360,7 @@ typedef struct hiAI_VQE_CONFIG_S
     HI_S32              bAgcOpen;
     HI_S32              bEqOpen;
     HI_S32              bHdrOpen;
-
+	
     HI_S32              s32WorkSampleRate;  /* Sample Rate£º8KHz/16KHz/48KHz¡£default: 8KHz*/
     HI_S32              s32FrameSample; /* VQE frame length£º 80-4096 */
     VQE_WORKSTATE_E     enWorkstate;
@@ -404,22 +374,6 @@ typedef struct hiAI_VQE_CONFIG_S
     AUDIO_EQ_CONFIG_S   stEqCfg;
     AI_HDR_CONFIG_S     stHdrCfg;
 } AI_VQE_CONFIG_S;
-
-/**Defines the configure parameters of HIFI VQE.*/
-typedef struct hiAI_HIFIVQE_CONFIG_S
-{
-	HI_U32				u32OpenMask;
-	
-    HI_S32              s32WorkSampleRate;  /* Sample Rate£º48KHz*/
-    HI_S32              s32FrameSample; /* VQE frame length£º 80-4096 */
-    VQE_WORKSTATE_E     enWorkstate;
-
-	AUDIO_HPF_CONFIG_S  stHpfCfg;
-    AI_RNR_CONFIG_S     stRnrCfg;
-    AI_HDR_CONFIG_S     stHdrCfg;
-	AI_AVC_CONFIG_S     stAvcCfg;
-	AI_PEQ_CONFIG_S     stPeqCfg;
-} AI_HIFIVQE_CONFIG_S;
 
 typedef struct hiAO_VQE_CONFIG_S
 {

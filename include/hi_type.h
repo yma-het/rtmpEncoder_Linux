@@ -82,7 +82,7 @@ typedef int                     HI_S16Q16;
  * The fixed-point data type combine with FLAG bits.*
  *----------------------------------------------*/
 
-/*8bits unsigned integer£¬4bits decimal fraction£¬4bits flag bits*/
+/*8bits unsigned integer,4bits decimal fraction,4bits flag bits*/
 typedef unsigned short          HI_U8Q4F4;
 
 /*float*/

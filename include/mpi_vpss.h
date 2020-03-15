@@ -21,6 +21,7 @@
 #include "hi_common.h"
 #include "hi_comm_video.h"
 #include "hi_comm_vpss.h"
+#include "hi_comm_fisheye.h"
 
 #ifdef __cplusplus
 #if __cplusplus
@@ -109,11 +110,16 @@ HI_S32 HI_MPI_VPSS_GetRegionLuma(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_REGION
 HI_S32 HI_MPI_VPSS_SetLowDelayAttr(VPSS_GRP VpssGrp,  VPSS_CHN VpssChn,  VPSS_LOW_DELAY_INFO_S *pstLowDelayInfo);
 HI_S32 HI_MPI_VPSS_GetLowDelayAttr(VPSS_GRP VpssGrp,  VPSS_CHN VpssChn,  VPSS_LOW_DELAY_INFO_S *pstLowDelayInfo);
 
+HI_S32 HI_MPI_VPSS_SetExtChnAttr(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_EXT_CHN_ATTR_S *pstExtChnAttr);
+HI_S32 HI_MPI_VPSS_GetExtChnAttr(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_EXT_CHN_ATTR_S *pstExtChnAttr);
+
+HI_S32 HI_MPI_VPSS_SetExtChnCrop(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, const VPSS_CROP_INFO_S *pstCropInfo);
+HI_S32 HI_MPI_VPSS_GetExtChnCrop(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_CROP_INFO_S *pstCropInfo);
+
 
 /* For 3DNR */
 HI_S32 HI_MPI_VPSS_SetRefSelect(VPSS_GRP VpssGrp, const VPSS_REF_SEL_MODE_E enRefSelMode);	
 HI_S32 HI_MPI_VPSS_GetRefSelect(VPSS_GRP VpssGrp, VPSS_REF_SEL_MODE_E *penRefSelMode);
-
 
 /* only for HI3516AV100 */
 HI_S32 HI_MPI_VPSS_SetGrpParam(VPSS_GRP VpssGrp, VPSS_GRP_PARAM_S *pstVpssParam);
@@ -125,26 +131,20 @@ HI_S32 HI_MPI_VPSS_GetNRV3Param(VPSS_GRP VpssGrp, VPSS_GRP_VPPNRBEX_S *pstVpssNr
 HI_S32 HI_MPI_VPSS_SetGrpParamV2(VPSS_GRP VpssGrp, VPSS_GRP_PARAM_V2_S *pstVpssParamV2);
 HI_S32 HI_MPI_VPSS_GetGrpParamV2(VPSS_GRP VpssGrp, VPSS_GRP_PARAM_V2_S *pstVpssParamV2);
 
-
-
-/* for HI3518EV200 HI3518EV201 HI3516CV200*/
+/* only for HI3518EV200 HI3518EV201 HI3516CV200*/
 HI_S32 HI_MPI_VPSS_SetNRParam(VPSS_GRP VpssGrp, VPSS_NR_PARAM_U *punNrParam);   
 HI_S32 HI_MPI_VPSS_GetNRParam(VPSS_GRP VpssGrp, VPSS_NR_PARAM_U *punNrParam);
-
-
 
 /* only for HI3519V100*/
 HI_S32 HI_MPI_VPSS_SetNRBParam(VPSS_GRP VpssGrp, VPSS_GRP_VPPNRB_S *pstVpssNrBParam);
 HI_S32 HI_MPI_VPSS_GetNRBParam(VPSS_GRP VpssGrp, VPSS_GRP_VPPNRB_S *pstVpssNrBParam);
 
+/* for all chip except Hi3516A */
+HI_S32 HI_MPI_VPSS_SetGrpNRSParam(VPSS_GRP VpssGrp, VPSS_GRP_NRS_PARAM_S *pstNRSParam);
+HI_S32 HI_MPI_VPSS_GetGrpNRSParam(VPSS_GRP VpssGrp, VPSS_GRP_NRS_PARAM_S *pstNRSParam);
 
-/* ExtChn Settings */
-HI_S32 HI_MPI_VPSS_SetExtChnAttr(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_EXT_CHN_ATTR_S *pstExtChnAttr);
-HI_S32 HI_MPI_VPSS_GetExtChnAttr(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_EXT_CHN_ATTR_S *pstExtChnAttr);
-
-HI_S32 HI_MPI_VPSS_SetExtChnCrop(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, const VPSS_CROP_INFO_S *pstCropInfo);
-HI_S32 HI_MPI_VPSS_GetExtChnCrop(VPSS_GRP VpssGrp, VPSS_CHN VpssChn, VPSS_CROP_INFO_S *pstCropInfo);
-
+HI_S32 HI_MPI_VPSS_SetGrpNRBParam(VPSS_GRP VpssGrp, VPSS_GRP_NRB_PARAM_S *pstNRBParam);
+HI_S32 HI_MPI_VPSS_GetGrpNRBParam(VPSS_GRP VpssGrp, VPSS_GRP_NRB_PARAM_S *pstNRBParam);
 
 /* Module Param Settings */
 HI_S32 HI_MPI_VPSS_SetModParam(VPSS_MOD_PARAM_S *pstModParam);

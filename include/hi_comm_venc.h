@@ -138,7 +138,7 @@ typedef struct hiVENC_PACK_S
     HI_U32   u32Len;                             /*the length of stream*/
     
     HI_U64   u64PTS;                                /*PTS*/
-    HI_BOOL  bFrameEnd;                             /*frame end£¿*/
+    HI_BOOL  bFrameEnd;                             /*frame end*/
     
     VENC_DATA_TYPE_U  DataType;                     /*the type of stream*/
     HI_U32   u32Offset;

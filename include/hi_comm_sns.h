@@ -35,66 +35,102 @@ typedef struct hiISP_CMOS_BLACK_LEVEL_S
     HI_U16  au16BlackLevel[4];
 } ISP_CMOS_BLACK_LEVEL_S;
 
-typedef struct hiISP_CMOS_AGC_TABLE_S
+
+#define HI_ISP_NR_CALIB_COEF_COL (4)
+#define HI_ISP_NR_PARA_LUT_COUNT (6)
+#define HI_ISP_NR_ISO_LEVEL_MAX  (16)
+#define HI_ISP_LSC_LIGHT_NUM	 (3)
+#define RGBIR_MATRIX_NUM         (15)
+
+typedef struct hiISP_NR_CABLI_PARA_S
 {
-    HI_BOOL bValid;
-    
-    HI_U8   au8SharpenAltD[16];          /* adjust image edge,different iso with different sharp strength */
-    HI_U8   au8SharpenAltUd[16];         /* adjust image texture, different iso with different strength */
-    HI_U8   au8SnrThresh[16];            /* adjust denoise strength, different iso with different strength */
-    HI_U8   au8DemosaicLumThresh[16];  
-    HI_U8   au8DemosaicNpOffset[16];
-    HI_U8   au8GeStrength[16];
-    HI_U8   au8SharpenRGB[16];          /* adjust image edge,different iso with different RGBSharp strength */
-} ISP_CMOS_AGC_TABLE_S;
+	HI_U8   u8CalicoefRow;
+	HI_FLOAT (*pCalibcoef)[HI_ISP_NR_CALIB_COEF_COL];
+}ISP_NR_CABLI_PARA_S;
+
+typedef struct hiISP_NR_ISO_PARA_TABLE_S
+{
+
+	HI_U16	u16Threshold;	
+	HI_U16	u8varStrength;
+	HI_U16	u8fixStrength;
+    HI_U8   u8LowFreqSlope;
+}ISP_NR_ISO_PARA_TABLE_S;
 
 typedef struct hiISP_CMOS_NOISE_TABLE_S
-{
-    HI_BOOL bValid;
-    
-    HI_U8   au8NoiseProfileWeightLut[128];
-    HI_U8   au8DemosaicWeightLut[128];
+{	
+	/*noise reduction calibration para*/
+	ISP_NR_CABLI_PARA_S     stNrCaliPara;
+	/*noise reduction iso para*/
+	ISP_NR_ISO_PARA_TABLE_S stIsoParaTable[HI_ISP_NR_ISO_LEVEL_MAX];
 } ISP_CMOS_NOISE_TABLE_S;
+
+typedef struct hiISP_CMOS_COMPANDER_S
+{
+
+	HI_U32 u32BitDepthIn;
+	HI_U32 u32BitDepthOut;
+	HI_U32 u32X0;
+	HI_U32 u32Y0;
+	HI_U32 u32X1;
+	HI_U32 u32Y1;
+	HI_U32 u32X2;
+	HI_U32 u32Y2;
+	HI_U32 u32X3;
+	HI_U32 u32Y3;
+	HI_U32 u32Xmax;
+	HI_U32 u32Ymax;
+
+}ISP_CMOS_COMPANDER_S;
 
 typedef struct hiISP_CMOS_DEMOSAIC_S
 {
-    HI_BOOL bValid;
-    
-    HI_U8   u8VhSlope;
-    HI_U8   u8AaSlope;
-    HI_U8   u8VaSlope;
-    HI_U8   u8UuSlope;
-    HI_U8   u8SatSlope;
-    HI_U8   u8AcSlope;
-    HI_U8   u8FcSlope;
-    HI_U16  u16VhThresh;
-    HI_U16  u16AaThresh;
-    HI_U16  u16VaThresh;
-    HI_U16  u16UuThresh;
-    HI_U16  u16SatThresh;
-    HI_U16  u16AcThresh;
+	/*For Demosaic*/
+	HI_BOOL bEnable;			
+	HI_U8   u8VhLimit; /* RW,Range: [0x0, 0xFF]  */ 
+	HI_U8   u8VhOffset; /* RW,Range: [0x0, 0xFF]  */
+	HI_U16  u16VhSlope; /* RW,Range: [0x0, 0xFF]  */
+	/*False Color*/
+	HI_BOOL bFcrEnable;
+	HI_U8   au8FcrStrength[ISP_AUTO_ISO_STENGTH_NUM];
+	HI_U8   au8FcrThreshold[ISP_AUTO_ISO_STENGTH_NUM];
+	/*For Ahd*/
+	HI_U16  u16UuSlope;	
+	HI_U16  au16NpOffset[ISP_AUTO_ISO_STENGTH_NUM];	
 } ISP_CMOS_DEMOSAIC_S;
+
+#define HI_ISP_SHARPEN_PARA_NUM (3)
 
 typedef struct hiISP_CMOS_RGBSHARPEN_S
 {    
-    HI_BOOL bValid;
+    HI_BOOL abEnPixSel[ISP_AUTO_ISO_STENGTH_NUM];
+
+    HI_U8  au8MaxSharpAmt1[ISP_AUTO_ISO_STENGTH_NUM];
+    HI_U8  au8MaxEdgeAmt[ISP_AUTO_ISO_STENGTH_NUM];
     
-    HI_U8   u8LutCore;         /* lut_core 8bit [0-255]*/
-    HI_U8   u8LutStrength;     /* lut_strength 7bit [0-127]*/
-    HI_U8   u8LutMagnitude;    /* lut_magnitude 5bit [0-31]*/    
+    HI_U8  au8SharpThd2[ISP_AUTO_ISO_STENGTH_NUM]; 
+    HI_U8  au8EdgeThd2[ISP_AUTO_ISO_STENGTH_NUM];
+    
+    HI_U8  au8OvershootAmt[ISP_AUTO_ISO_STENGTH_NUM]; 
+    HI_U8  au8UndershootAmt[ISP_AUTO_ISO_STENGTH_NUM];
 } ISP_CMOS_RGBSHARPEN_S;
 
+#define COLORCORRECTIONLUT_NODE_NUMBER 33
 typedef struct hiISP_CMOS_DRC_S
 {
-    HI_BOOL bEnable;    
-    HI_U32  u32BlackLevel;
-    HI_U32  u32WhiteLevel;        
-    HI_U32  u32SlopeMax;        
-    HI_U32  u32SlopeMin;        
-    HI_U32  u32VarianceSpace;
-    HI_U32  u32VarianceIntensity;
-    HI_U32  u32Asymmetry;
-    HI_U32  u32BrightEnhance;
+    HI_BOOL bEnable;
+
+	HI_U8  u8SpatialVar;             
+	HI_U8  u8RangeVar;              
+	
+	HI_U8  u8Asymmetry;              
+	HI_U8  u8SecondPole;             
+	HI_U8  u8Stretch;                
+
+	HI_U16 u16DarkGainLmtY;         
+	HI_U16 u16DarkGainLmtC;         
+	HI_U16 u16BrightGainLmt; 
+    HI_U16 au16ColorCorrectionLut[COLORCORRECTIONLUT_NODE_NUMBER];
 } ISP_CMOS_DRC_S;
 
 
@@ -139,22 +175,119 @@ typedef struct hiISP_CMOS_GAMMA_S
     HI_U16  au16Gamma[GAMMA_NODE_NUMBER];
 } ISP_CMOS_GAMMA_S;
 
+#define HI_ISP_UVNR_SIGMA_PRECISION (1)
+typedef struct hiISP_CMOS_UVNR_S
+{    
+	HI_S32  UVNR_lutSigma   [ISP_AUTO_ISO_STENGTH_NUM];
+	HI_S8   Coring_lutLimit [ISP_AUTO_ISO_STENGTH_NUM];
+	HI_S8   UVNR_blendRatio [ISP_AUTO_ISO_STENGTH_NUM];
+
+} ISP_CMOS_UVNR_S;
+
 typedef struct hiISP_CMOS_SENSOR_MAX_RESOLUTION_S
 {
     HI_U32  u32MaxWidth;
     HI_U32  u32MaxHeight;
 }ISP_CMOS_SENSOR_MAX_RESOLUTION_S;
 
+typedef struct hiISP_CMOS_DPC_S
+{    
+	//HI_U8	u8IRChannel;// 1 yes;0 no
+	//HI_U8	u8IRPosition;//0:Gb,1:Gr
+	HI_U16	au16Slope[ISP_AUTO_ISO_STENGTH_NUM];
+	HI_U16	au16BlendRatio[ISP_AUTO_ISO_STENGTH_NUM];
+} ISP_CMOS_DPC_S;
+
+#define HI_ISP_LSC_GRID_POINTS		(289)
+#define HI_ISP_LSC_GRID_COL         (17)
+#define HI_ISP_LSC_GRID_ROW         (17)
+typedef struct hiISP_LSC_CABLI_UNI_TABLE_S
+{
+    HI_U32 u32XGrid[(HI_ISP_LSC_GRID_COL-1)/2];
+    HI_U32 u32YGrid[(HI_ISP_LSC_GRID_ROW-1)/2];
+}ISP_LSC_CABLI_UNI_TABLE_S;
+
+typedef struct hiISP_LSC_CABLI_TABLE_S
+{
+    HI_U32 u32RGain;
+    HI_U32 u32BGain;
+
+    HI_U32 au32R_Gain[HI_ISP_LSC_GRID_POINTS];	
+	HI_U32 au32Gr_Gain[HI_ISP_LSC_GRID_POINTS];	
+	HI_U32 au32Gb_Gain[HI_ISP_LSC_GRID_POINTS];	
+	HI_U32 au32B_Gain[HI_ISP_LSC_GRID_POINTS];
+    
+}ISP_LSC_CABLI_TABLE_S;
+
+typedef struct hiISP_CMOS_LSC_S
+{
+    ISP_LSC_CABLI_UNI_TABLE_S stLscUniParaTable;
+	ISP_LSC_CABLI_TABLE_S stLscParaTable[HI_ISP_LSC_LIGHT_NUM];
+}ISP_CMOS_LSC_S;
+
+typedef enum hiISP_CMOS_IRPOS_TYPE_E
+{
+    ISP_CMOS_IRPOS_TYPE_GR = 0x0,
+    ISP_CMOS_IRPOS_TYPE_GB,
+    ISP_CMOS_IRPOS_TYPE_BUTT
+}ISP_CMOS_IRPOS_TYPE_E;
+
+typedef enum hiISP_CMOS_OP_TYPE_E
+{
+    OP_CMOS_TYPE_AUTO    = 0,
+    OP_CMOS_TYPE_MANUAL  = 1,
+    OP_CMOS_TYPE_BUTT
+} ISP_CMOS_OP_TYPE_E;
+
+typedef struct hiISP_CMOS_RGBIR_ATTR_S
+{
+    HI_BOOL bEnable;                            /*RW, Range: [false, true] Rgbir moudle enable  */
+    ISP_CMOS_IRPOS_TYPE_E enIrPosType;          /*RW, Range: [0, 1] Rgbir moudle ir position: 0 Gr, 1 Gb  */
+    HI_U16  u16OverExpThresh;                   /*RW, Range: [0,4095] Rgbir moudle over exposure threshold*/    
+}ISP_CMOS_RGBIR_ATTR_S;
+
+typedef struct hiISP_CMOS_RGBIR_CTRL_S
+{
+    HI_BOOL bIrOutEn;                           /*RW, Range: [false, true] Rgbir moudle output ir image enable  */
+    HI_BOOL bIrFilterEn;                        /*RW, Range: [false, true] Rgbir moudle noise filter enable  */
+    HI_BOOL bRemovelEn;                         /*RW, Range: [false, true] Rgbir moudle removel ir enable  */
+    ISP_CMOS_OP_TYPE_E enCompType;              /*RW, Range: [false, true] Rgbir moudle after removel ir, compensation type 0:auto,1:manul  */
+    HI_U16  u16ManuGain;                        /*RW, Range: [256,1023] Rgbir moudle after removel ir, manul-compensation gain,2bit integer,8bit decimal */
+    HI_S16  as16ScaleCoef[RGBIR_MATRIX_NUM];    /*RW, Range: [-512,511] Rgbir moudle removel ir translate matrix,bit9:signed bit,bit8:integer bit,bit7_0:decimal bit*/
+}ISP_CMOS_RGBIR_CTRL_S;
+
+typedef struct hiISP_CMOS_RGBIR_S
+{
+    HI_BOOL               bValid;       /* if bValid is false, below paramter is not setted in xxx_cmos.c*/
+    ISP_CMOS_RGBIR_ATTR_S stRgbirAttr;
+    ISP_CMOS_RGBIR_CTRL_S stRgbirCtrl;   
+}ISP_CMOS_RGBIR_S;
+
+typedef struct hiISP_CMOS_GE_S
+{
+    HI_BOOL bEnable;
+	HI_U8   u8Slope;
+	HI_U8   u8Sensitivity;
+	HI_U16  u16Threshold;
+	HI_U16  u16SensiThreshold;
+	HI_U16  au16Strength[ISP_AUTO_ISO_STENGTH_NUM];
+}ISP_CMOS_GE_S;
+
+
 typedef struct hiISP_CMOS_DEFAULT_S
 {    
     ISP_CMOS_DRC_S          stDrc;
-    ISP_CMOS_AGC_TABLE_S    stAgcTbl;
     ISP_CMOS_NOISE_TABLE_S  stNoiseTbl;
     ISP_CMOS_DEMOSAIC_S     stDemosaic;
     ISP_CMOS_GAMMAFE_S      stGammafe;
     ISP_CMOS_GAMMA_S        stGamma;
-    ISP_CMOS_SHADING_S      stShading; 
     ISP_CMOS_RGBSHARPEN_S   stRgbSharpen;
+	ISP_CMOS_UVNR_S         stUvnr;
+	ISP_CMOS_DPC_S          stDpc;
+	ISP_CMOS_LSC_S			stLsc;
+    ISP_CMOS_RGBIR_S        stRgbir;
+	ISP_CMOS_GE_S           stGe;
+	ISP_CMOS_COMPANDER_S    stCompander;
 
     ISP_CMOS_SENSOR_MAX_RESOLUTION_S stSensorMaxResolution;
 } ISP_CMOS_DEFAULT_S;

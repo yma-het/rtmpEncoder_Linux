@@ -62,6 +62,13 @@ typedef enum hiISP_ALG_MOD_E
     ISP_ALG_FPN,
     ISP_ALG_DEHAZE,
     ISP_ALG_ACM,
+	ISP_ALG_CAC,
+	ISP_ALG_CSC,
+	ISP_ALG_COMPANDER,
+	ISP_ALG_UVNR,
+	ISP_ALG_LSC,
+	ISP_ALG_RGBIR,
+	ISP_ALG_COMM,
     ISP_ALG_BUTT,
 } ISP_ALG_MOD_E;
 
@@ -113,7 +120,9 @@ typedef struct hiISP_AE_STAT_2_S
 } ISP_AE_STAT_2_S;
 
 typedef struct hiISP_AE_STAT_3_S
-{    
+{
+    HI_U32  u32PixelCount;
+    HI_U32  u32PixelWeight;
     HI_U32  au32HistogramMemArray[256];
 } ISP_AE_STAT_3_S;
 
@@ -135,8 +144,8 @@ typedef struct hiISP_AE_INFO_S
 {
     HI_U32  u32FrameCnt;    /* the counting of frame */
 
-    ISP_AE_STAT_1_S *pstAeStat1;
-    ISP_AE_STAT_2_S *pstAeStat2;
+    ISP_AE_STAT_1_S *pstAeStat1;    /* not support */
+    ISP_AE_STAT_2_S *pstAeStat2;    /* not support */
     ISP_AE_STAT_3_S *pstAeStat3;
     ISP_AE_STAT_4_S *pstAeStat4;
     ISP_AE_STAT_5_S *pstAeStat5;

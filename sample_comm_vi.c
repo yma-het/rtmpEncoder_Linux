@@ -41,69 +41,32 @@ VI_DEV_ATTR_S DEV_ATTR_BT656D1_1MUX =
     /* progessive or interleaving */
     VI_SCAN_INTERLACED,
     /*AdChnId*/
-    { -1, -1, -1, -1},
-    /*enDataSeq, only support yuv*/
-    VI_INPUT_DATA_YVYU,
-    /* synchronization information */
-    {
-        /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
-        VI_VSYNC_FIELD, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL, VI_HSYNC_NEG_HIGH, VI_VSYNC_VALID_SINGAL, VI_VSYNC_VALID_NEG_HIGH,
-
-        /*hsync_hfb    hsync_act    hsync_hhb*/
-        {
-            0,            0,        0,
-            /*vsync0_vhb vsync0_act vsync0_hhb*/
-            0,            0,        0,
-            /*vsync1_vhb vsync1_act vsync1_hhb*/
-            0,            0,            0
-        }
-    },
-    /* ISP bypass */
-    VI_PATH_BYPASS,
-    /* input data type */
-    VI_DATA_TYPE_YUV
-};
-
-
-/*OV9732 DC 12bit input 720P@30fps*/
-VI_DEV_ATTR_S DEV_ATTR_OV9732_DC_720P_BASE =
-{
-    /* interface mode */
-    VI_MODE_DIGITAL_CAMERA,
-    /* multiplex mode */
-    VI_WORK_MODE_1Multiplex,
-    /* r_mask    g_mask    b_mask*/
-    {0xFFC0000,    0x0},
-    /* progessive or interleaving */
-    VI_SCAN_PROGRESSIVE,
-    /*AdChnId*/
     {-1, -1, -1, -1},
     /*enDataSeq, only support yuv*/
-    VI_INPUT_DATA_YUYV,
-
+    VI_INPUT_DATA_YVYU,     
     /* synchronization information */
     {
     /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
-    VI_VSYNC_FIELD, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
-
+    VI_VSYNC_FIELD, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,    
+    
     /*hsync_hfb    hsync_act    hsync_hhb*/
-    {370,            1280,        0,
+    {0,            0,        0,
     /*vsync0_vhb vsync0_act vsync0_hhb*/
-     6,            720,        6,
-    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/ 
      0,            0,            0}
-    },
-    /* use interior ISP */
-    VI_PATH_ISP,
+    },    
+    /* ISP bypass */
+    VI_PATH_BYPASS,
     /* input data type */
-    VI_DATA_TYPE_RGB,
-    /* Data Reverse */
-    HI_FALSE,
-    {0, 0, 1280, 720}
+    VI_DATA_TYPE_YUV,    
+    /* bReverse */
+    HI_FALSE,    
+     /* DEV CROP */
+    {0, 0, 1920, 1080}
 };
 
-
-/* BT1120 1080I输入 */
+/* BT1120 1080I input */
 VI_DEV_ATTR_S DEV_ATTR_BT1120_1080I_1MUX =
 {
     /* interface mode */
@@ -155,16 +118,16 @@ VI_DEV_ATTR_S DEV_ATTR_BT1120_1080P_BASE =
     /* progessive or interleaving */
     VI_SCAN_PROGRESSIVE,
     /*AdChnId*/
-    { -1, -1, -1, -1},
+    {-1, -1, -1, -1},
     /*enDataSeq, only support yuv*/
     VI_INPUT_DATA_UVUV,
 
     /* synchronization information */
     {
-        /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
-        VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL, VI_HSYNC_NEG_HIGH, VI_VSYNC_NORM_PULSE, VI_VSYNC_VALID_NEG_HIGH,
-
-        /*hsync_hfb    hsync_act    hsync_hhb*/
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_NORM_PULSE,VI_VSYNC_VALID_NEG_HIGH,
+   
+    /*hsync_hfb    hsync_act    hsync_hhb*/
         {
             0,            0,        0,
             /*vsync0_vhb vsync0_act vsync0_hhb*/
@@ -172,21 +135,21 @@ VI_DEV_ATTR_S DEV_ATTR_BT1120_1080P_BASE =
             /*vsync1_vhb vsync1_act vsync1_hhb*/
             0,            0,            0
         }
-    },
+    },    
     /* ISP bypass */
     VI_PATH_BYPASS,
-    /* input data type */
+     /* input data type */
     VI_DATA_TYPE_YUV,
     /* bReverse */
-    HI_FALSE,
-    /* DEV CROP */
+    HI_FALSE,    
+     /* DEV CROP */
     {0, 0, 1920, 1080}
 };
 
-
+ 
 /* BT1120 720P */
 VI_DEV_ATTR_S DEV_ATTR_BT1120_720P_BASE =
-    /* classical timing 3:7441 BT1120 720P@60fps*/
+/* classical timing 3:7441 BT1120 720P@60fps*/
 {
     /* interface mode */
     VI_MODE_BT1120_STANDARD,
@@ -198,16 +161,16 @@ VI_DEV_ATTR_S DEV_ATTR_BT1120_720P_BASE =
     VI_SCAN_PROGRESSIVE,
     //VI_SCAN_INTERLACED,
     /*AdChnId*/
-    { -1, -1, -1, -1},
+    {-1, -1, -1, -1},
     /*enDataSeq, only support yuv*/
     VI_INPUT_DATA_UVUV,
 
-    /* synchronization information */
+     /* synchronization information */
     {
-        /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
-        VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL, VI_HSYNC_NEG_HIGH, VI_VSYNC_NORM_PULSE, VI_VSYNC_VALID_NEG_HIGH,
-
-        /*hsync_hfb    hsync_act    hsync_hhb*/
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_NORM_PULSE,VI_VSYNC_VALID_NEG_HIGH,
+    
+    /*hsync_hfb    hsync_act    hsync_hhb*/
         {
             0,            1280,        0,
             /*vsync0_vhb vsync0_act vsync0_hhb*/
@@ -221,9 +184,195 @@ VI_DEV_ATTR_S DEV_ATTR_BT1120_720P_BASE =
     /* input data type */
     VI_DATA_TYPE_YUV,
     /* bReverse */
-    HI_FALSE,
-    /* DEV CROP */
+    HI_FALSE,    
+     /* DEV CROP */
     {0, 0, 1280, 720}
+};
+
+
+/*imx222 DC 12bit input*/
+VI_DEV_ATTR_S DEV_ATTR_IMX222_DC_1080P_BASE =
+{
+    /* interface mode */
+    VI_MODE_DIGITAL_CAMERA,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFF0000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+    /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+     /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,    
+    
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {0,            1920,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     0,            1080,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/ 
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB,
+    /* bRevert */
+    HI_FALSE,
+    /* stDevRect */
+    {200, 20, 1920, 1080} 
+};
+
+/*imx222 DC 12bit input*/
+VI_DEV_ATTR_S DEV_ATTR_IMX222_DC_720P_BASE =
+{
+    /* interface mode */
+    VI_MODE_DIGITAL_CAMERA,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFF0000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+    /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+     /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,    
+    
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {0,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     0,            720,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/ 
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB,
+    /* bRevert */
+    HI_FALSE,
+    /* stDevRect */
+    {200, 20, 1280, 720} 
+};
+
+/*9M034 DC 12bit input 720P@30fps*/
+VI_DEV_ATTR_S DEV_ATTR_9M034_DC_720P_BASE =
+{
+    /* interface mode */
+    VI_MODE_DIGITAL_CAMERA,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFF0000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+    /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+    /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_LOW, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
+
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {370,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     6,            720,        6,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB,
+    /* Data Reverse */
+    HI_FALSE,
+    {0, 0, 1280, 720}
+};
+
+/*OV9732 DC 12bit input 720P@30fps*/
+VI_DEV_ATTR_S DEV_ATTR_OV9732_DC_720P_BASE =
+{
+    /* interface mode */
+    VI_MODE_DIGITAL_CAMERA,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFC0000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+    /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+    /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_FIELD, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
+
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {370,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     6,            720,        6,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB,
+    /* Data Reverse */
+    HI_FALSE,
+    {0, 0, 1280, 720}
+};
+
+
+/*mt9p006 DC 12bit input*/
+VI_DEV_ATTR_S DEV_ATTR_MT9P006_DC_1080P =
+{
+    /* interface mode */
+    VI_MODE_DIGITAL_CAMERA,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFF00000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+   /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+    /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_HIGH, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,    
+   
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {0,            1920,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     0,            1080,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/ 
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB    
 };
 
 VI_DEV_ATTR_S DEV_ATTR_LVDS_BASE =
@@ -237,30 +386,65 @@ VI_DEV_ATTR_S DEV_ATTR_LVDS_BASE =
     /* progessive or interleaving */
     VI_SCAN_PROGRESSIVE,
     /*AdChnId*/
-    { -1, -1, -1, -1},
+    {-1, -1, -1, -1},
     /*enDataSeq, only support yuv*/
     VI_INPUT_DATA_YUYV,
 
     /* synchronization information */
     {
-        /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
-        VI_VSYNC_PULSE, VI_VSYNC_NEG_LOW, VI_HSYNC_VALID_SINGNAL, VI_HSYNC_NEG_HIGH, VI_VSYNC_VALID_SINGAL, VI_VSYNC_VALID_NEG_HIGH,
-
-        /*hsync_hfb    hsync_act    hsync_hhb*/
-        {
-            0,            1280,        0,
-            /*vsync0_vhb vsync0_act vsync0_hhb*/
-            0,            720,        0,
-            /*vsync1_vhb vsync1_act vsync1_hhb*/
-            0,            0,            0
-        }
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_LOW, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
+   
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {0,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     0,            720,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,            0}
     },
     /* use interior ISP */
     VI_PATH_ISP,
     /* input data type */
-    VI_DATA_TYPE_RGB,
+    VI_DATA_TYPE_RGB,    
     /* bRever */
-    HI_FALSE,
+    HI_FALSE,    
+    /* DEV CROP */
+    {0, 0, 1920, 1080}
+};
+
+VI_DEV_ATTR_S DEV_ATTR_HISPI_BASE =
+{
+    /* interface mode */
+    VI_MODE_HISPI,
+    /* multiplex mode */
+    VI_WORK_MODE_1Multiplex,
+    /* r_mask    g_mask    b_mask*/
+    {0xFFF00000,    0x0},
+    /* progessive or interleaving */
+    VI_SCAN_PROGRESSIVE,
+    /*AdChnId*/
+    {-1, -1, -1, -1},
+    /*enDataSeq, only support yuv*/
+    VI_INPUT_DATA_YUYV,
+
+    /* synchronization information */
+    {
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_LOW, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
+   
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {0,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     0,            720,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,            0}
+    },
+    /* use interior ISP */
+    VI_PATH_ISP,
+    /* input data type */
+    VI_DATA_TYPE_RGB,    
+    /* bRever */
+    HI_FALSE,    
     /* DEV CROP */
     {0, 0, 1920, 1080}
 };
@@ -277,30 +461,28 @@ VI_DEV_ATTR_S DEV_ATTR_MIPI_BASE =
     /* progessive or interleaving */
     VI_SCAN_PROGRESSIVE,
     /*AdChnId*/
-    { -1, -1, -1, -1},
+    {-1, -1, -1, -1},
     /*enDataSeq, only support yuv*/
     VI_INPUT_DATA_YUYV,
 
     /* synchronization information */
     {
-        /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
-        VI_VSYNC_PULSE, VI_VSYNC_NEG_LOW, VI_HSYNC_VALID_SINGNAL, VI_HSYNC_NEG_HIGH, VI_VSYNC_VALID_SINGAL, VI_VSYNC_VALID_NEG_HIGH,
-
-        /*hsync_hfb    hsync_act    hsync_hhb*/
-        {
-            0,            1280,        0,
-            /*vsync0_vhb vsync0_act vsync0_hhb*/
-            0,            720,        0,
-            /*vsync1_vhb vsync1_act vsync1_hhb*/
-            0,            0,            0
-        }
+    /*port_vsync   port_vsync_neg     port_hsync        port_hsync_neg        */
+    VI_VSYNC_PULSE, VI_VSYNC_NEG_LOW, VI_HSYNC_VALID_SINGNAL,VI_HSYNC_NEG_HIGH,VI_VSYNC_VALID_SINGAL,VI_VSYNC_VALID_NEG_HIGH,
+   
+    /*hsync_hfb    hsync_act    hsync_hhb*/
+    {0,            1280,        0,
+    /*vsync0_vhb vsync0_act vsync0_hhb*/
+     0,            720,        0,
+    /*vsync1_vhb vsync1_act vsync1_hhb*/
+     0,            0,            0}
     },
     /* use interior ISP */
     VI_PATH_ISP,
     /* input data type */
-    VI_DATA_TYPE_RGB,
+    VI_DATA_TYPE_RGB,    
     /* bRever */
-    HI_FALSE,
+    HI_FALSE,    
     /* DEV CROP */
     {0, 0, 1920, 1080}
 };
@@ -320,55 +502,47 @@ combo_dev_attr_t LVDS_4lane_SENSOR_IMX136_12BIT_1080_NOWDR_ATTR =
             LVDS_ENDIAN_BIG,
             .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
             .sync_code = {
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
 
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
 
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                        
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
 
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                }
-
-            }
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}}
+                     
+               }
         }
     }
 };
@@ -377,65 +551,57 @@ combo_dev_attr_t SUBLVDS_4lane_SENSOR_MN34220_12BIT_1080_NOWDR_ATTR =
 {
     /* input mode */
     .input_mode = INPUT_MODE_SUBLVDS,
-
+        
     {
         .lvds_attr = {
             .img_size = {1920, 1080},
-            HI_WDR_MODE_NONE,
+            HI_WDR_MODE_NONE,            
             LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,
+            RAW_DATA_12BIT,                     
             LVDS_ENDIAN_BIG,
-            LVDS_ENDIAN_BIG,
+            LVDS_ENDIAN_BIG, 
             .lane_id = {0, 2, -1, -1, 1, 3, -1, -1},
             .sync_code =  {
-                {   {0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
-                    {0x202, 0x203, 0x200, 0x201},
-                    {0x102, 0x103, 0x100, 0x101},
-                    {0x302, 0x303, 0x300, 0x301}
-                },
+                  {{0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
+                  {0x202, 0x203, 0x200, 0x201},
+                  {0x102, 0x103, 0x100, 0x101},
+                  {0x302, 0x303, 0x300, 0x301}},
 
-                {   {0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
-                    {0x206, 0x207, 0x204, 0x205},
-                    {0x106, 0x107, 0x104, 0x105},
-                    {0x306, 0x307, 0x304, 0x305}
-                },
+                  {{0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
+                  {0x206, 0x207, 0x204, 0x205},
+                  {0x106, 0x107, 0x104, 0x105},
+                  {0x306, 0x307, 0x304, 0x305}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x012, 0x013, 0x010, 0x011},//PHY1_lane0
-                    {0x212, 0x213, 0x210, 0x211},
-                    {0x112, 0x113, 0x110, 0x111},
-                    {0x312, 0x313, 0x310, 0x311}
-                },
+                  {{0x012, 0x013, 0x010, 0x011},//PHY1_lane0
+                  {0x212, 0x213, 0x210, 0x211},
+                  {0x112, 0x113, 0x110, 0x111},
+                  {0x312, 0x313, 0x310, 0x311}},
 
-                {   {0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
-                    {0x216, 0x217, 0x214, 0x215},
-                    {0x116, 0x117, 0x114, 0x115},
-                    {0x316, 0x317, 0x314, 0x315}
-                },
+                  {{0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
+                  {0x216, 0x217, 0x214, 0x215},
+                  {0x116, 0x117, 0x114, 0x115},
+                  {0x316, 0x317, 0x314, 0x315}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                },
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                }
-            }
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}}
+               }
         }
     }
 };
@@ -444,65 +610,57 @@ combo_dev_attr_t SUBLVDS_4lane_SENSOR_MN34220_12BIT_1080_2WDR1_ATTR =
 {
     /* input mode */
     .input_mode = INPUT_MODE_SUBLVDS,
-
+        
     {
         .lvds_attr = {
             .img_size = {1920, 1108},
-            HI_WDR_MODE_2F,
+            HI_WDR_MODE_2F,            
             LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,
+            RAW_DATA_12BIT,                     
             LVDS_ENDIAN_BIG,
-            LVDS_ENDIAN_BIG,
+            LVDS_ENDIAN_BIG, 
             .lane_id = {0, 2, -1, -1, 1, 3, -1, -1},
             .sync_code =  {
-                {   {0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
-                    {0x202, 0x203, 0x200, 0x201},
-                    {0x102, 0x103, 0x100, 0x101},
-                    {0x302, 0x303, 0x300, 0x301}
-                },
+                  {{0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
+                  {0x202, 0x203, 0x200, 0x201},
+                  {0x102, 0x103, 0x100, 0x101},
+                  {0x302, 0x303, 0x300, 0x301}},
 
-                {   {0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
-                    {0x206, 0x207, 0x204, 0x205},
-                    {0x106, 0x107, 0x104, 0x105},
-                    {0x306, 0x307, 0x304, 0x305}
-                },
+                  {{0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
+                  {0x206, 0x207, 0x204, 0x205},
+                  {0x106, 0x107, 0x104, 0x105},
+                  {0x306, 0x307, 0x304, 0x305}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x012, 0x013, 0x010, 0x011},//PHY1_lane0
-                    {0x212, 0x213, 0x210, 0x211},
-                    {0x112, 0x113, 0x110, 0x111},
-                    {0x312, 0x313, 0x310, 0x311}
-                },
+                  {{0x012, 0x013, 0x010, 0x011},//PHY1_lane0
+                  {0x212, 0x213, 0x210, 0x211},
+                  {0x112, 0x113, 0x110, 0x111},
+                  {0x312, 0x313, 0x310, 0x311}},
 
-                {   {0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
-                    {0x216, 0x217, 0x214, 0x215},
-                    {0x116, 0x117, 0x114, 0x115},
-                    {0x316, 0x317, 0x314, 0x315}
-                },
+                  {{0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
+                  {0x216, 0x217, 0x214, 0x215},
+                  {0x116, 0x117, 0x114, 0x115},
+                  {0x316, 0x317, 0x314, 0x315}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                },
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                }
-            }
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}}
+               } 
         }
     }
 };
@@ -511,65 +669,57 @@ combo_dev_attr_t SUBLVDS_4lane_SENSOR_MN34220_12BIT_720_NOWDR_ATTR =
 {
     /* input mode */
     .input_mode = INPUT_MODE_SUBLVDS,
-
+        
     {
         .lvds_attr = {
             .img_size = {1280, 720},
-            HI_WDR_MODE_NONE,
+            HI_WDR_MODE_NONE,            
             LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,
+            RAW_DATA_12BIT,                     
             LVDS_ENDIAN_BIG,
-            LVDS_ENDIAN_BIG,
+            LVDS_ENDIAN_BIG, 
             .lane_id = {0, 2, -1, -1, 1, 3, -1, -1},
             .sync_code =  {
-                {   {0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
-                    {0x202, 0x203, 0x200, 0x201},
-                    {0x102, 0x103, 0x100, 0x101},
-                    {0x302, 0x303, 0x300, 0x301}
-                },
+                  {{0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
+                  {0x202, 0x203, 0x200, 0x201},
+                  {0x102, 0x103, 0x100, 0x101},
+                  {0x302, 0x303, 0x300, 0x301}},
 
-                {   {0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
-                    {0x206, 0x207, 0x204, 0x205},
-                    {0x106, 0x107, 0x104, 0x105},
-                    {0x306, 0x307, 0x304, 0x305}
-                },
+                  {{0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
+                  {0x206, 0x207, 0x204, 0x205},
+                  {0x106, 0x107, 0x104, 0x105},
+                  {0x306, 0x307, 0x304, 0x305}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x012, 0x013, 0x010, 0x011},//PHY1_lane0
-                    {0x212, 0x213, 0x210, 0x211},
-                    {0x112, 0x113, 0x110, 0x111},
-                    {0x312, 0x313, 0x310, 0x311}
-                },
+                  {{0x012, 0x013, 0x010, 0x011},//PHY1_lane0
+                  {0x212, 0x213, 0x210, 0x211},
+                  {0x112, 0x113, 0x110, 0x111},
+                  {0x312, 0x313, 0x310, 0x311}},
 
-                {   {0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
-                    {0x216, 0x217, 0x214, 0x215},
-                    {0x116, 0x117, 0x114, 0x115},
-                    {0x316, 0x317, 0x314, 0x315}
-                },
+                  {{0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
+                  {0x216, 0x217, 0x214, 0x215},
+                  {0x116, 0x117, 0x114, 0x115},
+                  {0x316, 0x317, 0x314, 0x315}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                },
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                }
-            }
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}}
+               }
         }
     }
 };
@@ -578,65 +728,57 @@ combo_dev_attr_t SUBLVDS_4lane_SENSOR_MN34220_12BIT_720_2WDR1_ATTR =
 {
     /* input mode */
     .input_mode = INPUT_MODE_SUBLVDS,
-
+        
     {
         .lvds_attr = {
             .img_size = {1280, 720},
-            HI_WDR_MODE_2F,
+            HI_WDR_MODE_2F,            
             LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,
+            RAW_DATA_12BIT,                     
             LVDS_ENDIAN_BIG,
-            LVDS_ENDIAN_BIG,
+            LVDS_ENDIAN_BIG, 
             .lane_id = {0, 2, -1, -1, 1, 3, -1, -1},
             .sync_code =  {
-                {   {0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
-                    {0x202, 0x203, 0x200, 0x201},
-                    {0x102, 0x103, 0x100, 0x101},
-                    {0x302, 0x303, 0x300, 0x301}
-                },
+                  {{0x002, 0x003, 0x000, 0x001}, //PHY0_lane0
+                  {0x202, 0x203, 0x200, 0x201},
+                  {0x102, 0x103, 0x100, 0x101},
+                  {0x302, 0x303, 0x300, 0x301}},
 
-                {   {0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
-                    {0x206, 0x207, 0x204, 0x205},
-                    {0x106, 0x107, 0x104, 0x105},
-                    {0x306, 0x307, 0x304, 0x305}
-                },
+                  {{0x006, 0x007, 0x004, 0x005}, //PHY0_lane1
+                  {0x206, 0x207, 0x204, 0x205},
+                  {0x106, 0x107, 0x104, 0x105},
+                  {0x306, 0x307, 0x304, 0x305}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane2
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
-                    {0x20a, 0x20b, 0x208, 0x209},
-                    {0x10a, 0x10b, 0x108, 0x109},
-                    {0x30a, 0x30b, 0x308, 0x309}
-                },
+                  {{0x00a, 0x00b, 0x008, 0x009}, //PHY0_lane3  INPUT_MODE_LVDS
+                  {0x20a, 0x20b, 0x208, 0x209},
+                  {0x10a, 0x10b, 0x108, 0x109},
+                  {0x30a, 0x30b, 0x308, 0x309}},
 
-                {   {0x012, 0x013, 0x010, 0x011},//PHY1_lane0
-                    {0x212, 0x213, 0x210, 0x211},
-                    {0x112, 0x113, 0x110, 0x111},
-                    {0x312, 0x313, 0x310, 0x311}
-                },
+                  {{0x012, 0x013, 0x010, 0x011},//PHY1_lane0
+                  {0x212, 0x213, 0x210, 0x211},
+                  {0x112, 0x113, 0x110, 0x111},
+                  {0x312, 0x313, 0x310, 0x311}},
 
-                {   {0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
-                    {0x216, 0x217, 0x214, 0x215},
-                    {0x116, 0x117, 0x114, 0x115},
-                    {0x316, 0x317, 0x314, 0x315}
-                },
+                  {{0x016, 0x017, 0x014, 0x015}, //PHY1_lane1
+                  {0x216, 0x217, 0x214, 0x215},
+                  {0x116, 0x117, 0x114, 0x115},
+                  {0x316, 0x317, 0x314, 0x315}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                },
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane2
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}},
 
-                {   {0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
-                    {0x21a, 0x21b, 0x218, 0x219},
-                    {0x11a, 0x11b, 0x118, 0x119},
-                    {0x31a, 0x31b, 0x318, 0x319}
-                }
-            }
+                  {{0x01a, 0x01b, 0x018, 0x019}, //PHY1_lane3
+                  {0x21a, 0x21b, 0x218, 0x219},
+                  {0x11a, 0x11b, 0x118, 0x119},
+                  {0x31a, 0x31b, 0x318, 0x319}}
+               } 
         }
     }
 };
@@ -655,55 +797,47 @@ combo_dev_attr_t LVDS_4lane_SENSOR_IMX178_12BIT_5M_NOWDR_ATTR =
             LVDS_ENDIAN_BIG,
             LVDS_ENDIAN_BIG,
             .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
-            .sync_code = {
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
+            .sync_code = { 
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
 
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                        
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
 
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}},
+                    
+                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}, 
+                    {0xab0, 0xb60, 0x800, 0x9d0}} 
                 }
-            }
         }
     }
 };
@@ -721,72 +855,6 @@ combo_dev_attr_t LVDS_4lane_SENSOR_IMX178_12BIT_1080p_ATTR =
             LVDS_ENDIAN_BIG,
             LVDS_ENDIAN_BIG,
             .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
-            .sync_code = {
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                },
-
-                {   {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0},
-                    {0xab0, 0xb60, 0x800, 0x9d0}
-                }
-            }
-        }
-    }
-};
-
-combo_dev_attr_t LVDS_4lane_SENSOR_IMX117_12BIT_720p_ATTR =
-{
-    /* input mode */
-    .input_mode = INPUT_MODE_LVDS,
-    {
-        .lvds_attr = {
-            .img_size = {1328, 724},
-            HI_WDR_MODE_NONE,
-            LVDS_SYNC_MODE_SAV,
-            RAW_DATA_12BIT,
-            LVDS_ENDIAN_BIG,
-            LVDS_ENDIAN_BIG,
-            .lane_id = {-1, -1, 0, 1, 2, 3, -1, -1},
             .sync_code = { 
                     {{0xab0, 0xb60, 0x800, 0x9d0}, 
                     {0xab0, 0xb60, 0x800, 0x9d0}, 
@@ -832,454 +900,152 @@ combo_dev_attr_t LVDS_4lane_SENSOR_IMX117_12BIT_720p_ATTR =
     }
 };
 
-combo_dev_attr_t LVDS_4lane_SENSOR_IMX117_12BIT_1080p_ATTR =
-{
-    /* input mode */
-    .input_mode = INPUT_MODE_LVDS,
-    {
-        .lvds_attr = {
-            .img_size = {1968, 1084},
-            HI_WDR_MODE_NONE,
-            LVDS_SYNC_MODE_SAV,
-            RAW_DATA_12BIT,
-            LVDS_ENDIAN_BIG,
-            LVDS_ENDIAN_BIG,
-            .lane_id = {-1, -1, 0, 1, 2, 3, -1, -1},
-            .sync_code = { 
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-                    
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-                    
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-                    
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-                        
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}},
-                    
-                    {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}, 
-                    {0xab0, 0xb60, 0x800, 0x9d0}} 
-                }
-        }
-    }
-};
-
-combo_dev_attr_t LVDS_4lane_SENSOR_IMX123_12BIT_WDR_ATTR = 
-{
-    /* input mode */
-    .input_mode = INPUT_MODE_LVDS,
-    {
-        .lvds_attr = {
-        .img_size = {2048, 1536},
-        HI_WDR_MODE_DOL_2F,
-        LVDS_SYNC_MODE_SAV,
-        RAW_DATA_12BIT,
-        LVDS_ENDIAN_BIG,
-        LVDS_ENDIAN_BIG,
-        .lane_id = {0, 1, 2, 3, 4, 5, 6, 7},
-        .sync_code = { 
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-                
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-                
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-                
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-                    
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}},
-                
-                {{0x2b0, 0x360, 0x801, 0x9d1}, 
-                {0x2b0, 0x360, 0x802, 0x9d2}, 
-                {0x2b0, 0x360, 0x804, 0x9d4}, 
-                {0x2b0, 0x360, 0x808, 0x9d8}} 
-            }
-        }
-    }
-};
-
-combo_dev_attr_t LVDS_4lane_SENSOR_IMX123_12BIT_NOWDR_ATTR = 
-{
-    /* input mode */
-    .input_mode = INPUT_MODE_LVDS,
-    {
-        .lvds_attr = {
-        .img_size = {2048, 1536},
-        HI_WDR_MODE_NONE,
-        LVDS_SYNC_MODE_SAV,
-        RAW_DATA_12BIT,
-        LVDS_ENDIAN_BIG,
-        LVDS_ENDIAN_BIG,
-        .lane_id = {0, 1, 2, 3, 4, 5, 6, 7},
-        .sync_code = { 
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-                
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-                
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-                
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-                    
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}},
-                
-                {{0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}, 
-                {0xab0, 0xb60, 0x800, 0x9d0}} 
-            }
-        }
-    }
-};
-
-
-combo_dev_attr_t MIPI_4lane_SENSOR_IMX185_12BIT_ATTR =
-{
-    .input_mode = INPUT_MODE_MIPI,
-    {
-        .mipi_attr =
-        {
-            RAW_DATA_12BIT,
-            {0, 1, 2, 3, -1, -1, -1, -1}
-        }
-    }
-
-};
 
 combo_dev_attr_t MIPI_CMOS3V3_ATTR =
 {
     /* input mode */
     .input_mode = INPUT_MODE_CMOS_33V,
     {
-
+        
     }
 };
 
-combo_dev_attr_t MIPI_4lane_SENSOR_MN34220_MIPI_12BIT_ATTR =
+combo_dev_attr_t MIPI_4lane_SENSOR_MN34220_MIPI_12BIT_ATTR = 
 {
-    .input_mode = INPUT_MODE_MIPI,
+    .input_mode = INPUT_MODE_MIPI,  
     {
-        .mipi_attr =
+        .mipi_attr =    
         {
             RAW_DATA_12BIT,
             {0, 1, 2, 3, -1, -1, -1, -1}
         }
     }
-
+    
 };
+
+combo_dev_attr_t MIPI_2lane_SENSOR_MN34222_12BIT_NOWDR_ATTR =
+{
+    .input_mode = INPUT_MODE_MIPI,
+        
+    .mipi_attr =    
+    {
+        RAW_DATA_12BIT,
+        {0, 1, -1, -1, -1, -1, -1, -1}
+    }
+};
+
+combo_dev_attr_t MIPI_2lane_SENSOR_OV9752_12BIT_NOWDR_ATTR = 
+{
+    .input_mode = INPUT_MODE_MIPI,
+        
+    .mipi_attr =    
+    {
+        RAW_DATA_12BIT,
+        {0, 1, -1, -1, -1, -1, -1, -1}
+    }
+};
+
+combo_dev_attr_t MIPI_4lane_SENSOR_OV2718_12BIT_NOWDR_ATTR = 
+{
+    .input_mode = INPUT_MODE_MIPI,
+        
+    .mipi_attr =    
+    {
+        RAW_DATA_12BIT,
+        {0, 1, 2, 3, -1, -1, -1, -1}
+    }
+};
+
 
 combo_dev_attr_t MIPI_BT1120_ATTR =
 {
     /* input mode */
     .input_mode = INPUT_MODE_BT1120,
     {
-
-    }
-};
-
-combo_dev_attr_t HISPI_4lane_SENSOR_AR0230_12BIT_1080p_NOWDR_ATTR =
-{
-    /* input mode */
-    .input_mode = INPUT_MODE_HISPI,
         
-    {
-        .lvds_attr = {
-            .img_size = {1920, 1080},
-            HI_WDR_MODE_NONE,            
-            LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,                     
-            LVDS_ENDIAN_LITTLE,
-            LVDS_ENDIAN_LITTLE, 
-            .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
-            .sync_code = {                               
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY0_lane0
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY0_lane1
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY0_lane2
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY0_lane3
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY1_lane0
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY1_lane1
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY1_lane2
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-                   {{0x3, 0x7, 0x1, 0x5}, //PHY1_lane3
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5},
-                   {0x3, 0x7, 0x1, 0x5}},
-
-            }        
-
-        }
-    }
-};
-
-combo_dev_attr_t HISPI_4lane_SENSOR_AR0237_12BIT_1080p_WDR_ATTR =
-{
-    /* input mode */
-    .input_mode = INPUT_MODE_HISPI,
-        
-    {
-        .lvds_attr = {
-            .img_size = {1920, 1080},
-            HI_WDR_MODE_2F,            
-            LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,                     
-            LVDS_ENDIAN_LITTLE,
-            LVDS_ENDIAN_LITTLE, 
-            .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
-            .sync_code = {                               
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-            }        
-
-        }
     }
 };
 
 
-combo_dev_attr_t HISPI_4lane_SENSOR_AR0237_12BIT_1080p_NOWDR_ATTR =
+combo_dev_attr_t MIPI_4lane_SENSOR_OV4682_10BIT_ATTR = 
 {
-    /* input mode */
-    .input_mode = INPUT_MODE_HISPI,
-        
+    .input_mode = INPUT_MODE_MIPI,  
     {
-        .lvds_attr = {
-            .img_size = {1920, 1080},
-            HI_WDR_MODE_NONE,            
-            LVDS_SYNC_MODE_SOL,
-            RAW_DATA_12BIT,                     
-            LVDS_ENDIAN_LITTLE,
-            LVDS_ENDIAN_LITTLE, 
-            .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
-            .sync_code = {                               
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
-                   {0x043, 0x047, 0x041, 0x045},
-                   {0x023, 0x027, 0x021, 0x025},
-                   {0x083, 0x087, 0x081, 0x085}},
-
-            }        
-
-        }
-    }
-};
-
-combo_dev_attr_t MIPI_2lane_SENSOR_AR0330_12BIT_ATTR =
-{
-    .input_mode = INPUT_MODE_MIPI,
-    {
-
-        .mipi_attr =
+        .mipi_attr =    
         {
+            RAW_DATA_10BIT,
+            {0, 1, 2, 3, -1, -1, -1, -1}
+        }
+    }
+    
+};
+
+combo_dev_attr_t HISPI_4lane_SENSOR_AR0230_12BIT_ATTR = 
+{
+    /* input mode */
+    .input_mode = INPUT_MODE_HISPI,
+    {
+        .lvds_attr = 
+        {
+            .img_size = {1920, 1080},
+            HI_WDR_MODE_NONE,
+            LVDS_SYNC_MODE_SOL,
             RAW_DATA_12BIT,
-            {0, 1, -1, -1, -1, -1, -1, -1}
+            LVDS_ENDIAN_LITTLE,
+            LVDS_ENDIAN_LITTLE,
+            .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
+            .sync_code = 
+            { 
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+                
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+                
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+                
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+                    
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}},
+                
+                {{0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}, 
+                {0x003, 0x007, 0x001, 0x005}} 
+            }
         }
     }
 };
 
-combo_dev_attr_t MIPI_4lane_SENSOR_OV4689_12BIT_ATTR =
-{
-    .input_mode = INPUT_MODE_MIPI,
-    {
-
-        .mipi_attr =
-        {
-            RAW_DATA_10BIT,
-            {0, 1, 2, 3, -1, -1, -1, -1}
-        }
-    }
-};
-
-combo_dev_attr_t MIPI_4lane_SENSOR_OV5658_10BIT_ATTR =
-{
-    .input_mode = INPUT_MODE_MIPI,
-    {
-
-        .mipi_attr =
-        {
-            RAW_DATA_10BIT,
-            {0, 1, 2, 3, -1, -1, -1, -1}
-        }
-    }
-};
 
 
 
 VI_CHN_ATTR_S CHN_ATTR_1920x1080_422 =
-    /*典型通道属性2:1920x1080@xxfps 格式422*/
 {
-    /* crop_x crop_y crop_w  crop_h */
+    /* crop_x crop_y crop_w  crop_h */  
     {0,     0, 1920,   1080},
     /* dest_w  dest_h */
     {1920,   1080 },
@@ -1290,13 +1056,13 @@ VI_CHN_ATTR_S CHN_ATTR_1920x1080_422 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_860x540_422 =
 {
-    /*crop_x crop_y crop_w  crop_h*/
-    {0,     0, 860,   540},
+    /*crop_x crop_y crop_w  crop_h*/  
+    {0,     0, 860,   540}, 
     /* dest_w  dest_h */
     {860,   540 },
     /*enCapSel*/
@@ -1306,47 +1072,47 @@ VI_CHN_ATTR_S CHN_ATTR_860x540_422 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 
 VI_CHN_ATTR_S CHN_ATTR_1280x720_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 1280,   720 },
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 1280,   720 }, 
     /* dest_w  dest_h */
     {1280,   720 },
     /*enCapSel*/
     VI_CAPSEL_BOTH,
-    /* channel  pixel format */
+   /* channel  pixel format */
     PIXEL_FORMAT_YUV_SEMIPLANAR_422,
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_640x360_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 640,   360},
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 640,   360}, 
     /* dest_w  dest_h */
     {640,   360 },
     /*enCapSel*/
     VI_CAPSEL_BOTH,
-    /* channel  pixel format */
+   /* channel  pixel format */
     PIXEL_FORMAT_YUV_SEMIPLANAR_422,
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 
 VI_CHN_ATTR_S CHN_ATTR_1280x720_420 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 1280,   720},
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 1280,   720}, 
     /* dest_w  dest_h */
     {1280,   720 },
     /*enCapSel*/
@@ -1356,14 +1122,14 @@ VI_CHN_ATTR_S CHN_ATTR_1280x720_420 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 
 VI_CHN_ATTR_S CHN_ATTR_720x576_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 720,   576 },
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 720,   576 }, 
     /* dest_w  dest_h */
     {720,   576 },
     /*enCapSel*/
@@ -1373,13 +1139,13 @@ VI_CHN_ATTR_S CHN_ATTR_720x576_422 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_720x576_420 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 720,   576},
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 720,   576}, 
     /* dest_w  dest_h */
     {720,   576},
     /*enCapSel*/
@@ -1389,13 +1155,13 @@ VI_CHN_ATTR_S CHN_ATTR_720x576_420 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_360x288_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 360,   288 },
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 360,   288 }, 
     /* dest_w  dest_h */
     {360,   288 },
     /*enCapSel*/
@@ -1405,45 +1171,45 @@ VI_CHN_ATTR_S CHN_ATTR_360x288_422 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_360x288_420 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 360,   288},
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 360,   288}, 
     /* dest_w  dest_h */
     {360,   288},
     /*enCapSel*/
     VI_CAPSEL_BOTH,
-    /* channel  pixel format */
+     /* channel  pixel format */
     PIXEL_FORMAT_YUV_SEMIPLANAR_420,
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_16x16_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 16,   16 },
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 16,   16 }, 
     /* dest_w  dest_h */
     {16,   16 },
     /*enCapSel*/
     VI_CAPSEL_BOTH,
-    /* channel  pixel format */
+     /* channel  pixel format */
     PIXEL_FORMAT_YUV_SEMIPLANAR_422,
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_960x576_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 960,   576 },
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 960,   576 }, 
     /* dest_w  dest_h */
     {960,   576 },
     /*enCapSel*/
@@ -1453,30 +1219,30 @@ VI_CHN_ATTR_S CHN_ATTR_960x576_422 =
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_CHN_ATTR_S CHN_ATTR_480x288_422 =
 {
-    /* crop_x crop_y crop_w  crop_h */
-    {0,     0, 480,   288},
+    /* crop_x crop_y crop_w  crop_h */  
+    {0,     0, 480,   288}, 
     /* dest_w  dest_h */
     {480,   288 },
     /*enCapSel*/
     VI_CAPSEL_BOTH,
-    /* channel  pixel format */
+     /* channel  pixel format */
     PIXEL_FORMAT_YUV_SEMIPLANAR_422,
     /*bMirr  bFlip   bChromaResample*/
     0,      0,      0,
     /*s32SrcFrameRate   s32DstFrameRate*/
-    -1, -1
+	-1, -1
 };
 
 VI_DEV g_as32ViDev[VIU_MAX_DEV_NUM];
 VI_CHN g_as32MaxChn[VIU_MAX_CHN_NUM];
 VI_CHN g_as32SubChn[VIU_MAX_CHN_NUM];
-
-HI_S32 SAMPLE_TW2865_CfgV(VIDEO_NORM_E enVideoMode, VI_WORK_MODE_E enWorkMode)
+VB_POOL g_Pool = VB_INVALID_POOLID;
+HI_S32 SAMPLE_TW2865_CfgV(VIDEO_NORM_E enVideoMode,VI_WORK_MODE_E enWorkMode)
 {
 #if 0
     int fd, i;
@@ -1495,7 +1261,7 @@ HI_S32 SAMPLE_TW2865_CfgV(VIDEO_NORM_E enVideoMode, VI_WORK_MODE_E enWorkMode)
 
     video_mode = (VIDEO_ENCODING_MODE_PAL == enVideoMode) ? TW2865_PAL : TW2865_NTSC ;
 
-    for (i = 0; i < chip_cnt; i++)
+    for (i=0; i<chip_cnt; i++)
     {
         stVideoMode.chip    = i;
         stVideoMode.mode    = video_mode;
@@ -1507,14 +1273,14 @@ HI_S32 SAMPLE_TW2865_CfgV(VIDEO_NORM_E enVideoMode, VI_WORK_MODE_E enWorkMode)
         }
     }
 
-    for (i = 0; i < chip_cnt; i++)
+    for (i=0; i<chip_cnt; i++)
     {
         work_mode.chip = i;
-        if (VI_WORK_MODE_4Multiplex == enWorkMode)
+        if (VI_WORK_MODE_4Multiplex== enWorkMode)
         {
             work_mode.mode = TW2865_4D1_MODE;
         }
-        else if (VI_WORK_MODE_2Multiplex == enWorkMode)
+        else if (VI_WORK_MODE_2Multiplex== enWorkMode)
         {
             work_mode.mode = TW2865_2D1_MODE;
         }
@@ -1535,7 +1301,7 @@ HI_S32 SAMPLE_TW2865_CfgV(VIDEO_NORM_E enVideoMode, VI_WORK_MODE_E enWorkMode)
     return 0;
 }
 
-HI_S32 SAMPLE_COMM_VI_Mode2Param(SAMPLE_VI_MODE_E enViMode, SAMPLE_VI_PARAM_S* pstViParam)
+HI_S32 SAMPLE_COMM_VI_Mode2Param(SAMPLE_VI_MODE_E enViMode, SAMPLE_VI_PARAM_S *pstViParam)
 {
     switch (enViMode)
     {
@@ -1556,7 +1322,7 @@ HI_S32 SAMPLE_COMM_VI_ADStart(SAMPLE_VI_MODE_E enViMode, VIDEO_NORM_E enNorm)
 {
     VI_WORK_MODE_E enWorkMode;
     HI_S32 s32Ret;
-
+    
     switch (enViMode)
     {
         case SAMPLE_VI_MODE_1_D1:
@@ -1564,14 +1330,13 @@ HI_S32 SAMPLE_COMM_VI_ADStart(SAMPLE_VI_MODE_E enViMode, VIDEO_NORM_E enNorm)
             s32Ret = SAMPLE_TW2865_CfgV(enNorm, enWorkMode);
             if (s32Ret != HI_SUCCESS)
             {
-                SAMPLE_PRT("SAMPLE_TW2865_CfgV failed with %#x!\n", \
-                           s32Ret);
+                SAMPLE_PRT("SAMPLE_TW2865_CfgV failed with %#x!\n",\
+                        s32Ret);
                 return HI_FAILURE;
             }
             break;
 
-            /* use 7601 without drv */
-        case SAMPLE_VI_MODE_BT1120_1080I:
+        /* use 7601 without drv */
         case SAMPLE_VI_MODE_BT1120_720P:
         case SAMPLE_VI_MODE_BT1120_1080P:
             break;
@@ -1580,7 +1345,7 @@ HI_S32 SAMPLE_COMM_VI_ADStart(SAMPLE_VI_MODE_E enViMode, VIDEO_NORM_E enNorm)
             SAMPLE_PRT("AD not support!\n");
             return HI_FAILURE;
     }
-
+    
     return HI_SUCCESS;
 }
 
@@ -1589,31 +1354,30 @@ HI_S32 SAMPLE_COMM_VI_ADStart(SAMPLE_VI_MODE_E enViMode, VIDEO_NORM_E enNorm)
 /*****************************************************************************
 * function : get vi parameter, according to vi type
 *****************************************************************************/
-HI_S32 SAMPLE_COMM_VI_Mode2Size(SAMPLE_VI_MODE_E enViMode, VIDEO_NORM_E enNorm, SIZE_S* pstSize)
+HI_S32 SAMPLE_COMM_VI_Mode2Size(SAMPLE_VI_MODE_E enViMode, VIDEO_NORM_E enNorm, SIZE_S *pstSize)
 {
     switch (enViMode)
     {
         case SAMPLE_VI_MODE_1_D1:
             pstSize->u32Width = 720;
-            pstSize->u32Height = (VIDEO_ENCODING_MODE_PAL == enNorm) ? 576 : 480;
+            pstSize->u32Height = (VIDEO_ENCODING_MODE_PAL==enNorm)?576:480;
             break;
 
-        case SAMPLE_VI_MODE_BT1120_1080I:
         case SAMPLE_VI_MODE_BT1120_1080P:
             pstSize->u32Width = 1920;
             pstSize->u32Height = 1080;
             break;
-
+            
         case SAMPLE_VI_MODE_BT1120_720P:
             pstSize->u32Width = 1280;
             pstSize->u32Height = 720;
             break;
-
+            
         default:
             SAMPLE_PRT("vi mode invaild!\n");
             return HI_FAILURE;
     }
-
+    
     return HI_SUCCESS;
 }
 
@@ -1626,14 +1390,14 @@ VI_DEV SAMPLE_COMM_VI_GetDev(SAMPLE_VI_MODE_E enViMode, VI_CHN ViChn)
     SAMPLE_VI_PARAM_S stViParam;
 
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("vi get param failed!\n");
-        return (VI_DEV) - 1;
+        return (VI_DEV)-1;
     }
 
     s32ChnPerDev = stViParam.s32ViChnCnt / stViParam.s32ViDevCnt;
-    return (VI_DEV)(ViChn / stViParam.s32ViChnInterval / s32ChnPerDev * stViParam.s32ViDevInterval);
+    return (VI_DEV)(ViChn /stViParam.s32ViChnInterval / s32ChnPerDev * stViParam.s32ViDevInterval);
 }
 
 /******************************************************************************
@@ -1641,7 +1405,7 @@ VI_DEV SAMPLE_COMM_VI_GetDev(SAMPLE_VI_MODE_E enViMode, VI_CHN ViChn)
 ******************************************************************************/
 HI_S32 SAMPLE_COMM_VI_MemConfig(SAMPLE_VI_MODE_E enViMode)
 {
-    HI_CHAR* pcMmzName;
+    HI_CHAR * pcMmzName;
     MPP_CHN_S stMppChnVI;
     SAMPLE_VI_PARAM_S stViParam;
     VI_DEV ViDev;
@@ -1650,13 +1414,13 @@ HI_S32 SAMPLE_COMM_VI_MemConfig(SAMPLE_VI_MODE_E enViMode)
     HI_S32 i, s32Ret;
 
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("vi get param failed!\n");
         return HI_FAILURE;
     }
 
-    for (i = 0; i < stViParam.s32ViChnCnt; i++)
+    for(i=0; i<stViParam.s32ViChnCnt; i++)
     {
         ViChn = i * stViParam.s32ViChnInterval;
         ViDev = SAMPLE_COMM_VI_GetDev(enViMode, ViChn);
@@ -1667,11 +1431,11 @@ HI_S32 SAMPLE_COMM_VI_MemConfig(SAMPLE_VI_MODE_E enViMode)
             return HI_FAILURE;
         }
 
-        pcMmzName = (0 == i % 2) ? NULL : "ddr1";
+        pcMmzName = (0==i%2)?NULL: "ddr1";
         stMppChnVI.enModId = HI_ID_VIU;
         stMppChnVI.s32DevId = 0; //For VIU mode, this item must be set to zero
         stMppChnVI.s32ChnId = ViChn;
-        s32Ret = HI_MPI_SYS_SetMemConf(&stMppChnVI, pcMmzName);
+        s32Ret = HI_MPI_SYS_SetMemConf(&stMppChnVI,pcMmzName);
         if (s32Ret)
         {
             SAMPLE_PRT("VI HI_MPI_SYS_SetMemConf failed with %#x!\n", s32Ret);
@@ -1690,16 +1454,16 @@ HI_S32 SAMPLE_COMM_VI_SetMipiAttr(SAMPLE_VI_CONFIG_S* pstViConfig);
 HI_S32 SAMPLE_COMM_VI_StartMIPI(SAMPLE_VI_CONFIG_S* pstViConfig)
 {
     int s32Ret;
-
+    
     /* SAMPLE_COMM_VI_SetMipiAttr */
     s32Ret = SAMPLE_COMM_VI_SetMipiAttr(pstViConfig);
     if (HI_SUCCESS != s32Ret)
     {
-        SAMPLE_PRT("%s: mipi init failed!\n", __FUNCTION__);
-        /* disable videv */
-        return HI_FAILURE;
+      SAMPLE_PRT("%s: mipi init failed!\n", __FUNCTION__);
+      /* disable videv */
+      return HI_FAILURE;
     }
-
+    
     return HI_SUCCESS;
 }
 
@@ -1712,131 +1476,53 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
     HI_S32 s32IspDev = 0;
     ISP_WDR_MODE_S stWdrMode;
     VI_DEV_ATTR_S  stViDevAttr;
-
-    memset(&stViDevAttr, 0, sizeof(stViDevAttr));
+    
+    memset(&stViDevAttr,0,sizeof(stViDevAttr));
 
     switch (enViMode)
     {
         case SAMPLE_VI_MODE_1_D1:
-            memcpy(&stViDevAttr, &DEV_ATTR_BT656D1_1MUX, sizeof(stViDevAttr));
+            memcpy(&stViDevAttr,&DEV_ATTR_BT656D1_1MUX,sizeof(stViDevAttr));
             break;
-
-        case SAMPLE_VI_MODE_BT1120_1080I:
-            memcpy(&stViDevAttr, &DEV_ATTR_BT1120_1080I_1MUX, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width = 1920;
-            stViDevAttr.stDevRect.u32Height = 1080;
+			
+        case SAMPLE_VI_MODE_BT1120_1080P:           
+            memcpy(&stViDevAttr,&DEV_ATTR_BT1120_1080P_BASE,sizeof(stViDevAttr));   
             break;
-
-        case SAMPLE_VI_MODE_BT1120_1080P:
-            memcpy(&stViDevAttr, &DEV_ATTR_BT1120_1080P_BASE, sizeof(stViDevAttr));
-            break;
-
+            
         case SAMPLE_VI_MODE_BT1120_720P:
-            memcpy(&stViDevAttr, &DEV_ATTR_BT1120_720P_BASE, sizeof(stViDevAttr));
+            memcpy(&stViDevAttr,&DEV_ATTR_BT1120_720P_BASE,sizeof(stViDevAttr));        
             break;
 
-        case PANASONIC_MN34220_SUBLVDS_1080P_30FPS:
-        case SONY_IMX178_LVDS_1080P_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 20;
-            stViDevAttr.stDevRect.u32Width  = 1920;
-            stViDevAttr.stDevRect.u32Height = 1080;
-            break;
-
-        case SONY_IMX185_MIPI_1080P_30FPS:
-        case PANASONIC_MN34220_MIPI_1080P_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 8;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 1920;
-            stViDevAttr.stDevRect.u32Height = 1080;
-            break;
-
-        case SONY_IMX178_LVDS_5M_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 20;
-            stViDevAttr.stDevRect.u32Width  = 2592;
-            stViDevAttr.stDevRect.u32Height = 1944;
-            break;
-
-        case SONY_IMX117_LVDS_1080P_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 48;
-            stViDevAttr.stDevRect.s32Y = 2;
-            stViDevAttr.stDevRect.u32Width  = 1920;
-            stViDevAttr.stDevRect.u32Height = 1080;
-            break;
-
-        case SONY_IMX117_LVDS_720P_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 48;
-            stViDevAttr.stDevRect.s32Y = 2;
-            stViDevAttr.stDevRect.u32Width  = 1280;
-            stViDevAttr.stDevRect.u32Height = 720;
-            break;
-
-        case SONY_IMX123_LVDS_QXGA_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 20;
-            stViDevAttr.stDevRect.u32Width  = 2048;
-            stViDevAttr.stDevRect.u32Height = 1536;
-            break;
+			
+		case SONY_IMX222_DC_1080P_30FPS:
+			memcpy(&stViDevAttr,&DEV_ATTR_IMX222_DC_1080P_BASE,sizeof(stViDevAttr));
+			break;
             
-        case PANASONIC_MN34220_MIPI_720P_120FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 8;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 1280;
-            stViDevAttr.stDevRect.u32Height = 720;
-            break;
+        case SONY_IMX222_DC_720P_30FPS:
+			memcpy(&stViDevAttr,&DEV_ATTR_IMX222_DC_720P_BASE,sizeof(stViDevAttr));
+			break;
 
-        case PANASONIC_MN34220_SUBLVDS_720P_120FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 20;
-            stViDevAttr.stDevRect.u32Width  = 1280;
-            stViDevAttr.stDevRect.u32Height = 720;
-            break;
-
+        case APTINA_9M034_DC_720P_30FPS:
+            memcpy(&stViDevAttr,&DEV_ATTR_9M034_DC_720P_BASE,sizeof(stViDevAttr));
+			break;
+            
+        case APTINA_AR0130_DC_720P_30FPS:
+            memcpy(&stViDevAttr,&DEV_ATTR_9M034_DC_720P_BASE,sizeof(stViDevAttr));
+			break;
+       
         case APTINA_AR0230_HISPI_1080P_30FPS:
-        case APTINA_AR0237_HISPI_1080P_30FPS:            
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
+            memcpy(&stViDevAttr,&DEV_ATTR_HISPI_BASE,sizeof(stViDevAttr));
             stViDevAttr.stDevRect.s32X = 0;
             stViDevAttr.stDevRect.s32Y = 0;
             stViDevAttr.stDevRect.u32Width  = 1920;
             stViDevAttr.stDevRect.u32Height = 1080;
             break;
-            
-        case APTINA_AR0330_MIPI_1080P_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 1920;
-            stViDevAttr.stDevRect.u32Height = 1080;
-            break;
-
-        case APTINA_AR0330_MIPI_1296P_25FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 2304;
-            stViDevAttr.stDevRect.u32Height = 1296;
-            break;
-
-        case APTINA_AR0330_MIPI_1536P_25FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 2048;
-            stViDevAttr.stDevRect.u32Height = 1536;
+        case PANASONIC_MN34222_MIPI_1080P_30FPS:
+            memcpy(&stViDevAttr,&DEV_ATTR_LVDS_BASE,sizeof(stViDevAttr));
             break;
 
         case OMNIVISION_OV9712_DC_720P_30FPS:
+        case OMNIVISION_OV9732_DC_720P_30FPS:
             memcpy(&stViDevAttr,&DEV_ATTR_OV9732_DC_720P_BASE,sizeof(stViDevAttr));
             stViDevAttr.stDevRect.s32X = 0;
             stViDevAttr.stDevRect.s32Y = 0;
@@ -1844,32 +1530,25 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
             stViDevAttr.stDevRect.u32Height = 720;
             break;
 
-        case OMNIVISION_OV4689_MIPI_1080P_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
+        case OMNIVISION_OV9750_MIPI_720P_30FPS:
+        case OMNIVISION_OV9752_MIPI_720P_30FPS:
+            memcpy(&stViDevAttr,&DEV_ATTR_MIPI_BASE,sizeof(stViDevAttr));
+            stViDevAttr.stDevRect.s32X = 0;
+            stViDevAttr.stDevRect.s32Y = 0;
+            stViDevAttr.stDevRect.u32Width  = 1280;
+            stViDevAttr.stDevRect.u32Height = 720;
+            break;
+
+        case OMNIVISION_OV2718_MIPI_1080P_25FPS:
+            memcpy(&stViDevAttr,&DEV_ATTR_MIPI_BASE,sizeof(stViDevAttr));
             stViDevAttr.stDevRect.s32X = 0;
             stViDevAttr.stDevRect.s32Y = 0;
             stViDevAttr.stDevRect.u32Width  = 1920;
             stViDevAttr.stDevRect.u32Height = 1080;
             break;
-
-        case OMNIVISION_OV4689_MIPI_4M_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 2592;
-            stViDevAttr.stDevRect.u32Height = 1520;
-            break;
-
-        case OMNIVISION_OV5658_MIPI_5M_30FPS:
-            memcpy(&stViDevAttr, &DEV_ATTR_MIPI_BASE, sizeof(stViDevAttr));
-            stViDevAttr.stDevRect.s32X = 0;
-            stViDevAttr.stDevRect.s32Y = 0;
-            stViDevAttr.stDevRect.u32Width  = 2592;
-            stViDevAttr.stDevRect.u32Height = 1944;
-            break;
-	
+			
         default:
-            memcpy(&stViDevAttr, &DEV_ATTR_LVDS_BASE, sizeof(stViDevAttr));
+            memcpy(&stViDevAttr,&DEV_ATTR_LVDS_BASE,sizeof(stViDevAttr));
     }
 
     s32Ret = HI_MPI_VI_SetDevAttr(ViDev, &stViDevAttr);
@@ -1879,33 +1558,28 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
         return HI_FAILURE;
     }
 
-    if ((SAMPLE_VI_MODE_BT1120_1080P != enViMode)
-        && (SAMPLE_VI_MODE_BT1120_1080I != enViMode)
-        && (SAMPLE_VI_MODE_BT1120_720P != enViMode))
-    {
-        s32Ret = HI_MPI_ISP_GetWDRMode(s32IspDev, &stWdrMode);
-        if (s32Ret != HI_SUCCESS)
+    if ( (SAMPLE_VI_MODE_BT1120_1080P != enViMode)
+		&&(SAMPLE_VI_MODE_BT1120_720P != enViMode) )
+	{
+	    s32Ret = HI_MPI_ISP_GetWDRMode(s32IspDev, &stWdrMode);
+	    if (s32Ret != HI_SUCCESS)
+	    {
+	        SAMPLE_PRT("HI_MPI_ISP_GetWDRMode failed with %#x!\n", s32Ret);
+	        return HI_FAILURE;
+	    }
+
+        VI_WDR_ATTR_S stWdrAttr;
+        stWdrAttr.enWDRMode = stWdrMode.enWDRMode;
+        stWdrAttr.bCompress = HI_FALSE;
+
+        s32Ret = HI_MPI_VI_SetWDRAttr(ViDev, &stWdrAttr);
+        if (s32Ret)
         {
-            SAMPLE_PRT("HI_MPI_ISP_GetWDRMode failed with %#x!\n", s32Ret);
+            SAMPLE_PRT("HI_MPI_VI_SetWDRAttr failed with %#x!\n", s32Ret);
             return HI_FAILURE;
         }
-
-        if (stWdrMode.enWDRMode)  //wdr mode
-        {
-            VI_WDR_ATTR_S stWdrAttr;
-
-            stWdrAttr.enWDRMode = stWdrMode.enWDRMode;
-            stWdrAttr.bCompress = HI_FALSE;
-
-            s32Ret = HI_MPI_VI_SetWDRAttr(ViDev, &stWdrAttr);
-            if (s32Ret)
-            {
-                SAMPLE_PRT("HI_MPI_VI_SetWDRAttr failed with %#x!\n", s32Ret);
-                return HI_FAILURE;
-            }
-        }
-    }
-
+	}
+    
     s32Ret = HI_MPI_VI_EnableDev(ViDev);
     if (s32Ret != HI_SUCCESS)
     {
@@ -1919,14 +1593,14 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
 /*****************************************************************************
 * function : star vi chn
 *****************************************************************************/
-HI_S32 SAMPLE_COMM_VI_StartChn(VI_CHN ViChn, RECT_S* pstCapRect, SIZE_S* pstTarSize, SAMPLE_VI_CONFIG_S* pstViConfig)
+HI_S32 SAMPLE_COMM_VI_StartChn(VI_CHN ViChn, RECT_S *pstCapRect, SIZE_S *pstTarSize, SAMPLE_VI_CONFIG_S* pstViConfig)
 {
     HI_S32 s32Ret;
     VI_CHN_ATTR_S stChnAttr;
     ROTATE_E enRotate = ROTATE_NONE;
     SAMPLE_VI_CHN_SET_E enViChnSet = VI_CHN_SET_NORMAL;
 
-    if (pstViConfig)
+    if(pstViConfig)
     {
         enViChnSet = pstViConfig->enViChnSet;
         enRotate = pstViConfig->enRotate;
@@ -1943,7 +1617,7 @@ HI_S32 SAMPLE_COMM_VI_StartChn(VI_CHN ViChn, RECT_S* pstCapRect, SIZE_S* pstTarS
     stChnAttr.bMirror = HI_FALSE;
     stChnAttr.bFlip = HI_FALSE;
 
-    switch (enViChnSet)
+    switch(enViChnSet)
     {
         case VI_CHN_SET_MIRROR:
             stChnAttr.bMirror = HI_TRUE;
@@ -1952,12 +1626,12 @@ HI_S32 SAMPLE_COMM_VI_StartChn(VI_CHN ViChn, RECT_S* pstCapRect, SIZE_S* pstTarS
         case VI_CHN_SET_FLIP:
             stChnAttr.bFlip = HI_TRUE;
             break;
-
+            
         case VI_CHN_SET_FLIP_MIRROR:
             stChnAttr.bMirror = HI_TRUE;
             stChnAttr.bFlip = HI_TRUE;
             break;
-
+            
         default:
             break;
     }
@@ -1973,7 +1647,7 @@ HI_S32 SAMPLE_COMM_VI_StartChn(VI_CHN ViChn, RECT_S* pstCapRect, SIZE_S* pstTarS
         return HI_FAILURE;
     }
 
-    if (ROTATE_NONE != enRotate)
+    if(ROTATE_NONE != enRotate)
     {
         s32Ret = HI_MPI_VI_SetRotate(ViChn, enRotate);
         if (s32Ret != HI_SUCCESS)
@@ -1982,7 +1656,7 @@ HI_S32 SAMPLE_COMM_VI_StartChn(VI_CHN ViChn, RECT_S* pstCapRect, SIZE_S* pstTarS
             return HI_FAILURE;
         }
     }
-
+    
     s32Ret = HI_MPI_VI_EnableChn(ViChn);
     if (s32Ret != HI_SUCCESS)
     {
@@ -2007,23 +1681,23 @@ HI_S32 SAMPLE_COMM_VI_StartBT656(SAMPLE_VI_CONFIG_S* pstViConfig)
     RECT_S stCapRect;
     SAMPLE_VI_MODE_E enViMode;
 
-    if (!pstViConfig)
+    if(!pstViConfig)
     {
         SAMPLE_PRT("%s: null ptr\n", __FUNCTION__);
         return HI_FAILURE;
     }
     enViMode = pstViConfig->enViMode;
 
-    /******************************************
-     step 1: mipi configure
-    ******************************************/
-    s32Ret = SAMPLE_COMM_VI_StartMIPI_BT1120(enViMode);
+	/******************************************
+	 step 1: mipi configure
+	******************************************/
+	s32Ret = SAMPLE_COMM_VI_StartMIPI_BT1120(enViMode);   
     if (HI_SUCCESS != s32Ret)
     {
         SAMPLE_PRT("%s: MIPI init failed!\n", __FUNCTION__);
         return HI_FAILURE;
-    }
-
+    }     
+	
     for (i = 0; i < u32DevNum; i++)
     {
         ViDev = i;
@@ -2034,9 +1708,9 @@ HI_S32 SAMPLE_COMM_VI_StartBT656(SAMPLE_VI_CONFIG_S* pstViConfig)
             return HI_FAILURE;
         }
     }
-
+    
     /******************************************************
-    * Step 2: config & start vicap chn (max 1)
+    * Step 2: config & start vicap chn (max 1) 
     ******************************************************/
     for (i = 0; i < u32ChnNum; i++)
     {
@@ -2046,15 +1720,16 @@ HI_S32 SAMPLE_COMM_VI_StartBT656(SAMPLE_VI_CONFIG_S* pstViConfig)
         stCapRect.s32Y = 0;
         switch (enViMode)
         {
-            case SAMPLE_VI_MODE_BT1120_720P:
+            case SAMPLE_VI_MODE_BT1120_720P:           
                 stCapRect.u32Width = 1280;
                 stCapRect.u32Height = 720;
                 break;
-            case SAMPLE_VI_MODE_BT1120_1080I:
-            case SAMPLE_VI_MODE_BT1120_1080P:
+                
+           case SAMPLE_VI_MODE_BT1120_1080P:           
                 stCapRect.u32Width  = 1920;
                 stCapRect.u32Height = 1080;
-                break;
+                break; 
+                
             default:
                 stCapRect.u32Width  = 1920;
                 stCapRect.u32Height = 1080;
@@ -2088,27 +1763,27 @@ HI_S32 SAMPLE_COMM_VI_StopBT656(SAMPLE_VI_MODE_E enViMode)
 
     /*** get parameter from Sample_Vi_Mode ***/
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("SAMPLE_COMM_VI_Mode2Param failed!\n");
         return HI_FAILURE;
     }
 
     /*** Stop VI Chn ***/
-    for (i = 0; i < stViParam.s32ViChnCnt; i++)
+    for(i=0;i<stViParam.s32ViChnCnt;i++)
     {
         /* Stop vi phy-chn */
         ViChn = i * stViParam.s32ViChnInterval;
         s32Ret = HI_MPI_VI_DisableChn(ViChn);
         if (HI_SUCCESS != s32Ret)
         {
-            SAMPLE_PRT("SAMPLE_COMM_VI_StopChn failed with %#x\n", s32Ret);
+            SAMPLE_PRT("SAMPLE_COMM_VI_StopChn failed with %#x\n",s32Ret);
             return HI_FAILURE;
         }
     }
 
     /*** Stop VI Dev ***/
-    for (i = 0; i < stViParam.s32ViDevCnt; i++)
+    for(i=0; i<stViParam.s32ViDevCnt; i++)
     {
         ViDev = i * stViParam.s32ViDevInterval;
         s32Ret = HI_MPI_VI_DisableDev(ViDev);
@@ -2135,32 +1810,32 @@ HI_S32 SAMPLE_COMM_VI_BindVpss(SAMPLE_VI_MODE_E enViMode)
     VI_CHN ViChn;
 
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("SAMPLE_COMM_VI_Mode2Param failed!\n");
         return HI_FAILURE;
     }
-
+    
     VpssGrp = 0;
-    for (j = 0; j < stViParam.s32ViChnCnt; j++)
+    for (j=0; j<stViParam.s32ViChnCnt; j++)
     {
         ViChn = j * stViParam.s32ViChnInterval;
-
+        
         stSrcChn.enModId  = HI_ID_VIU;
         stSrcChn.s32DevId = 0;
         stSrcChn.s32ChnId = ViChn;
-
+    
         stDestChn.enModId  = HI_ID_VPSS;
         stDestChn.s32DevId = VpssGrp;
         stDestChn.s32ChnId = 0;
-
+    
         s32Ret = HI_MPI_SYS_Bind(&stSrcChn, &stDestChn);
         if (s32Ret != HI_SUCCESS)
         {
             SAMPLE_PRT("failed with %#x!\n", s32Ret);
             return HI_FAILURE;
         }
-
+        
         VpssGrp ++;
     }
     return HI_SUCCESS;
@@ -2170,10 +1845,9 @@ HI_BOOL IsSensorInput(SAMPLE_VI_MODE_E enViMode)
 {
     HI_BOOL bRet = HI_TRUE;
 
-    switch (enViMode)
+    switch(enViMode)
     {
         case SAMPLE_VI_MODE_1_D1:
-        case SAMPLE_VI_MODE_BT1120_1080I:
         case SAMPLE_VI_MODE_BT1120_1080P:
         case SAMPLE_VI_MODE_BT1120_720P:
             bRet = HI_FALSE;
@@ -2182,7 +1856,7 @@ HI_BOOL IsSensorInput(SAMPLE_VI_MODE_E enViMode)
             break;
     }
 
-    return bRet;
+    return bRet;    
 }
 
 
@@ -2196,77 +1870,80 @@ HI_S32 SAMPLE_COMM_VI_BindVenc(SAMPLE_VI_MODE_E enViMode)
     VI_CHN ViChn;
 
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("SAMPLE_COMM_VI_Mode2Param failed!\n");
         return HI_FAILURE;
     }
-
+    
     VencGrp = 0;
-    for (j = 0; j < stViParam.s32ViChnCnt; j++)
+    for (j=0; j<stViParam.s32ViChnCnt; j++)
     {
         ViChn = j * stViParam.s32ViChnInterval;
-
+        
         stSrcChn.enModId = HI_ID_VIU;
         stSrcChn.s32DevId = 0;
         stSrcChn.s32ChnId = ViChn;
-
+    
         stDestChn.enModId = HI_ID_GROUP;
         stDestChn.s32DevId = VencGrp;
         stDestChn.s32ChnId = 0;
-
+    
         s32Ret = HI_MPI_SYS_Bind(&stSrcChn, &stDestChn);
         if (s32Ret != HI_SUCCESS)
         {
             SAMPLE_PRT("failed with %#x!\n", s32Ret);
             return HI_FAILURE;
         }
-
+        
         VencGrp ++;
     }
-
+    
     return HI_SUCCESS;
 }
 
 HI_S32 SAMPLE_COMM_VI_StartMIPI_BT1120(SAMPLE_VI_MODE_E enViMode)
 {
-    HI_S32 fd;
-    combo_dev_attr_t* pstcomboDevAttr = NULL;
+	HI_S32 fd;
+	combo_dev_attr_t *pstcomboDevAttr = NULL;
+	
+	fd = open("/dev/hi_mipi", O_RDWR);
+	if (fd < 0)
+	{
+	   printf("warning: open hi_mipi dev failed\n");
+	   return -1;
+	}
 
-    fd = open("/dev/hi_mipi", O_RDWR);
-    if (fd < 0)
-    {
-        printf("warning: open hi_mipi dev failed\n");
-        return -1;
-    }
+	if( (enViMode == SAMPLE_VI_MODE_BT1120_720P)
+		||(enViMode == SAMPLE_VI_MODE_BT1120_1080P) )
+	{
+		pstcomboDevAttr = &MIPI_BT1120_ATTR;
+	}
+	else
+	{
+	}
 
-    if ((enViMode == SAMPLE_VI_MODE_BT1120_1080I)
-        || (enViMode == SAMPLE_VI_MODE_BT1120_720P)
-        || (enViMode == SAMPLE_VI_MODE_BT1120_1080P))
+    if (NULL == pstcomboDevAttr)
     {
-        pstcomboDevAttr = &MIPI_BT1120_ATTR;
-    }
-    else
-    {
-
-    }
-
-    if (ioctl(fd, HI_MIPI_SET_DEV_ATTR, pstcomboDevAttr))
-    {
-        printf("set mipi attr failed\n");
+        printf("Func %s() Line[%d], unsupported enViMode: %d\n", __FUNCTION__, __LINE__, enViMode);
         close(fd);
-        return -1;
+        return HI_FAILURE;   
     }
-    close(fd);
-    return HI_SUCCESS;
+	
+	if (ioctl(fd, HI_MIPI_SET_DEV_ATTR, pstcomboDevAttr))
+	{
+		printf("set mipi attr failed\n");
+		close(fd);
+		return HI_FAILURE;
+	}
+	close(fd);
+	return HI_SUCCESS;
 }
-
-
 
 HI_S32 SAMPLE_COMM_VI_SetMipiAttr(SAMPLE_VI_CONFIG_S* pstViConfig)
 {
     HI_S32 fd;
-    combo_dev_attr_t* pstcomboDevAttr = NULL;
+    combo_dev_attr_t *pstcomboDevAttr = NULL;
 
     /* mipi reset unrest */
     fd = open("/dev/hi_mipi", O_RDWR);
@@ -2275,123 +1952,55 @@ HI_S32 SAMPLE_COMM_VI_SetMipiAttr(SAMPLE_VI_CONFIG_S* pstViConfig)
         printf("warning: open hi_mipi dev failed\n");
         return -1;
     }
-    printf("=============SAMPLE_COMM_VI_SetMipiAttr enWDRMode: %d\n", pstViConfig->enWDRMode);
+	printf("=============SAMPLE_COMM_VI_SetMipiAttr enWDRMode: %d\n", pstViConfig->enWDRMode);
 
-    if (WDR_MODE_NONE == pstViConfig->enWDRMode)
+    if ( pstViConfig->enViMode == APTINA_AR0230_HISPI_1080P_30FPS )
     {
-        pstcomboDevAttr = &SUBLVDS_4lane_SENSOR_MN34220_12BIT_1080_NOWDR_ATTR;
-    }
-    else if (WDR_MODE_2To1_LINE == pstViConfig->enWDRMode)
-    {
-        pstcomboDevAttr = &SUBLVDS_4lane_SENSOR_MN34220_12BIT_1080_2WDR1_ATTR;
-    }
-    else
-    {
-        //other sensor mipi attr;
+        pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0230_12BIT_ATTR;
     }
 
-    if (pstViConfig->enViMode == SONY_IMX178_LVDS_1080P_30FPS)
+    if ( pstViConfig->enViMode == PANASONIC_MN34222_MIPI_1080P_30FPS )
     {
-        pstcomboDevAttr = &LVDS_4lane_SENSOR_IMX178_12BIT_1080p_ATTR;
+        pstcomboDevAttr = &MIPI_2lane_SENSOR_MN34222_12BIT_NOWDR_ATTR;
     }
 
-    if (pstViConfig->enViMode == SONY_IMX178_LVDS_5M_30FPS)
+    if ( (pstViConfig->enViMode == OMNIVISION_OV9752_MIPI_720P_30FPS)
+        || (pstViConfig->enViMode == OMNIVISION_OV9750_MIPI_720P_30FPS) )
     {
-        pstcomboDevAttr = &LVDS_4lane_SENSOR_IMX178_12BIT_5M_NOWDR_ATTR;
+        pstcomboDevAttr = &MIPI_2lane_SENSOR_OV9752_12BIT_NOWDR_ATTR;
     }
 
-    if (pstViConfig->enViMode == SONY_IMX185_MIPI_1080P_30FPS)
+    if ( pstViConfig->enViMode ==  OMNIVISION_OV2718_MIPI_1080P_25FPS )
     {
-        pstcomboDevAttr = &MIPI_4lane_SENSOR_IMX185_12BIT_ATTR;
+        pstcomboDevAttr = &MIPI_4lane_SENSOR_OV2718_12BIT_NOWDR_ATTR;
     }
 
-    if ( pstViConfig->enViMode == PANASONIC_MN34220_MIPI_1080P_30FPS
-         || pstViConfig->enViMode == PANASONIC_MN34220_MIPI_720P_120FPS )
-    {
-        pstcomboDevAttr = &MIPI_4lane_SENSOR_MN34220_MIPI_12BIT_ATTR;
-    }
-
-    if (pstViConfig->enViMode == PANASONIC_MN34220_SUBLVDS_720P_120FPS)
-    {
-        pstcomboDevAttr = &SUBLVDS_4lane_SENSOR_MN34220_12BIT_720_NOWDR_ATTR;
-    }
-
-    if ( (pstViConfig->enViMode == APTINA_AR0330_MIPI_1080P_30FPS)
-         || (pstViConfig->enViMode == APTINA_AR0330_MIPI_1536P_25FPS)
-         || (pstViConfig->enViMode == APTINA_AR0330_MIPI_1296P_25FPS) )
-    {
-        pstcomboDevAttr = &MIPI_2lane_SENSOR_AR0330_12BIT_ATTR;
-    }
-
-    if ( (pstViConfig->enViMode == OMNIVISION_OV4689_MIPI_4M_30FPS)
-         || (pstViConfig->enViMode == OMNIVISION_OV4689_MIPI_1080P_30FPS) )
-    {
-        pstcomboDevAttr = &MIPI_4lane_SENSOR_OV4689_12BIT_ATTR;
-    }
-
-    if (pstViConfig->enViMode == OMNIVISION_OV5658_MIPI_5M_30FPS)
-    {
-        pstcomboDevAttr = &MIPI_4lane_SENSOR_OV5658_10BIT_ATTR;
-    }
-
-    if ((pstViConfig->enViMode == APTINA_9M034_DC_720P_30FPS)
-        || (pstViConfig->enViMode == APTINA_AR0130_DC_720P_30FPS)
-	|| (pstViConfig->enViMode == OMNIVISION_OV9712_DC_720P_30FPS))
+	if ( (pstViConfig->enViMode == APTINA_9M034_DC_720P_30FPS)
+		|| (pstViConfig->enViMode == APTINA_AR0130_DC_720P_30FPS)
+		|| (pstViConfig->enViMode == SONY_IMX222_DC_1080P_30FPS)
+        || (pstViConfig->enViMode == SONY_IMX222_DC_720P_30FPS)
+        || (pstViConfig->enViMode == OMNIVISION_OV9712_DC_720P_30FPS)
+        || (pstViConfig->enViMode == OMNIVISION_OV9732_DC_720P_30FPS) )
     {
         pstcomboDevAttr = &MIPI_CMOS3V3_ATTR;
     }
 
-    if (pstViConfig->enViMode == SONY_IMX117_LVDS_1080P_30FPS)
+    if (NULL == pstcomboDevAttr)
     {
-        pstcomboDevAttr = &LVDS_4lane_SENSOR_IMX117_12BIT_1080p_ATTR;
-    }
-
-    if (pstViConfig->enViMode == SONY_IMX117_LVDS_720P_30FPS)
-    {
-        pstcomboDevAttr = &LVDS_4lane_SENSOR_IMX117_12BIT_720p_ATTR;
-    }
-
-    if (pstViConfig->enViMode == SONY_IMX123_LVDS_QXGA_30FPS)
-    {
-		if (pstViConfig->enWDRMode == WDR_MODE_2To1_LINE)
-	    {
-	        pstcomboDevAttr = &LVDS_4lane_SENSOR_IMX123_12BIT_WDR_ATTR;
-	    }
-		else
-		{
-        	pstcomboDevAttr = &LVDS_4lane_SENSOR_IMX123_12BIT_NOWDR_ATTR;
-		}
-    }
-
-
-
-    if (pstViConfig->enViMode == APTINA_AR0230_HISPI_1080P_30FPS)
-    {
-        pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0230_12BIT_1080p_NOWDR_ATTR;
-    }
-
-    if (pstViConfig->enViMode == APTINA_AR0237_HISPI_1080P_30FPS)
-    {
-		if (pstViConfig->enWDRMode == WDR_MODE_2To1_LINE)
-	    {
-	        pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0237_12BIT_1080p_WDR_ATTR;
-	    }
-		else
-		{
-        	pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0237_12BIT_1080p_NOWDR_ATTR;
-		}        
+        printf("Func %s() Line[%d], unsupported enViMode: %d\n", __FUNCTION__, __LINE__, pstViConfig->enViMode);
+        close(fd);
+        return HI_FAILURE;   
     }
 
     if (ioctl(fd, HI_MIPI_SET_DEV_ATTR, pstcomboDevAttr))
     {
         printf("set mipi attr failed\n");
         close(fd);
-        return -1;
+        return HI_FAILURE;
     }
     close(fd);
     return HI_SUCCESS;
 }
-
 
 HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
 {
@@ -2404,7 +2013,7 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
     RECT_S stCapRect;
     SAMPLE_VI_MODE_E enViMode;
 
-    if (!pstViConfig)
+    if(!pstViConfig)
     {
         SAMPLE_PRT("%s: null ptr\n", __FUNCTION__);
         return HI_FAILURE;
@@ -2419,11 +2028,11 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
     {
         SAMPLE_PRT("%s: MIPI init failed!\n", __FUNCTION__);
         return HI_FAILURE;
-    }
+    }     
 
     /******************************************
      step 2: configure sensor and ISP (include WDR mode).
-     note: you can jump over this step, if you do not use Hi3516A interal isp.
+     note: you can jump over this step, if you do not use Hi3516A interal isp. 
     ******************************************/
     s32Ret = SAMPLE_COMM_ISP_Init(pstViConfig->enWDRMode);
     if (HI_SUCCESS != s32Ret)
@@ -2433,17 +2042,17 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
     }
 
     /******************************************
-     step 3: run isp thread
+     step 3: run isp thread 
      note: you can jump over this step, if you do not use Hi3516A interal isp.
     ******************************************/
     s32Ret = SAMPLE_COMM_ISP_Run();
     if (HI_SUCCESS != s32Ret)
     {
         SAMPLE_PRT("%s: ISP init failed!\n", __FUNCTION__);
-        /* disable videv */
+	    /* disable videv */
         return HI_FAILURE;
     }
-
+    
     /******************************************************
      step 4 : config & start vicap dev
     ******************************************************/
@@ -2457,9 +2066,9 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
             return HI_FAILURE;
         }
     }
-
+    
     /******************************************************
-    * Step 5: config & start vicap chn (max 1)
+    * Step 5: config & start vicap chn (max 1) 
     ******************************************************/
     for (i = 0; i < u32ChnNum; i++)
     {
@@ -2471,46 +2080,21 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
         {
             case APTINA_9M034_DC_720P_30FPS:
             case APTINA_AR0130_DC_720P_30FPS:
-            case PANASONIC_MN34220_SUBLVDS_720P_120FPS:
-            case PANASONIC_MN34220_MIPI_720P_120FPS:
-	    case OMNIVISION_OV9712_DC_720P_30FPS:
-            case SONY_IMX117_LVDS_720P_30FPS:
+            case SONY_IMX222_DC_720P_30FPS:
+            case OMNIVISION_OV9712_DC_720P_30FPS:
+            case OMNIVISION_OV9732_DC_720P_30FPS:
+            case OMNIVISION_OV9750_MIPI_720P_30FPS:
+            case OMNIVISION_OV9752_MIPI_720P_30FPS:
                 stCapRect.u32Width = 1280;
                 stCapRect.u32Height = 720;
-                break;
+                break;        
 
-            case PANASONIC_MN34220_SUBLVDS_1080P_30FPS:
-            case PANASONIC_MN34220_MIPI_1080P_30FPS:
-            case SONY_IMX178_LVDS_1080P_30FPS:
-            case SONY_IMX185_MIPI_1080P_30FPS:
-            case APTINA_AR0330_MIPI_1080P_30FPS:
-            case OMNIVISION_OV4689_MIPI_1080P_30FPS:
-            case SONY_IMX117_LVDS_1080P_30FPS:
+			case SONY_IMX222_DC_1080P_30FPS:
             case APTINA_AR0230_HISPI_1080P_30FPS:
+            case PANASONIC_MN34222_MIPI_1080P_30FPS:
+            case OMNIVISION_OV2718_MIPI_1080P_25FPS:
                 stCapRect.u32Width  = 1920;
                 stCapRect.u32Height = 1080;
-                break;
-
-            case APTINA_AR0330_MIPI_1296P_25FPS:
-                stCapRect.u32Width  = 2304;
-                stCapRect.u32Height = 1296;
-                break;
-
-            case APTINA_AR0330_MIPI_1536P_25FPS:
-            case SONY_IMX123_LVDS_QXGA_30FPS:
-                stCapRect.u32Width  = 2048;
-                stCapRect.u32Height = 1536;
-                break;
-
-            case OMNIVISION_OV4689_MIPI_4M_30FPS:
-                stCapRect.u32Width  = 2592;
-                stCapRect.u32Height = 1520;
-                break;
-
-            case SONY_IMX178_LVDS_5M_30FPS:
-            case OMNIVISION_OV5658_MIPI_5M_30FPS:
-                stCapRect.u32Width  = 2592;
-                stCapRect.u32Height = 1944;
                 break;
 
             default:
@@ -2542,27 +2126,27 @@ HI_S32 SAMPLE_COMM_VI_StopIsp(SAMPLE_VI_CONFIG_S* pstViConfig)
     HI_U32 u32DevNum = 1;
     HI_U32 u32ChnNum = 1;
 
-    if (!pstViConfig)
+    if(!pstViConfig)
     {
         SAMPLE_PRT("%s: null ptr\n", __FUNCTION__);
         return HI_FAILURE;
     }
-
+    
     /*** Stop VI Chn ***/
-    for (i = 0; i < u32ChnNum; i++)
+    for(i=0;i < u32ChnNum; i++)
     {
         /* Stop vi phy-chn */
         ViChn = i;
         s32Ret = HI_MPI_VI_DisableChn(ViChn);
         if (HI_SUCCESS != s32Ret)
         {
-            SAMPLE_PRT("HI_MPI_VI_DisableChn failed with %#x\n", s32Ret);
+            SAMPLE_PRT("HI_MPI_VI_DisableChn failed with %#x\n",s32Ret);
             return HI_FAILURE;
         }
     }
 
     /*** Stop VI Dev ***/
-    for (i = 0; i < u32DevNum; i++)
+    for(i=0; i < u32DevNum; i++)
     {
         ViDev = i;
         s32Ret = HI_MPI_VI_DisableDev(ViDev);
@@ -2580,16 +2164,16 @@ HI_S32 SAMPLE_COMM_VI_StopIsp(SAMPLE_VI_CONFIG_S* pstViConfig)
 HI_S32 SAMPLE_COMM_VI_StartVi(SAMPLE_VI_CONFIG_S* pstViConfig)
 {
     HI_S32 s32Ret = HI_SUCCESS;
-    SAMPLE_VI_MODE_E enViMode;
+    SAMPLE_VI_MODE_E enViMode;  
 
-    if (!pstViConfig)
+    if(!pstViConfig)
     {
         SAMPLE_PRT("%s: null ptr\n", __FUNCTION__);
         return HI_FAILURE;
     }
-
+	
     enViMode = pstViConfig->enViMode;
-    if (!IsSensorInput(enViMode))
+    if(!IsSensorInput(enViMode))
     {
         s32Ret = SAMPLE_COMM_VI_StartBT656(pstViConfig);
     }
@@ -2599,7 +2183,7 @@ HI_S32 SAMPLE_COMM_VI_StartVi(SAMPLE_VI_CONFIG_S* pstViConfig)
     }
 
 
-    return s32Ret;
+    return s32Ret; 
 }
 
 HI_S32 SAMPLE_COMM_VI_StopVi(SAMPLE_VI_CONFIG_S* pstViConfig)
@@ -2607,135 +2191,62 @@ HI_S32 SAMPLE_COMM_VI_StopVi(SAMPLE_VI_CONFIG_S* pstViConfig)
     HI_S32 s32Ret = HI_SUCCESS;
     SAMPLE_VI_MODE_E enViMode;
 
-    if (!pstViConfig)
+    if(!pstViConfig)
     {
         SAMPLE_PRT("%s: null ptr\n", __FUNCTION__);
         return HI_FAILURE;
     }
     enViMode = pstViConfig->enViMode;
-
-    if (!IsSensorInput(enViMode))
+    
+    if(!IsSensorInput(enViMode))
     {
-        s32Ret = SAMPLE_COMM_VI_StopBT656(enViMode);
+        s32Ret = SAMPLE_COMM_VI_StopBT656(enViMode);        
     }
     else
     {
-        s32Ret = SAMPLE_COMM_VI_StopIsp(pstViConfig);
+        s32Ret = SAMPLE_COMM_VI_StopIsp(pstViConfig);        
     }
-
+    
     return s32Ret;
 }
 
 HI_S32 SAMPLE_COMM_VI_SwitchResParam( SAMPLE_VI_CONFIG_S* pstViConfig,
-                                      ISP_PUB_ATTR_S* pstPubAttr,
-                                      RECT_S* pstCapRect )
+                                               ISP_PUB_ATTR_S *pstPubAttr, 
+                                               RECT_S *pstCapRect )
 {
     CHECK_NULL_PTR(pstViConfig);
     CHECK_NULL_PTR(pstPubAttr);
     CHECK_NULL_PTR(pstCapRect);
-    if (PANASONIC_MN34220_SUBLVDS_1080P_30FPS == pstViConfig->enViMode)
+    if (SONY_IMX222_DC_1080P_30FPS == pstViConfig->enViMode)
     {
-        pstViConfig->enViMode = PANASONIC_MN34220_SUBLVDS_720P_120FPS;
+        pstViConfig->enViMode = SONY_IMX222_DC_720P_30FPS;
         pstPubAttr->stWndRect.u32Width = 1280;
         pstPubAttr->stWndRect.u32Height = 720;
-        pstPubAttr->f32FrameRate = 120;
-
+	    pstPubAttr->f32FrameRate = 30;
+        
         pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1280;
-        pstCapRect->u32Height = 720;
+    	pstCapRect->s32Y = 0;
+    	pstCapRect->u32Width = 1280;
+    	pstCapRect->u32Height = 720;
     }
-    else if (PANASONIC_MN34220_SUBLVDS_720P_120FPS == pstViConfig->enViMode)
+    else if (SONY_IMX222_DC_720P_30FPS == pstViConfig->enViMode)
     {
-        pstViConfig->enViMode = PANASONIC_MN34220_SUBLVDS_1080P_30FPS;
+        pstViConfig->enViMode = SONY_IMX222_DC_1080P_30FPS;
         pstPubAttr->stWndRect.u32Width = 1920;
         pstPubAttr->stWndRect.u32Height = 1080;
-        pstPubAttr->f32FrameRate = 30;
-
+	    pstPubAttr->f32FrameRate = 30;
+        
         pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1920;
-        pstCapRect->u32Height = 1080;
-    }
-    else if (PANASONIC_MN34220_MIPI_1080P_30FPS == pstViConfig->enViMode)
-    {
-        pstViConfig->enViMode = PANASONIC_MN34220_MIPI_720P_120FPS;
-        pstPubAttr->stWndRect.u32Width = 1280;
-        pstPubAttr->stWndRect.u32Height = 720;
-        pstPubAttr->f32FrameRate = 120;
-
-        pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1280;
-        pstCapRect->u32Height = 720;
-    }
-    else if (PANASONIC_MN34220_MIPI_720P_120FPS == pstViConfig->enViMode)
-    {
-        pstViConfig->enViMode = PANASONIC_MN34220_MIPI_1080P_30FPS;
-        pstPubAttr->stWndRect.u32Width = 1920;
-        pstPubAttr->stWndRect.u32Height = 1080;
-        pstPubAttr->f32FrameRate = 30;
-
-        pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1920;
-        pstCapRect->u32Height = 1080;
-    }
-    else if (OMNIVISION_OV4689_MIPI_4M_30FPS == pstViConfig->enViMode)
-    {
-        pstViConfig->enViMode = OMNIVISION_OV4689_MIPI_1080P_30FPS;
-        pstPubAttr->stWndRect.u32Width = 1920;
-        pstPubAttr->stWndRect.u32Height = 1080;
-        pstPubAttr->f32FrameRate = 30;
-
-        pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1920;
-        pstCapRect->u32Height = 1080;
-    }
-    else if (OMNIVISION_OV4689_MIPI_1080P_30FPS == pstViConfig->enViMode)
-    {
-        pstViConfig->enViMode = OMNIVISION_OV4689_MIPI_4M_30FPS;
-        pstPubAttr->stWndRect.u32Width = 2592;
-        pstPubAttr->stWndRect.u32Height = 1520;
-        pstPubAttr->f32FrameRate = 30;
-
-        pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 2592;
-        pstCapRect->u32Height = 1520;
-    }
-    else if (SONY_IMX117_LVDS_1080P_30FPS == pstViConfig->enViMode)
-    {
-        pstViConfig->enViMode = SONY_IMX117_LVDS_720P_30FPS;
-        pstPubAttr->stWndRect.u32Width = 1280;
-        pstPubAttr->stWndRect.u32Height = 720;
-        pstPubAttr->f32FrameRate = 120;
-
-        pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1280;
-        pstCapRect->u32Height = 720;
-    }
-    else if (SONY_IMX117_LVDS_720P_30FPS == pstViConfig->enViMode)
-    {
-        pstViConfig->enViMode = SONY_IMX117_LVDS_1080P_30FPS;
-        pstPubAttr->stWndRect.u32Width = 1920;
-        pstPubAttr->stWndRect.u32Height = 1080;
-        pstPubAttr->f32FrameRate = 60;
-
-        pstCapRect->s32X = 0;
-        pstCapRect->s32Y = 0;
-        pstCapRect->u32Width = 1920;
-        pstCapRect->u32Height = 1080;
-
+    	pstCapRect->s32Y = 0;
+    	pstCapRect->u32Width = 1920;
+    	pstCapRect->u32Height = 1080;
     }
     else
     {
         SAMPLE_PRT("This sensor type is not surpport!");
         return HI_FAILURE;
     }
-
+    
     return HI_SUCCESS;
 }
 
@@ -2753,36 +2264,36 @@ HI_S32 SAMPLE_COMM_VI_UnBindVpss(SAMPLE_VI_MODE_E enViMode)
     VI_CHN ViChn;
 
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("SAMPLE_COMM_VI_Mode2Param failed!\n");
         return HI_FAILURE;
     }
-
-    VpssGrp = 0;
-    for (i = 0; i < stViParam.s32ViDevCnt; i++)
+    
+    VpssGrp = 0;    
+    for (i=0; i<stViParam.s32ViDevCnt; i++)
     {
         ViDev = i * stViParam.s32ViDevInterval;
 
-        for (j = 0; j < stViParam.s32ViChnCnt; j++)
+        for (j=0; j<stViParam.s32ViChnCnt; j++)
         {
             ViChn = j * stViParam.s32ViChnInterval;
-
+            
             stSrcChn.enModId = HI_ID_VIU;
             stSrcChn.s32DevId = ViDev;
             stSrcChn.s32ChnId = ViChn;
-
+        
             stDestChn.enModId = HI_ID_VPSS;
             stDestChn.s32DevId = VpssGrp;
             stDestChn.s32ChnId = 0;
-
+        
             s32Ret = HI_MPI_SYS_UnBind(&stSrcChn, &stDestChn);
             if (s32Ret != HI_SUCCESS)
             {
                 SAMPLE_PRT("failed with %#x!\n", s32Ret);
                 return HI_FAILURE;
             }
-
+            
             VpssGrp ++;
         }
     }
@@ -2801,40 +2312,40 @@ HI_S32 SAMPLE_COMM_VI_UnBindVenc(SAMPLE_VI_MODE_E enViMode)
     VI_CHN ViChn;
 
     s32Ret = SAMPLE_COMM_VI_Mode2Param(enViMode, &stViParam);
-    if (HI_SUCCESS != s32Ret)
+    if (HI_SUCCESS !=s32Ret)
     {
         SAMPLE_PRT("SAMPLE_COMM_VI_Mode2Param failed!\n");
         return HI_FAILURE;
     }
-
-    VencGrp = 0;
-    for (i = 0; i < stViParam.s32ViDevCnt; i++)
+    
+    VencGrp = 0;    
+    for (i=0; i<stViParam.s32ViDevCnt; i++)
     {
         ViDev = i * stViParam.s32ViDevInterval;
 
-        for (j = 0; j < stViParam.s32ViChnCnt; j++)
+        for (j=0; j<stViParam.s32ViChnCnt; j++)
         {
             ViChn = j * stViParam.s32ViChnInterval;
-
+            
             stSrcChn.enModId = HI_ID_VIU;
             stSrcChn.s32DevId = ViDev;
             stSrcChn.s32ChnId = ViChn;
-
+        
             stDestChn.enModId = HI_ID_GROUP;
             stDestChn.s32DevId = VencGrp;
             stDestChn.s32ChnId = 0;
-
+        
             s32Ret = HI_MPI_SYS_UnBind(&stSrcChn, &stDestChn);
             if (s32Ret != HI_SUCCESS)
             {
                 SAMPLE_PRT("failed with %#x!\n", s32Ret);
                 return HI_FAILURE;
             }
-
+            
             VencGrp ++;
         }
     }
-
+    
     return HI_SUCCESS;
 }
 
@@ -2842,9 +2353,9 @@ HI_S32 SAMPLE_COMM_VI_UnBindVenc(SAMPLE_VI_MODE_E enViMode)
 /******************************************************************************
 * function : read frame
 ******************************************************************************/
-HI_VOID SAMPLE_COMM_VI_ReadFrame(FILE* fp, HI_U8* pY, HI_U8* pU, HI_U8* pV, HI_U32 width, HI_U32 height, HI_U32 stride, HI_U32 stride2)
+HI_VOID SAMPLE_COMM_VI_ReadFrame(FILE * fp, HI_U8 * pY, HI_U8 * pU, HI_U8 * pV, HI_U32 width, HI_U32 height, HI_U32 stride, HI_U32 stride2)
 {
-    HI_U8* pDst;
+    HI_U8 * pDst;
 
     HI_U32 u32Row;
 
@@ -2856,60 +2367,60 @@ HI_VOID SAMPLE_COMM_VI_ReadFrame(FILE* fp, HI_U8* pY, HI_U8* pU, HI_U8* pV, HI_U
     }
 
     pDst = pU;
-    for ( u32Row = 0; u32Row < height / 2; u32Row++ )
+    for ( u32Row = 0; u32Row < height/2; u32Row++ )
     {
-        fread( pDst, width / 2, 1, fp );
+        fread( pDst, width/2, 1, fp );
         pDst += stride2;
     }
 
     pDst = pV;
-    for ( u32Row = 0; u32Row < height / 2; u32Row++ )
+    for ( u32Row = 0; u32Row < height/2; u32Row++ )
     {
-        fread( pDst, width / 2, 1, fp );
+        fread( pDst, width/2, 1, fp );
         pDst += stride2;
     }
 }
-
+ 
 /******************************************************************************
 * function : Plan to Semi
 ******************************************************************************/
-HI_S32 SAMPLE_COMM_VI_PlanToSemi(HI_U8* pY, HI_S32 yStride,
-                                 HI_U8* pU, HI_S32 uStride,
-                                 HI_U8* pV, HI_S32 vStride,
-                                 HI_S32 picWidth, HI_S32 picHeight)
+HI_S32 SAMPLE_COMM_VI_PlanToSemi(HI_U8 *pY, HI_S32 yStride,
+                       HI_U8 *pU, HI_S32 uStride,
+                       HI_U8 *pV, HI_S32 vStride,
+                       HI_S32 picWidth, HI_S32 picHeight)
 {
     HI_S32 i;
     HI_U8* pTmpU, *ptu;
     HI_U8* pTmpV, *ptv;
-    HI_S32 s32HafW = uStride >> 1 ;
-    HI_S32 s32HafH = picHeight >> 1 ;
-    HI_S32 s32Size = s32HafW * s32HafH;
+    HI_S32 s32HafW = uStride >>1 ;
+    HI_S32 s32HafH = picHeight >>1 ;
+    HI_S32 s32Size = s32HafW*s32HafH;
 
     pTmpU = malloc( s32Size );
     if (NULL == pTmpU)
     {
-        SAMPLE_PRT("malloc faild!\n");
+        printf("Func: %s() Line[%d], malloc failed\n", __FUNCTION__, __LINE__);
         return HI_FAILURE;
     }
-    ptu = pTmpU;
     pTmpV = malloc( s32Size );
     if (NULL == pTmpV)
     {
-        SAMPLE_PRT("malloc faild!\n");
-        return HI_FAILURE;
+        printf("Func: %s() Line[%d], malloc failed\n", __FUNCTION__, __LINE__);
+        return HI_FAILURE;  
     }
+    ptu = pTmpU;
     ptv = pTmpV;
 
-    memcpy(pTmpU, pU, s32Size);
-    memcpy(pTmpV, pV, s32Size);
+    memcpy(pTmpU,pU,s32Size);
+    memcpy(pTmpV,pV,s32Size);
 
-    for (i = 0; i<s32Size >> 1; i++)
+    for(i = 0;i<s32Size>>1;i++)
     {
         *pU++ = *pTmpV++;
         *pU++ = *pTmpU++;
 
     }
-    for (i = 0; i<s32Size >> 1; i++)
+    for(i = 0;i<s32Size>>1;i++)
     {
         *pV++ = *pTmpV++;
         *pV++ = *pTmpU++;
@@ -2923,7 +2434,7 @@ HI_S32 SAMPLE_COMM_VI_PlanToSemi(HI_U8* pY, HI_S32 yStride,
 
 int SAMPLE_COMM_VI_ExitMpp( int s32poolId)
 {
-    if (s32poolId < 0)
+    if(s32poolId<0)
     {
         if (HI_MPI_SYS_Exit())
         {
@@ -2938,7 +2449,7 @@ int SAMPLE_COMM_VI_ExitMpp( int s32poolId)
         }
         return -1;
     }
-
+    
     return 0;
 }
 
@@ -2946,7 +2457,7 @@ int SAMPLE_COMM_VI_ExitMpp( int s32poolId)
 /******************************************************************************
 * function : Get from YUV
 ******************************************************************************/
-HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE* pYUVFile, HI_U32 u32Width, HI_U32 u32Height, HI_U32 u32Stride, VIDEO_FRAME_INFO_S* pstVFrameInfo)
+HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE *pYUVFile, HI_U32 u32Width, HI_U32 u32Height,HI_U32 u32Stride, VIDEO_FRAME_INFO_S *pstVFrameInfo)
 {
     HI_U32             u32LStride;
     HI_U32             u32CStride;
@@ -2955,7 +2466,7 @@ HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE* pYUVFile, HI_U32 u32Width, HI_U32 u
     HI_U32             u32Size;
     VB_BLK VbBlk;
     HI_U32 u32PhyAddr;
-    HI_U8* pVirAddr;
+    HI_U8 *pVirAddr;
 
     u32LStride  = u32Stride;
     u32CStride  = u32Stride;
@@ -2968,7 +2479,7 @@ HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE* pYUVFile, HI_U32 u32Width, HI_U32 u
     VbBlk = HI_MPI_VB_GetBlock(VB_INVALID_POOLID, u32Size, NULL);
     if (VB_INVALID_HANDLE == VbBlk)
     {
-        SAMPLE_PRT("HI_MPI_VB_GetBlock err! size:%d\n", u32Size);
+        SAMPLE_PRT("HI_MPI_VB_GetBlock err! size:%d\n",u32Size);
         return -1;
     }
     u32PhyAddr = HI_MPI_VB_Handle2PhysAddr(VbBlk);
@@ -2977,7 +2488,7 @@ HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE* pYUVFile, HI_U32 u32Width, HI_U32 u
         return -1;
     }
 
-    pVirAddr = (HI_U8*) HI_MPI_SYS_Mmap(u32PhyAddr, u32Size);
+    pVirAddr = (HI_U8 *) HI_MPI_SYS_Mmap(u32PhyAddr, u32Size);
     if (NULL == pVirAddr)
     {
         return -1;
@@ -2988,7 +2499,7 @@ HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE* pYUVFile, HI_U32 u32Width, HI_U32 u
     {
         return -1;
     }
-    SAMPLE_PRT("pool id :%d, phyAddr:%x,virAddr:%x\n" , pstVFrameInfo->u32PoolId, u32PhyAddr, (int)pVirAddr);
+    SAMPLE_PRT("pool id :%d, phyAddr:%x,virAddr:%x\n" ,pstVFrameInfo->u32PoolId,u32PhyAddr,(int)pVirAddr);
 
     pstVFrameInfo->stVFrame.u32PhyAddr[0] = u32PhyAddr;
     pstVFrameInfo->stVFrame.u32PhyAddr[1] = pstVFrameInfo->stVFrame.u32PhyAddr[0] + u32LumaSize;
@@ -3008,26 +2519,26 @@ HI_S32 SAMPLE_COMM_VI_GetVFrameFromYUV(FILE* pYUVFile, HI_U32 u32Width, HI_U32 u
 
     /* read Y U V data from file to the addr ----------------------------------------------*/
     SAMPLE_COMM_VI_ReadFrame(pYUVFile, pstVFrameInfo->stVFrame.pVirAddr[0],
-                             pstVFrameInfo->stVFrame.pVirAddr[1], pstVFrameInfo->stVFrame.pVirAddr[2],
-                             pstVFrameInfo->stVFrame.u32Width, pstVFrameInfo->stVFrame.u32Height,
-                             pstVFrameInfo->stVFrame.u32Stride[0], pstVFrameInfo->stVFrame.u32Stride[1] >> 1 );
+       pstVFrameInfo->stVFrame.pVirAddr[1], pstVFrameInfo->stVFrame.pVirAddr[2],
+       pstVFrameInfo->stVFrame.u32Width, pstVFrameInfo->stVFrame.u32Height,
+       pstVFrameInfo->stVFrame.u32Stride[0], pstVFrameInfo->stVFrame.u32Stride[1] >> 1 );
 
     /* convert planar YUV420 to sem-planar YUV420 -----------------------------------------*/
     SAMPLE_COMM_VI_PlanToSemi(pstVFrameInfo->stVFrame.pVirAddr[0], pstVFrameInfo->stVFrame.u32Stride[0],
-                              pstVFrameInfo->stVFrame.pVirAddr[1], pstVFrameInfo->stVFrame.u32Stride[1],
-                              pstVFrameInfo->stVFrame.pVirAddr[2], pstVFrameInfo->stVFrame.u32Stride[1],
-                              pstVFrameInfo->stVFrame.u32Width, pstVFrameInfo->stVFrame.u32Height);
+      pstVFrameInfo->stVFrame.pVirAddr[1], pstVFrameInfo->stVFrame.u32Stride[1],
+      pstVFrameInfo->stVFrame.pVirAddr[2], pstVFrameInfo->stVFrame.u32Stride[1],
+      pstVFrameInfo->stVFrame.u32Width, pstVFrameInfo->stVFrame.u32Height);
 
     HI_MPI_SYS_Mmap(u32PhyAddr, u32Size);
     return 0;
 }
 
-HI_S32 SAMPLE_COMM_VI_ChangeCapSize(VI_CHN ViChn, HI_U32 u32CapWidth, HI_U32 u32CapHeight, HI_U32 u32Width, HI_U32 u32Height)
+HI_S32 SAMPLE_COMM_VI_ChangeCapSize(VI_CHN ViChn, HI_U32 u32CapWidth, HI_U32 u32CapHeight,HI_U32 u32Width, HI_U32 u32Height)
 {
     VI_CHN_ATTR_S stChnAttr;
     HI_S32 S32Ret = HI_SUCCESS;
     S32Ret = HI_MPI_VI_GetChnAttr(ViChn, &stChnAttr);
-    if (HI_SUCCESS != S32Ret)
+    if(HI_SUCCESS!= S32Ret)
     {
         SAMPLE_PRT( "HI_MPI_VI_GetChnAttr failed\n");
     }
@@ -3037,7 +2548,7 @@ HI_S32 SAMPLE_COMM_VI_ChangeCapSize(VI_CHN ViChn, HI_U32 u32CapWidth, HI_U32 u32
     stChnAttr.stDestSize.u32Height = u32Height;
 
     S32Ret = HI_MPI_VI_SetChnAttr(ViChn, &stChnAttr);
-    if (HI_SUCCESS != S32Ret)
+    if(HI_SUCCESS!= S32Ret)
     {
         SAMPLE_PRT( "HI_MPI_VI_SetChnAttr failed\n");
     }
@@ -3045,25 +2556,25 @@ HI_S32 SAMPLE_COMM_VI_ChangeCapSize(VI_CHN ViChn, HI_U32 u32CapWidth, HI_U32 u32
     return HI_SUCCESS;
 }
 
-HI_S32 SAMPLE_COMM_VI_FPN_GetVBFromPool(HI_U32 u32VbSize, HI_U32 u32Width, HI_U32 u32Height, HI_U32 u32Stride, SAMPLE_VI_FRAME_INFO_S* pstVMstFrameInfo)
+HI_S32 SAMPLE_COMM_VI_FPN_GetVBFromPool(HI_U32 u32VbSize, HI_U32 u32Width, HI_U32 u32Height, HI_U32 u32Stride, SAMPLE_VI_FRAME_INFO_S *pstVMstFrameInfo)
 {
     VB_BLK VbBlk;
     HI_U32 u32PhyAddr;
-    VIDEO_FRAME_INFO_S* pstVFrameInfo = &pstVMstFrameInfo->stVideoFrame;
+    VIDEO_FRAME_INFO_S *pstVFrameInfo = &pstVMstFrameInfo->stVideoFrame;
 
     printf("===============FPN VB Size: %d\n", u32VbSize);
     /* alloc video buffer block ---------------------------------------------------------- */
-    VbBlk = HI_MPI_VB_GetBlock(VB_INVALID_POOLID, u32VbSize, HI_NULL);
-    if (VB_INVALID_HANDLE == VbBlk)
+    VbBlk = HI_MPI_VB_GetBlock(g_Pool, u32VbSize, HI_NULL);
+    if (VB_INVALID_HANDLE == VbBlk)        
     {
-        printf("HI_MPI_VB_GetBlock err! size:%d\n", u32VbSize);
+        printf("HI_MPI_VB_GetBlock err! size:%d\n",u32VbSize);
         return HI_FAILURE;
     }
     pstVMstFrameInfo->u32FrmSize = u32VbSize;
     pstVMstFrameInfo->VbBlk = VbBlk;
 
     printf("VbBlk: 0x%x\n", VbBlk);
-
+    
     u32PhyAddr = HI_MPI_VB_Handle2PhysAddr(VbBlk);
     if (0 == u32PhyAddr)
     {
@@ -3097,10 +2608,7 @@ HI_S32 SAMPLE_COMM_VI_FPN_GetVBFromPool(HI_U32 u32VbSize, HI_U32 u32Width, HI_U3
 
 
 
-void SAMPLE_COMM_VI_SaveFpnData(ISP_FPN_FRAME_INFO_S* pVBuf,
-                                HI_U32 u32FpnMode,
-                                HI_U32 u32Nbit,
-                                FILE* pfd)
+void SAMPLE_COMM_VI_SaveFpnData(ISP_FPN_FRAME_INFO_S* pVBuf, HI_U32 u32FpnMode, HI_U32 u32Nbit, FILE* pfd)
 {
     HI_U8* pU8VBufVirt_Y;
     HI_U32 phy_addr, u32Size;
@@ -3122,28 +2630,28 @@ void SAMPLE_COMM_VI_SaveFpnData(ISP_FPN_FRAME_INFO_S* pVBuf,
 
     /* save Y ----------------------------------------------------------------*/
     fprintf(stderr, "saving......Raw data......u32Stride[0]: %d, width: %d, height: %d\n"
-            , pVBuf->stFpnFrame.stVFrame.u32Stride[0]
-            , pVBuf->stFpnFrame.stVFrame.u32Width
-            , pVBuf->stFpnFrame.stVFrame.u32Height);
+                                , pVBuf->stFpnFrame.stVFrame.u32Stride[0]
+                                , pVBuf->stFpnFrame.stVFrame.u32Width
+                                , pVBuf->stFpnFrame.stVFrame.u32Height);
     //fprintf(stderr, "phy Addr: 0x%x\n", pVBuf->stFpnFrame.stVFrame.u32PhyAddr[0]);
     fflush(stderr);
 
     fwrite(pU8VBufVirt_Y, pVBuf->u32FrmSize, 1, pfd);
-
+    
     /* save offset */
     fwrite(&pVBuf->u32Offset, 4, 1, pfd);
 
     /* save compress flag */
-    bCompress = (COMPRESS_MODE_FRAME == pVBuf->stFpnFrame.stVFrame.enCompressMode);
+    bCompress = (COMPRESS_MODE_LINE == pVBuf->stFpnFrame.stVFrame.enCompressMode);
     fwrite(&bCompress, 4, 1, pfd);
-
+    
     /* save fpn frame size */
     fwrite(&pVBuf->u32FrmSize, 4, 1, pfd);
 
     /* save ISO */
     fwrite(&pVBuf->u32Iso, 4, 1, pfd);
-    fflush(pfd);
-
+    fflush(pfd);        
+    
     //fprintf(stderr, "done u32TimeRef: %d!\n", pVBuf->stFpnFrame.stVFrame.u32TimeRef);
     fflush(stderr);
 
@@ -3151,39 +2659,39 @@ void SAMPLE_COMM_VI_SaveFpnData(ISP_FPN_FRAME_INFO_S* pVBuf,
 }
 
 
-HI_S32 SAMPLE_COMM_VI_ReleaseVBToPool(SAMPLE_VI_FRAME_INFO_S* pstVMstFrameInfo)
+HI_S32 SAMPLE_COMM_VI_ReleaseVBToPool(SAMPLE_VI_FRAME_INFO_S *pstVMstFrameInfo)
 {
     HI_S32 s32Ret = HI_SUCCESS;
-
+    
     s32Ret = HI_MPI_VB_ReleaseBlock(pstVMstFrameInfo->VbBlk);
     return s32Ret;
 }
 
 
 HI_S32 SAMPLE_COMM_VI_FPN_CALIBRATE_CONFIG(const char* fpn_file,    /* fpn file name */
-        ISP_FPN_TYPE_E enFpnType, /* line/frame */
-        PIXEL_FORMAT_E enPixelFormat,
-        COMPRESS_MODE_E	enCompressMode,
-        HI_U32 u32FrmNum,
-        HI_U32 u32Threshold)
+                            ISP_FPN_TYPE_E enFpnType, /* line/frame */
+                            PIXEL_FORMAT_E enPixelFormat,
+                            COMPRESS_MODE_E	enCompressMode,
+                            HI_U32 u32FrmNum,
+                            HI_U32 u32Threshold)
 {
     VI_CHN ViChn = 0;
     VI_CHN_ATTR_S stTempChnAttr;
-    ISP_FPN_CALIBRATE_ATTR_S stFpnCalAttr;
+    ISP_FPN_CALIBRATE_ATTR_S stFpnCalAttr;   
     HI_U32 u32Stride, u32VbSize;
     SAMPLE_VI_FRAME_INFO_S stVMstFrame = {0};
     HI_U32 u32Width, u32Height;
     HI_S32 s32Ret = HI_SUCCESS;
-
+     
     ISP_DEV IspDev = 0;
     FILE* pFile;
-    char fileName[FILE_NAME_LEN];
-
+    char fileName[256] = {0};
+    
     s32Ret =  HI_MPI_VI_GetChnAttr(ViChn, &stTempChnAttr);
     if (HI_SUCCESS != s32Ret)
     {
         printf("get vi chn attr failed!");
-        return HI_FAILURE;
+        return s32Ret;
     }
     u32Width = stTempChnAttr.stCapRect.u32Width; 
     u32Height = stTempChnAttr.stCapRect.u32Height;
@@ -3201,14 +2709,13 @@ HI_S32 SAMPLE_COMM_VI_FPN_CALIBRATE_CONFIG(const char* fpn_file,    /* fpn file 
     }
     else
     {
-        u32VbSize = u32Stride * u32Height;
+        u32VbSize = (u32Stride) * u32Height;
     }
-
     s32Ret = SAMPLE_COMM_VI_FPN_GetVBFromPool(u32VbSize, u32Width, u32Height, u32Stride, &stVMstFrame);
     if (HI_SUCCESS != s32Ret)
     {
         printf("alloc mem failed!");
-        return HI_FAILURE;
+        return s32Ret;
     }
 
     printf("==========let isp fly ====================\n");
@@ -3219,7 +2726,7 @@ HI_S32 SAMPLE_COMM_VI_FPN_CALIBRATE_CONFIG(const char* fpn_file,    /* fpn file 
     if (HI_SUCCESS != s32Ret)
     {
         printf("disable vi chn failed!");
-        return HI_FAILURE;
+        return s32Ret;
     }
 
     stFpnCalAttr.u32FrameNum  = u32FrmNum;
@@ -3235,55 +2742,53 @@ HI_S32 SAMPLE_COMM_VI_FPN_CALIBRATE_CONFIG(const char* fpn_file,    /* fpn file 
         printf("HI_MPI_ISP_FPNCalibrate err: 0x%x\n", s32Ret);
         return s32Ret;
     }
-    //printf("out stVMstFrame.stVideoFrame.stVFrame.u32Stride[0]: %d\n", stVMstFrame.stVideoFrame.stVFrame.u32Stride[0]);
-    /* save RAW data */
-    snprintf(fileName, FILE_NAME_LEN, "./%s_%d_%d_%dbit.raw", fpn_file, u32Width, u32Height, 16);
-    printf("\nafter calibrate, offset =0x%x,ISO = %d\n", stFpnCalAttr.stFpnCaliFrame.u32Offset,
-           stFpnCalAttr.stFpnCaliFrame.u32Iso);
+    //printf("out stVMstFrame.stVideoFrame.stVFrame.u32Stride[0]: %d\n", stVMstFrame.stVideoFrame.stVFrame.u32Stride[0]);   
+    /* save RAW data */ 
+    snprintf(fileName, sizeof(fileName), "./%s_%d_%d_%dbit.raw", fpn_file, u32Width, u32Height, 16);
+    printf("\nafter calibrate, offset =0x%x,ISO = %d\n",stFpnCalAttr.stFpnCaliFrame.u32Offset,
+       stFpnCalAttr.stFpnCaliFrame.u32Iso);  
 
     s32Ret =  HI_MPI_VI_EnableChn(ViChn);
-    if (HI_SUCCESS != s32Ret)
+    if(HI_SUCCESS != s32Ret)
     {
         printf("enable vi chn failed!");
         return HI_FAILURE;
-    }
-
+    }    
+    
     printf("\nhit the Enter key,save dark frame file: %s!\n", fileName);
     VI_PAUSE();
-
+    
     pFile = fopen(fileName, "wb");
     if (NULL == pFile)
     {
-        printf("open file %s err!\n", fileName);
+        printf("open file %s err!\n",fileName);
         return -1;
     }
     else
     {
         HI_U32 u32FpnBitWidth = 10;
-
-        SAMPLE_COMM_VI_SaveFpnData(&stFpnCalAttr.stFpnCaliFrame, enFpnType, u32FpnBitWidth, pFile);
+        
+        SAMPLE_COMM_VI_SaveFpnData(&stFpnCalAttr.stFpnCaliFrame, enFpnType, u32FpnBitWidth, pFile);        
         fclose(pFile);
     }
-    printf("\nsaved dark frame！\n");
-
+    printf("\nsaved dark frame!\n");
+    
     s32Ret = SAMPLE_COMM_VI_ReleaseVBToPool(&stVMstFrame);
     if (HI_SUCCESS != s32Ret)
     {
-        printf("SAMPLE_COMM_VI_ReleaseVBToPool err: 0x%x\n", s32Ret);
+        printf("SAMPLE_COMM_VI_ReleaseVBToPool err: 0x%x\n", s32Ret);        
     }
-
-    printf("\nhit the Enter key,start read dark frame\n");
-    VI_PAUSE();
-
+    
     return HI_SUCCESS;
 }
 
-HI_VOID SAMPLE_COMM_VI_ReadOneFpnFrame(FILE* fp, HI_U8* pY, HI_U32* pu32Offset, 
-                        HI_U32* pu32FrmSize, COMPRESS_MODE_E* penCompressMode, HI_U32* pu32Iso)
+HI_S32 SAMPLE_COMM_VI_ReadOneFpnFrame(FILE * fp, HI_U8 *pY, HI_U32 *pu32Offset,
+                         HI_U32 *pu32FrmSize, COMPRESS_MODE_E *penCompressMode, HI_U32 *pu32Iso)
 {
     HI_U8* pDst;
     HI_U32 u32FrmSize;
     HI_BOOL bCompress;
+    HI_S32 s32Ret;
 
     /*****************************************************************
     raw file storage layout:
@@ -3299,22 +2804,37 @@ HI_VOID SAMPLE_COMM_VI_ReadOneFpnFrame(FILE* fp, HI_U8* pY, HI_U32* pu32Offset,
     ****************************************************************/
 
     /* seek end of file */
-    fseek(fp, -4, SEEK_END);
+    s32Ret = fseek(fp, -4, SEEK_END);
+    if (0 != s32Ret)
+    {
+        printf("Func: %s(), line: [%d], get iso failed:  %s\n", __FUNCTION__, __LINE__, strerror(errno));
+        return HI_FAILURE;
+    }
     /* get calibrate ISO */
     fread(pu32Iso, 4, 1, fp);
 
     /* get fpn frame size */
-    fseek(fp, -8, SEEK_END);
+    s32Ret = fseek(fp, -8, SEEK_END);
+    if (0 != s32Ret)
+    {
+        printf("Func: %s(), line: [%d], get frame size failed:  %s\n", __FUNCTION__, __LINE__, strerror(errno));
+        return HI_FAILURE;
+    }
     fread(&u32FrmSize, 4, 1, fp);
     *pu32FrmSize = u32FrmSize;
 
     /* get fpn frame compress flag */
-    fseek(fp, -12, SEEK_END);
+    s32Ret = fseek(fp, -12, SEEK_END);
+    if (0 != s32Ret)
+    {
+        printf("Func: %s(), line: [%d], get compress flag failed:  %s\n", __FUNCTION__, __LINE__, strerror(errno));
+        return HI_FAILURE;
+    }
     fread(&bCompress, 4, 1, fp);
 
     if (bCompress)
     {
-        *penCompressMode = COMPRESS_MODE_FRAME;
+        *penCompressMode = COMPRESS_MODE_LINE;
     }
     else
     {
@@ -3322,7 +2842,12 @@ HI_VOID SAMPLE_COMM_VI_ReadOneFpnFrame(FILE* fp, HI_U8* pY, HI_U32* pu32Offset,
     }
 
     /* get fpn offset */
-    fseek(fp, -16, SEEK_END);
+    s32Ret = fseek(fp, -16, SEEK_END);
+    if (0 != s32Ret)
+    {
+        printf("Func: %s(), line: [%d], get fpn offset failed:  %s\n", __FUNCTION__, __LINE__, strerror(errno));
+        return HI_FAILURE;
+    }
     fread(pu32Offset, 4, 1, fp);
 
     /* back to begin of file */
@@ -3330,66 +2855,70 @@ HI_VOID SAMPLE_COMM_VI_ReadOneFpnFrame(FILE* fp, HI_U8* pY, HI_U32* pu32Offset,
     pDst = pY;
     fread(pDst, 1, u32FrmSize, fp);
 
+    return HI_SUCCESS;
 }
 
 
+static inline HI_VOID SAMPLE_COMM_VI_GetBitWidthByPixFmt(PIXEL_FORMAT_E enPixelFormat, HI_U32 *pu32BitWidth)
+{
+    if( PIXEL_FORMAT_RGB_BAYER_8BPP == enPixelFormat)
+    {
+        *pu32BitWidth = 8;
+    }
+    else if( PIXEL_FORMAT_RGB_BAYER_10BPP == enPixelFormat)
+    {
+        *pu32BitWidth = 10;
+    }
+    else if( PIXEL_FORMAT_RGB_BAYER_12BPP == enPixelFormat)
+    {
+        *pu32BitWidth = 12;
+    }
+    else if( PIXEL_FORMAT_RGB_BAYER_14BPP == enPixelFormat)
+    {
+        *pu32BitWidth = 14;
+    }
+    else                                   
+    {
+        *pu32BitWidth = 16;
+    }
+}
 
-
-
-
-
-HI_S32 SAMPLE_COMM_VI_GetFPNFrame_FromRaw(FILE* pRawFile,
-        HI_U32 u32Width, HI_U32 u32Height,
-        SAMPLE_VI_FRAME_INFO_S* pstVMstFrameInfo,
-        HI_U32* pu32Offset,
-        HI_U32* pu32Iso)
+HI_S32 SAMPLE_COMM_VI_GetFPNFrame_FromRaw(FILE *pRawFile,
+                                 HI_U32 u32Width, HI_U32 u32Height, 
+                                 SAMPLE_VI_FRAME_INFO_S *pstVMstFrameInfo,
+                                 HI_U32 *pu32Offset,
+                                 HI_U32 *pu32Iso)
 {
     HI_U32 u32Size;
     VB_BLK VbBlk;
     HI_U32 u32PhyAddr;
-    HI_U8* pVirAddr;
-    HI_U32 u32Stride = 0;
-    VIDEO_FRAME_INFO_S* pstVFrameInfo = &pstVMstFrameInfo->stVideoFrame;
-    COMPRESS_MODE_E enCompressMode;
-
-    if (PIXEL_FORMAT_RGB_BAYER == pstVFrameInfo->stVFrame.enPixelFormat)
-    {
-        u32Stride = ALIGN_BACK(u32Width * 2, 16);
-    }
-    else if (PIXEL_FORMAT_RGB_BAYER_14BPP == pstVFrameInfo->stVFrame.enPixelFormat)
-    {
-        u32Stride = (u32Width * 14 + 127) / 128 * 128 / 8;
-    }
-    else if (PIXEL_FORMAT_RGB_BAYER_12BPP == pstVFrameInfo->stVFrame.enPixelFormat)
-    {
-        u32Stride = (u32Width * 12 + 127) / 128 * 128 / 8;
-    }
-    else if (PIXEL_FORMAT_RGB_BAYER_10BPP == pstVFrameInfo->stVFrame.enPixelFormat)
-    {
-        u32Stride = (u32Width * 10 + 127) / 128 * 128 / 8;
-    }
-    else if (PIXEL_FORMAT_RGB_BAYER_8BPP == pstVFrameInfo->stVFrame.enPixelFormat)
-    {
-        u32Stride = (u32Width * 8 + 127) / 128 * 128 / 8;
-    }
+    HI_U8 *pVirAddr;
+    HI_U32 u32Stride;
+    HI_U32 u32BitWidth = 16;
+    HI_S32 s32Ret;
+    VIDEO_FRAME_INFO_S *pstVFrameInfo = &pstVMstFrameInfo->stVideoFrame;
+    COMPRESS_MODE_E enCompressMode = COMPRESS_MODE_NONE;
 
     ////////////////////////////////////////////////////////
     /* seek end of file */
-    fseek(pRawFile, -8, SEEK_END);
+    s32Ret = fseek(pRawFile, -8, SEEK_END);
+    if (0 != s32Ret)
+    {
+        printf("Func: %s(), line: [%d], get frame size failed:  %s\n", __FUNCTION__, __LINE__, strerror(errno));
+        return HI_FAILURE;
+    }
     /* get fpn frame size */
     fread(&u32Size, 1, 4, pRawFile);
     /* back to begin of file */
     fseek(pRawFile, 0L, SEEK_SET);
     ////////////////////////////////////////////////////////
 
-    //printf("frm_size: %d, stride: %d\n", u32Size, u32Stride);
-
     /* alloc video buffer block ---------------------------------------------------------- */
-    VbBlk = HI_MPI_VB_GetBlock(VB_INVALID_POOLID, u32Size, HI_NULL);
+    VbBlk = HI_MPI_VB_GetBlock(g_Pool, u32Size, HI_NULL);
     if (VB_INVALID_HANDLE == VbBlk)
     {
-        printf("HI_MPI_VB_GetBlock err! size:%d\n", u32Size);
-        SAMPLE_COMM_VI_ExitMpp(VbBlk);
+        printf("HI_MPI_VB_GetBlock err! size:%d\n",u32Size);       
+        SAMPLE_COMM_VI_ExitMpp(VbBlk);       
         return HI_FAILURE;
     }
     pstVMstFrameInfo->VbBlk = VbBlk;
@@ -3427,7 +2956,7 @@ HI_S32 SAMPLE_COMM_VI_GetFPNFrame_FromRaw(FILE* pRawFile,
 
     pstVFrameInfo->stVFrame.u32Width  = u32Width;
     pstVFrameInfo->stVFrame.u32Height = u32Height;
-    pstVFrameInfo->stVFrame.u32Stride[0] = u32Stride;
+    pstVFrameInfo->stVFrame.u32Stride[0] = 0;
     pstVFrameInfo->stVFrame.u32Stride[1] = 0;
     pstVFrameInfo->stVFrame.u32Stride[2] = 0;
     pstVFrameInfo->stVFrame.u32Field = VIDEO_FIELD_FRAME;
@@ -3437,20 +2966,29 @@ HI_S32 SAMPLE_COMM_VI_GetFPNFrame_FromRaw(FILE* pRawFile,
 
     pstVFrameInfo->stVFrame.enCompressMode = enCompressMode;
 
-    HI_MPI_SYS_Munmap(pVirAddr, u32Size);
+    /* calculate the stride */
+    u32Stride = u32Width * u32BitWidth;
+    if (COMPRESS_MODE_LINE == enCompressMode)
+    {
+        SAMPLE_COMM_VI_GetBitWidthByPixFmt(pstVFrameInfo->stVFrame.enPixelFormat, &u32BitWidth);
+        u32Stride += (16 * 8 + ((u32Width + 15) / 16 * 4));
+    }
+    u32Stride = ((u32Stride + 127) / 128 * 128) / 8;
+    pstVFrameInfo->stVFrame.u32Stride[0] = u32Stride;
     
-    return HI_SUCCESS;
+    HI_MPI_SYS_Munmap(pVirAddr, u32Size);
+    return 0;
 }
 
 
 
-HI_S32 SAMPLE_COMM_VI_ReadOneRawFile(const char* file_name,
-                                     HI_U32 u32Width, HI_U32 u32Height,
-                                     SAMPLE_VI_FRAME_INFO_S* pstVMstFrameInfo,
-                                     HI_U32* u32Offset,
-                                     HI_U32* pu32Iso)
+HI_S32 SAMPLE_COMM_VI_ReadOneRawFile(const char* file_name, 
+                               HI_U32 u32Width, HI_U32 u32Height, 
+                               SAMPLE_VI_FRAME_INFO_S *pstVMstFrameInfo, 
+                               HI_U32 *u32Offset,
+                               HI_U32 *pu32Iso)
 {
-    FILE* pfd;
+    FILE *pfd;
     HI_S32 s32Ret = HI_SUCCESS;
 
     /* open YUV file */
@@ -3473,20 +3011,20 @@ HI_S32 SAMPLE_COMM_VI_ReadOneRawFile(const char* file_name,
 HI_S32 SAMPLE_COMM_VI_CORRECTION_CONFIG(const char* fpn_file,    /* fpn file name */
                                         ISP_FPN_TYPE_E enFpnType, /* line/frame */
                                         ISP_OP_TYPE_E  enOpType,  /* auto/manual */
-                                        HI_U32 u32Strength,       /* strength */
+                                        HI_U32 u32Strength,       /* strength */                                       
                                         PIXEL_FORMAT_E enPixelFormat)
 {
-    VI_CHN ViChn = 0;
-    VI_CHN_ATTR_S stTempChnAttr;
+    VI_CHN ViChn = 0;    
+    VI_CHN_ATTR_S stTempChnAttr;    
     ISP_FPN_ATTR_S stFPNAttr;
     SAMPLE_VI_FRAME_INFO_S stVMstFrame = {0};
     ISP_DEV IspDev = 0;
-    ISP_FPN_FRAME_INFO_S* pstFpnFrmInfo;
+    ISP_FPN_FRAME_INFO_S *pstFpnFrmInfo;
     HI_S32 s32Ret = HI_SUCCESS;
     HI_U32 u32Iso;
 
     s32Ret = HI_MPI_VI_GetChnAttr(ViChn, &stTempChnAttr);
-    if (HI_SUCCESS != s32Ret)
+    if(HI_SUCCESS != s32Ret)
     {
         printf("get vi chn attr failed!");
         return HI_FAILURE;
@@ -3494,16 +3032,18 @@ HI_S32 SAMPLE_COMM_VI_CORRECTION_CONFIG(const char* fpn_file,    /* fpn file nam
 
     stVMstFrame.stVideoFrame.stVFrame.enPixelFormat = enPixelFormat;
     stVMstFrame.stVideoFrame.stVFrame.enCompressMode = COMPRESS_MODE_NONE;
-    pstFpnFrmInfo = &stFPNAttr.stFpnFrmInfo;
+	pstFpnFrmInfo = &stFPNAttr.stFpnFrmInfo;
 
-    s32Ret = SAMPLE_COMM_VI_ReadOneRawFile(fpn_file,
-                                           stTempChnAttr.stDestSize.u32Width,
-                                           stTempChnAttr.stDestSize.u32Height,
-                                           &stVMstFrame,
-                                           &pstFpnFrmInfo->u32Offset,
-                                           &u32Iso);
+    printf("\nhit the Enter key,start read dark frame\n");
+    VI_PAUSE();
+    s32Ret = SAMPLE_COMM_VI_ReadOneRawFile(fpn_file, 
+                           stTempChnAttr.stDestSize.u32Width,
+                           stTempChnAttr.stDestSize.u32Height,
+                           &stVMstFrame, 
+                           &pstFpnFrmInfo->u32Offset,
+                           &u32Iso);
 
-    if (HI_SUCCESS != s32Ret)
+    if(HI_SUCCESS != s32Ret)
     {
         printf("read raw file failed!");
         return HI_FAILURE;
@@ -3511,31 +3051,31 @@ HI_S32 SAMPLE_COMM_VI_CORRECTION_CONFIG(const char* fpn_file,    /* fpn file nam
 
     pstFpnFrmInfo->u32FrmSize = stVMstFrame.u32FrmSize;
     memcpy(&pstFpnFrmInfo->stFpnFrame, &stVMstFrame.stVideoFrame, sizeof(VIDEO_FRAME_INFO_S));
-    stFPNAttr.bEnable   = HI_TRUE;
-    stFPNAttr.enOpType  = enOpType;
-    stFPNAttr.enFpnType = enFpnType;
-    stFPNAttr.stFpnFrmInfo.u32Iso  = u32Iso;
-    stFPNAttr.stManual.u32Strength = u32Strength;
-
+    stFPNAttr.bEnable  = HI_TRUE;
+    stFPNAttr.enOpType = enOpType;
+    stFPNAttr.enFpnType   = enFpnType;
+	stFPNAttr.stFpnFrmInfo.u32Iso = u32Iso;
+	stFPNAttr.stManual.u32Strength = u32Strength;
+	
     printf("\nread u32Offset  = 0x%x, u32iso = %d\n", stFPNAttr.stFpnFrmInfo.u32Offset , stFPNAttr.stFpnFrmInfo.u32Iso);
     printf("FrmSize: %d, stride: %d, compress mode: %d\n", stFPNAttr.stFpnFrmInfo.u32FrmSize, 
                                         stFPNAttr.stFpnFrmInfo.stFpnFrame.stVFrame.u32Stride[0],
                                         stFPNAttr.stFpnFrmInfo.stFpnFrame.stVFrame.enCompressMode);
-    
+
     printf("hit the Enter key,start correction\n");
-    VI_PAUSE();
+    VI_PAUSE();   
 
     s32Ret =  HI_MPI_ISP_SetFPNAttr(IspDev, &stFPNAttr);
-    if (HI_SUCCESS != s32Ret)
+    if(HI_SUCCESS != s32Ret)
     {
         printf("fpn correction fail 0x%x\n", s32Ret);
         return HI_FAILURE;
     }
-
+    
     VI_PAUSE();
-
+    
     s32Ret = SAMPLE_COMM_VI_ReleaseVBToPool(&stVMstFrame);
-    if (HI_SUCCESS != s32Ret)
+    if(HI_SUCCESS != s32Ret)
     {
         printf("SAMPLE_COMM_VI_ReleaseVBToPool fail 0x%x\n", s32Ret);
         return HI_FAILURE;
@@ -3547,7 +3087,7 @@ HI_S32 SAMPLE_COMM_VI_CORRECTION_CONFIG(const char* fpn_file,    /* fpn file nam
 /******************************************************************************
 * funciton : Get enSize by diffrent sensor
 ******************************************************************************/
-HI_S32 SAMPLE_COMM_VI_GetSizeBySensor(PIC_SIZE_E* penSize)
+HI_S32 SAMPLE_COMM_VI_GetSizeBySensor(PIC_SIZE_E *penSize)
 {
     HI_S32 s32Ret = HI_SUCCESS;
     SAMPLE_VI_MODE_E enMode = SENSOR_TYPE;
@@ -3556,47 +3096,170 @@ HI_S32 SAMPLE_COMM_VI_GetSizeBySensor(PIC_SIZE_E* penSize)
     {
         return HI_FAILURE;
     }
-
+    
     switch (enMode)
     {
-        case PANASONIC_MN34220_SUBLVDS_720P_120FPS:
-        case PANASONIC_MN34220_MIPI_720P_120FPS:
-        case SONY_IMX117_LVDS_720P_30FPS:
-	case OMNIVISION_OV9712_DC_720P_30FPS:
+        case APTINA_AR0130_DC_720P_30FPS:
+        case APTINA_9M034_DC_720P_30FPS:
+        case SONY_IMX222_DC_720P_30FPS:
+        case OMNIVISION_OV9712_DC_720P_30FPS:
+        case OMNIVISION_OV9732_DC_720P_30FPS:
+        case OMNIVISION_OV9750_MIPI_720P_30FPS:
+        case OMNIVISION_OV9752_MIPI_720P_30FPS:
             *penSize = PIC_HD720;
             break;
-        case PANASONIC_MN34220_SUBLVDS_1080P_30FPS:
-        case PANASONIC_MN34220_MIPI_1080P_30FPS:
-        case OMNIVISION_OV4689_MIPI_1080P_30FPS:
-        case APTINA_AR0330_MIPI_1080P_30FPS:
-        case SONY_IMX178_LVDS_1080P_30FPS:
-        case SONY_IMX185_MIPI_1080P_30FPS:
-        case SONY_IMX117_LVDS_1080P_30FPS:
         case APTINA_AR0230_HISPI_1080P_30FPS:
-        case APTINA_AR0237_HISPI_1080P_30FPS:     
+        case SONY_IMX222_DC_1080P_30FPS:
+        case PANASONIC_MN34222_MIPI_1080P_30FPS:
+        case OMNIVISION_OV2718_MIPI_1080P_25FPS:
             *penSize = PIC_HD1080;
-            break;
-        case APTINA_AR0330_MIPI_1536P_25FPS:
-        case SONY_IMX123_LVDS_QXGA_30FPS:
-            *penSize = PIC_QXGA;
-            break;
-        case APTINA_AR0330_MIPI_1296P_25FPS:
-            *penSize = PIC_2304x1296;
-            break;
-        case OMNIVISION_OV4689_MIPI_4M_30FPS:
-            *penSize = PIC_2592x1520;
-            break;
-        case SONY_IMX178_LVDS_5M_30FPS:
-        case OMNIVISION_OV5658_MIPI_5M_30FPS:
-            *penSize = PIC_5M;
             break;
 
         default:
+            printf("not support this sensor\n");
             break;
     }
 
     return s32Ret;
 }
+
+/******************************************************************************
+* funciton : Get rgbir attr by diffrent sensor
+******************************************************************************/
+HI_S32 SAMPLE_COMM_VI_GetRgbirAttrBySensor(ISP_RGBIR_ATTR_S *pstRgbirAttr)
+{
+    HI_S32 s32Ret = HI_SUCCESS;
+    SAMPLE_VI_MODE_E enMode = SENSOR_TYPE;
+
+    if (!pstRgbirAttr)
+    {
+        return HI_FAILURE;
+    }
+    
+    switch (enMode)
+    {
+        case OMNIVISION_OV9752_MIPI_720P_30FPS:
+            pstRgbirAttr->bEnable = HI_TRUE;
+            pstRgbirAttr->enIrPosType = ISP_IRPOS_TYPE_GR;
+            pstRgbirAttr->u16OverExpThresh = 4031;
+            break;
+        case PANASONIC_MN34222_MIPI_1080P_30FPS:
+            pstRgbirAttr->bEnable = HI_TRUE;
+            pstRgbirAttr->enIrPosType = ISP_IRPOS_TYPE_GR;
+            pstRgbirAttr->u16OverExpThresh = 3839;
+            break;
+        case APTINA_AR0130_DC_720P_30FPS:
+        case APTINA_9M034_DC_720P_30FPS:
+        case SONY_IMX222_DC_720P_30FPS:
+        case APTINA_AR0230_HISPI_1080P_30FPS:
+        case SONY_IMX222_DC_1080P_30FPS:
+            pstRgbirAttr->bEnable = HI_FALSE;
+            pstRgbirAttr->enIrPosType = ISP_IRPOS_TYPE_GR;
+            pstRgbirAttr->u16OverExpThresh = 4095;
+            break;
+
+        default:
+            printf("not support this sensor\n");
+            break;
+    }
+
+    return s32Ret;
+}
+
+/******************************************************************************
+* funciton : Get rgbir ctrl by diffrent sensor
+******************************************************************************/
+HI_S32 SAMPLE_COMM_VI_GetRgbirCtrlBySensor(ISP_RGBIR_CTRL_S *pstRgbirCtrl)
+{
+    HI_S32 s32Ret = HI_SUCCESS;
+    SAMPLE_VI_MODE_E enMode = SENSOR_TYPE;
+
+    if (!pstRgbirCtrl)
+    {
+        return HI_FAILURE;
+    }
+    
+    switch (enMode)
+    {
+        case OMNIVISION_OV9752_MIPI_720P_30FPS:
+            pstRgbirCtrl->bIrOutEn = HI_FALSE;
+            pstRgbirCtrl->bIrFilterEn = HI_TRUE;
+            pstRgbirCtrl->bRemovelEn = HI_TRUE;
+            pstRgbirCtrl->enCompType = OP_TYPE_AUTO;
+            pstRgbirCtrl->u16ManuGain = 256;
+            pstRgbirCtrl->as16ScaleCoef[0] = 266;
+            pstRgbirCtrl->as16ScaleCoef[1] = 3;
+            pstRgbirCtrl->as16ScaleCoef[2] = 36;
+            pstRgbirCtrl->as16ScaleCoef[3] = 8;
+            pstRgbirCtrl->as16ScaleCoef[4] = 272;
+            pstRgbirCtrl->as16ScaleCoef[5] = 30;
+            pstRgbirCtrl->as16ScaleCoef[6] = 15;
+            pstRgbirCtrl->as16ScaleCoef[7] = 5;
+            pstRgbirCtrl->as16ScaleCoef[8] = 283;
+            pstRgbirCtrl->as16ScaleCoef[9] = -300;
+            pstRgbirCtrl->as16ScaleCoef[10] = -305;
+            pstRgbirCtrl->as16ScaleCoef[11] = -313;
+            pstRgbirCtrl->as16ScaleCoef[12] = -3;
+            pstRgbirCtrl->as16ScaleCoef[13] = -12;
+            pstRgbirCtrl->as16ScaleCoef[14] = -4;
+            break;
+        case PANASONIC_MN34222_MIPI_1080P_30FPS:
+            pstRgbirCtrl->bIrOutEn = HI_FALSE;
+            pstRgbirCtrl->bIrFilterEn = HI_TRUE;
+            pstRgbirCtrl->bRemovelEn = HI_TRUE;
+            pstRgbirCtrl->enCompType = OP_TYPE_AUTO;
+            pstRgbirCtrl->u16ManuGain = 256;
+            pstRgbirCtrl->as16ScaleCoef[0] = 298;
+            pstRgbirCtrl->as16ScaleCoef[1] = 0;
+            pstRgbirCtrl->as16ScaleCoef[2] = 21;
+            pstRgbirCtrl->as16ScaleCoef[3] = 24;
+            pstRgbirCtrl->as16ScaleCoef[4] = 280;
+            pstRgbirCtrl->as16ScaleCoef[5] = 18;
+            pstRgbirCtrl->as16ScaleCoef[6] = 3;
+            pstRgbirCtrl->as16ScaleCoef[7] = 12;
+            pstRgbirCtrl->as16ScaleCoef[8] = 259;
+            pstRgbirCtrl->as16ScaleCoef[9] = -260;
+            pstRgbirCtrl->as16ScaleCoef[10] = -265;
+            pstRgbirCtrl->as16ScaleCoef[11] = -235;
+            pstRgbirCtrl->as16ScaleCoef[12] = -20;
+            pstRgbirCtrl->as16ScaleCoef[13] = -30;
+            pstRgbirCtrl->as16ScaleCoef[14] = -5;
+            break;
+        case APTINA_AR0130_DC_720P_30FPS:
+        case APTINA_9M034_DC_720P_30FPS:
+        case SONY_IMX222_DC_720P_30FPS:
+        case APTINA_AR0230_HISPI_1080P_30FPS:
+        case SONY_IMX222_DC_1080P_30FPS:
+            pstRgbirCtrl->bIrOutEn = HI_FALSE;
+            pstRgbirCtrl->bIrFilterEn = HI_TRUE;
+            pstRgbirCtrl->bRemovelEn = HI_TRUE;
+            pstRgbirCtrl->enCompType = OP_TYPE_AUTO;
+            pstRgbirCtrl->u16ManuGain = 256;
+            pstRgbirCtrl->as16ScaleCoef[0] = 256;
+            pstRgbirCtrl->as16ScaleCoef[1] = 0;
+            pstRgbirCtrl->as16ScaleCoef[2] = 0;
+            pstRgbirCtrl->as16ScaleCoef[3] = 0;
+            pstRgbirCtrl->as16ScaleCoef[4] = 256;
+            pstRgbirCtrl->as16ScaleCoef[5] = 0;
+            pstRgbirCtrl->as16ScaleCoef[6] = 0;
+            pstRgbirCtrl->as16ScaleCoef[7] = 0;
+            pstRgbirCtrl->as16ScaleCoef[8] = 256;
+            pstRgbirCtrl->as16ScaleCoef[9] = 0;
+            pstRgbirCtrl->as16ScaleCoef[10] = 0;
+            pstRgbirCtrl->as16ScaleCoef[11] = 0;
+            pstRgbirCtrl->as16ScaleCoef[12] = 0;
+            pstRgbirCtrl->as16ScaleCoef[13] = 0;
+            pstRgbirCtrl->as16ScaleCoef[14] = 0;
+            break;
+
+        default:
+            printf("not support this sensor\n");
+            break;
+    }
+
+    return s32Ret;
+}
+
 
 
 

@@ -91,44 +91,7 @@ HI_S32 HI_MPI_FISHEYE_CancelJob(FISHEYE_HANDLE hHandle);
     Modification : Created function
 <$/>
 *****************************************************************************/
-	HI_S32 HI_MPI_FISHEYE_AddCorrectionTask(FISHEYE_HANDLE hHandle, FISHEYE_TASK_ATTR_S *pstTask, const FISHEYE_ATTR_S *pstFisheyeAttr);
-
-
-
-/*****************************************************************************
- Prototype    : HI_MPI_FISHEYE_AddDrawLineTask
- Description  : add a draw line task into a job
- Input        : FISHEYE_HANDLE  hHandle   
- Output       : None
- Return Value : 
- Calls        : 
- Called By    : 
-</$> 
-  History        :
-  1.Date         : 2014/01/27
-    Author       : 
-    Modification : Created function
-<$/>
-*****************************************************************************/
-HI_S32 HI_MPI_FISHEYE_AddLdcTask(FISHEYE_HANDLE hHandle, FISHEYE_TASK_ATTR_S * pstTask, LDC_ATTR_S * pstFisheyeAddLdc);
-
-/*****************************************************************************
- Prototype    : HI_MPI_FISHEYE_AddCoverTask
- Description  : add a draw point task into a job
- Input        : FISHEYE_HANDLE  hHandle   
- Output       : None
- Return Value : 
- Calls        : 
- Called By    : 
-</$> 
-  History        :
-  1.Date         : 2014/01/27
-    Author       : 
-    Modification : Created function
-<$/>
-*****************************************************************************/
-	HI_S32 HI_MPI_FISHEYE_AddPmfTask(FISHEYE_HANDLE hHandle, FISHEYE_TASK_ATTR_S *pstTask, FISHEYE_ADD_PMF_S *pstFisheyeAddPmf);
-
+HI_S32 HI_MPI_FISHEYE_AddCorrectionTask(FISHEYE_HANDLE hHandle, FISHEYE_TASK_ATTR_S *pstTask, const FISHEYE_ATTR_S *pstFisheyeAttr);
 
 #ifdef __cplusplus
 #if __cplusplus

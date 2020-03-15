@@ -18,6 +18,7 @@
 #define __MPI_VI_H__
 
 #include "hi_comm_vi.h"
+#include "hi_comm_fisheye.h"
 
 #ifdef __cplusplus
 #if __cplusplus

@@ -41,7 +41,7 @@ extern "C"{
   *---------------------------------------------------------------------------------------------------------*/
 
 #define ISP_REG_BASE        0x205A0000
-#define ISP_REG_SIZE        0xffff
+#define ISP_REG_SIZE        0x1ffff
 
 #define VI_REG_BASE        0x20580000
 #define VI_REG_SIZE        0x20000
@@ -72,7 +72,6 @@ extern "C"{
 
 HI_S32 VReg_Init(HI_U32 u32BaseAddr, HI_U32 u32Size);
 HI_S32 VReg_Exit(HI_U32 u32BaseAddr, HI_U32 u32Size);
-HI_S32 VReg_ReleaseAll(HI_VOID);
 HI_U32 VReg_GetVirtAddr(HI_U32 u32BaseAddr);
 HI_VOID VReg_Munmap(HI_VOID);
 HI_U32 IO_READ32(HI_U32 u32Addr);
@@ -84,7 +83,7 @@ HI_S32 IO_WRITE8(HI_U32 u32Addr, HI_U32 u32Value);
 
 /* Dynamic bus access functions, 4 byte align access */
 //TODO: allocate dev addr (such as ISP_REG_BASE_ADDR) according to devId.
-#define __IO_CALC_ADDRESS_DYNAMIC(BASE)    (HI_U32)(((BASE >= EXT_REG_BASE) ? 0 : ISP_REG_BASE) + (BASE))
+#define __IO_CALC_ADDRESS_DYNAMIC(BASE)    (HI_U32)(((BASE >= (EXT_REG_BASE)) ? 0 : ISP_REG_BASE) + (BASE))
 
 #define IORD_32DIRECT(BASE)             IO_READ32(__IO_CALC_ADDRESS_DYNAMIC(BASE))
 #define IORD_16DIRECT(BASE)             IO_READ16(__IO_CALC_ADDRESS_DYNAMIC(BASE))
@@ -93,9 +92,17 @@ HI_S32 IO_WRITE8(HI_U32 u32Addr, HI_U32 u32Value);
 #define IOWR_32DIRECT(BASE, DATA)       IO_WRITE32(__IO_CALC_ADDRESS_DYNAMIC(BASE), (DATA))
 #define IOWR_16DIRECT(BASE, DATA)       IO_WRITE16(__IO_CALC_ADDRESS_DYNAMIC(BASE), (DATA))
 #define IOWR_8DIRECT(BASE, DATA)        IO_WRITE8(__IO_CALC_ADDRESS_DYNAMIC(BASE), (DATA))
-
-
 /*--------------------------------------------------------------------------------------*/
+/* direct write or read ISP regs */
+#define IORD_32DIRECT_ISP_REG(BASE)             IO_READ32(ISP_REG_BASE + (BASE))
+#define IORD_16DIRECT_ISP_REG(BASE)             IO_READ16(ISP_REG_BASE + (BASE))
+#define IORD_8DIRECT_ISP_REG(BASE)              IO_READ8(ISP_REG_BASE + (BASE))
+
+#define IOWR_32DIRECT_ISP_REG(BASE, DATA)       IO_WRITE32((ISP_REG_BASE + (BASE)), (DATA))
+#define IOWR_16DIRECT_ISP_REG(BASE, DATA)       IO_WRITE16((ISP_REG_BASE + (BASE)), (DATA))
+#define IOWR_8DIRECT_ISP_REG(BASE, DATA)        IO_WRITE8((ISP_REG_BASE + (BASE)), (DATA))
+/*--------------------------------------------------------------------------------------*/
+
 /* write or read vi reg */
 HI_U32 IO_READ32_VI(HI_U32 u32Addr);
 HI_S32 IO_WRITE32_VI(HI_U32 u32Addr, HI_U32 u32Value);

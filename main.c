@@ -61,7 +61,6 @@ int main(void)
 		return -1;
 	}	
 	printf("Connected\n");
-	fixme
 	ConnectToServer(rtmp, "rtmp://moscow.restream.io/live/some_srteam_key");
 
 

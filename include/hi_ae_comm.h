@@ -112,7 +112,6 @@ typedef struct hiAE_SENSOR_DEFAULT_S
     HI_FLOAT f32Fps;
     HI_U32  u32InitExposure;
     HI_U32  u32InitAESpeed;
-    HI_U32  u32InitAETolerance;
     
     HI_U32  u32FullLinesStd;  
     HI_U32  u32FullLinesMax;
@@ -150,6 +149,8 @@ typedef struct hiAE_SENSOR_DEFAULT_S
     ISP_PIRIS_ATTR_S stPirisAttr;
     ISP_IRIS_F_NO_E  enMaxIrisFNO;  /*RW, Range:[F32.0, F1.0], Max F number of Piris's aperture, it's related to the specific iris */
     ISP_IRIS_F_NO_E  enMinIrisFNO;  /*RW, Range:[F32.0, F1.0], Min F number of Piris's aperture, it's related to the specific iris */
+
+    HI_U8  u8AERunInterval;
 } AE_SENSOR_DEFAULT_S;
 
 typedef struct hiAE_FSWDR_ATTR_S

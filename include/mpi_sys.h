@@ -101,6 +101,11 @@ HI_S32 HI_MPI_SYS_SetProfile(PROFILE_TYPE_E enProfile);
 /* Get virtual meminfo according to virtual addr, should be in one process */
 HI_S32 HI_MPI_SYS_GetVirMemInfo(const void* pVitAddr, SYS_VIRMEM_INFO_S* pstMemInfo);
 
+/* Set/get Scale coefficient level for VPSS/VGS*/
+HI_S32 HI_MPI_SYS_SetScaleCoefLevel(SCALE_RANGE_S *pstScaleRange,SCALE_COEFF_LEVEL_S *pstScaleCoeffLevel);
+HI_S32 HI_MPI_SYS_GetScaleCoefLevel(SCALE_RANGE_S *pstScaleRange,SCALE_COEFF_LEVEL_S *pstScaleCoeffLevel);
+
+
 #ifdef __cplusplus
 #if __cplusplus
 }
