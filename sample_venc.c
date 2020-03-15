@@ -306,26 +306,7 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
      step 5: start stream venc
     ******************************************/
     /*** HD1080P **/
-    printf("\t c) cbr.\n");
-    printf("\t v) vbr.\n");
-    printf("\t f) fixQp\n");
-    printf("please input choose rc mode!\n");
-    c = (char)getchar();
-    switch(c)
-    {
-        case 'c':
-            enRcMode = SAMPLE_RC_CBR;
-            break;
-        case 'v':
-            enRcMode = SAMPLE_RC_VBR;
-            break;
-        case 'f':
-            enRcMode = SAMPLE_RC_FIXQP;
-            break;
-        default:
-            printf("rc mode! is invaild!\n");
-            goto END_VENC_1080P_CLASSIC_4;
-    }
+    enRcMode = SAMPLE_RC_CBR;
 
 	/*** enSize[0] **/
 	if(s32ChnNum >= 1)
