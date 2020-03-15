@@ -1,0 +1,9 @@
+[submodule "3-rd_party/openssl"]
+	path = 3-rd_party/openssl
+	url = git@github.com:openssl/openssl.git
+[submodule "3-rd_party/rtmpdump"]
+	path = 3-rd_party/rtmpdump
+	url = git://git.ffmpeg.org/rtmpdump
+[submodule "3-rd_party/zlib"]
+	path = 3-rd_party/zlib
+	url = git@github.com:madler/zlib.git
