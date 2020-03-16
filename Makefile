@@ -3,7 +3,7 @@ STRIP = arm-hisiv300-linux-strip
 PLATFORM=HiSilicon_3518E_v200
 #PLATFORM=HiSilicon_3516A_v100
 PWD=$(shell pwd)
-INCLUDE=-I./include/ -I./rebuilds/rtmpdump/librtmp/
+INCLUDE=-I./include/ -I./3-rd_party/rtmpdump/librtmp/
 LIBS=./lib/$(PLATFORM)/libmpi.a ./lib/$(PLATFORM)/libVoiceEngine.a \
 ./lib/$(PLATFORM)/libupvqe.a ./lib/$(PLATFORM)/libdnvqe.a ./lib/$(PLATFORM)/libisp.a \
 ./lib/$(PLATFORM)/lib_cmoscfg.a \
@@ -11,8 +11,8 @@ LIBS=./lib/$(PLATFORM)/libmpi.a ./lib/$(PLATFORM)/libVoiceEngine.a \
 ./lib/$(PLATFORM)/lib_hiawb.a ./lib/$(PLATFORM)/lib_hiaf.a \
 ./lib/$(PLATFORM)/lib_hidefog.a \
 ./lib/$(PLATFORM)/libive.a \
-./rebuilds/rtmpdump/librtmp/librtmp.a ./rebuilds/zlib-1.2.11/libz.a \
-./rebuilds/openssl-OpenSSL_1_0_2u/libssl.a ./rebuilds/openssl-OpenSSL_1_0_2u/libcrypto.a \
+./3-rd_party/rtmpdump/librtmp/librtmp.a 3-rd_party/zlib/libz.a \
+./3-rd_party/openssl/libssl.a ./3-rd_party/openssl/libcrypto.a \
 -lpthread -lm -ldl -lsns_gc1024 -L ./lib/HiSilicon_3518E_v200 \
 -Wl,--whole-archive $(PWD)/lib/$(PLATFORM)/lib_hiae.a -Wl,--no-whole-archive
 
