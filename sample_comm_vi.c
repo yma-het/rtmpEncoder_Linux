@@ -1041,6 +1041,128 @@ combo_dev_attr_t HISPI_4lane_SENSOR_AR0230_12BIT_ATTR =
 };
 
 
+combo_dev_attr_t HISPI_4lane_SENSOR_AR0237_12BIT_1080p_WDR_ATTR =
+{
+    /* input mode */
+    .input_mode = INPUT_MODE_HISPI,
+
+    {
+        .lvds_attr = {
+            .img_size = {1920, 1080},
+            HI_WDR_MODE_2F,
+            LVDS_SYNC_MODE_SOL,
+            RAW_DATA_12BIT,
+            LVDS_ENDIAN_LITTLE,
+            LVDS_ENDIAN_LITTLE,
+            .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
+            .sync_code = {
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+            }
+
+        }
+    }
+};
+
+
+combo_dev_attr_t HISPI_4lane_SENSOR_AR0237_12BIT_1080p_NOWDR_ATTR =
+{
+    /* input mode */
+    .input_mode = INPUT_MODE_HISPI,
+
+    {
+        .lvds_attr = {
+            .img_size = {1920, 1080},
+            HI_WDR_MODE_NONE,
+            LVDS_SYNC_MODE_SOL,
+            RAW_DATA_12BIT,
+            LVDS_ENDIAN_LITTLE,
+            LVDS_ENDIAN_LITTLE,
+            .lane_id = {0, 1, 2, 3, -1, -1, -1, -1},
+            .sync_code = {
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane0
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane1
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane2
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+                   {{ 0x3, 0x7,   0x1,   0x5  }, //PHY0_lane3
+                   {0x043, 0x047, 0x041, 0x045},
+                   {0x023, 0x027, 0x021, 0x025},
+                   {0x083, 0x087, 0x081, 0x085}},
+
+            }
+
+        }
+    }
+};
 
 
 VI_CHN_ATTR_S CHN_ATTR_1920x1080_422 =
@@ -1511,6 +1633,7 @@ HI_S32 SAMPLE_COMM_VI_StartDev(VI_DEV ViDev, SAMPLE_VI_MODE_E enViMode)
 			break;
        
         case APTINA_AR0230_HISPI_1080P_30FPS:
+	case APTINA_AR0237_HISPI_1080P_30FPS:
             memcpy(&stViDevAttr,&DEV_ATTR_HISPI_BASE,sizeof(stViDevAttr));
             stViDevAttr.stDevRect.s32X = 0;
             stViDevAttr.stDevRect.s32Y = 0;
@@ -1959,6 +2082,17 @@ HI_S32 SAMPLE_COMM_VI_SetMipiAttr(SAMPLE_VI_CONFIG_S* pstViConfig)
         pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0230_12BIT_ATTR;
     }
 
+    {
+                if (pstViConfig->enWDRMode == WDR_MODE_2To1_LINE)
+            {
+                pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0237_12BIT_1080p_WDR_ATTR;
+            }
+                else
+                {
+                pstcomboDevAttr = &HISPI_4lane_SENSOR_AR0237_12BIT_1080p_NOWDR_ATTR;
+                }
+    }
+
     if ( pstViConfig->enViMode == PANASONIC_MN34222_MIPI_1080P_30FPS )
     {
         pstcomboDevAttr = &MIPI_2lane_SENSOR_MN34222_12BIT_NOWDR_ATTR;
@@ -2091,6 +2225,7 @@ HI_S32 SAMPLE_COMM_VI_StartIspAndVi(SAMPLE_VI_CONFIG_S* pstViConfig)
 
 			case SONY_IMX222_DC_1080P_30FPS:
             case APTINA_AR0230_HISPI_1080P_30FPS:
+	    case APTINA_AR0237_HISPI_1080P_30FPS:
             case PANASONIC_MN34222_MIPI_1080P_30FPS:
             case OMNIVISION_OV2718_MIPI_1080P_25FPS:
                 stCapRect.u32Width  = 1920;
@@ -3109,6 +3244,7 @@ HI_S32 SAMPLE_COMM_VI_GetSizeBySensor(PIC_SIZE_E *penSize)
             *penSize = PIC_HD720;
             break;
         case APTINA_AR0230_HISPI_1080P_30FPS:
+	case APTINA_AR0237_HISPI_1080P_30FPS:
         case SONY_IMX222_DC_1080P_30FPS:
         case PANASONIC_MN34222_MIPI_1080P_30FPS:
         case OMNIVISION_OV2718_MIPI_1080P_25FPS:

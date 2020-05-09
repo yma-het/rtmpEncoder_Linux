@@ -146,6 +146,7 @@ HI_S32 SAMPLE_COMM_ISP_Init(WDR_MODE_E  enWDRMode)
             break;
 
         case APTINA_AR0230_HISPI_1080P_30FPS:
+	case APTINA_AR0237_HISPI_1080P_30FPS:
             stPubAttr.enBayer               = BAYER_GRBG;
             stPubAttr.f32FrameRate          = 30;
             stPubAttr.stWndRect.s32X        = 0;
