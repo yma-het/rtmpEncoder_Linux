@@ -63,6 +63,8 @@ typedef enum hiPIC_SIZE_E
     PIC_960H,
 
     PIC_QVGA,    /* 320 * 240 */
+    PIC_PHD,     /* 640 * 360 */
+    PIC_NHD,     /* 640 * 360 */
     PIC_VGA,     /* 640 * 480 */
     PIC_XGA,     /* 1024 * 768 */
     PIC_SXGA,    /* 1400 * 1050 */

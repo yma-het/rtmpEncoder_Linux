@@ -97,7 +97,7 @@ extern int g_s32Quit;
 void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
 {
     PAYLOAD_TYPE_E enPayLoad[3]= {PT_H264, PT_H264,PT_H264};
-    PIC_SIZE_E enSize[3] = {PIC_HD720, PIC_HD720, PIC_HD720};
+    PIC_SIZE_E enSize[3] = {PIC_HD1080, PIC_NHD, PIC_PHD};
 	HI_U32 u32Profile = 0;
 	
     VB_CONF_S stVbConf;
@@ -125,11 +125,14 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
     ******************************************/
     memset(&stVbConf,0,sizeof(VB_CONF_S));
     
+    printf("enSize[0] before: %d", enSize[0]);
 	SAMPLE_COMM_VI_GetSizeBySensor(&enSize[0]);
+    printf("enSize[0] after: %d", enSize[0]);
     if (PIC_HD1080 == enSize[0])
     {
-        enSize[1] = PIC_VGA;
-		s32ChnNum = 2;
+        //enSize[1] = PIC_HD720;
+
+		s32ChnNum = 3;
     }
     else if (PIC_HD720 == enSize[0])
     {
@@ -139,6 +142,7 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
     }
     else
     {
+        printf("here!");
         printf("not support this sensor\n");
         return HI_FAILURE;
     }
@@ -201,6 +205,7 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
      step 4: start vpss and vi bind vpss
     ******************************************/
     s32Ret = SAMPLE_COMM_SYS_GetPicSize(gs_enNorm, enSize[0], &stSize);
+    printf("picture parameters: width %dpx, height %dpx\n", stSize.u32Width, stSize.u32Height);
     if (HI_SUCCESS != s32Ret)
     {
         SAMPLE_PRT("SAMPLE_COMM_SYS_GetPicSize failed!\n");
@@ -242,6 +247,7 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
 	    memset(&stVpssChnAttr, 0, sizeof(stVpssChnAttr));
 	    stVpssChnAttr.s32SrcFrameRate = -1;
 	    stVpssChnAttr.s32DstFrameRate = -1;
+        printf("enabling vpss channel %d\n", VpssChn);
 	    s32Ret = SAMPLE_COMM_VPSS_EnableChn(VpssGrp, VpssChn, &stVpssChnAttr, &stVpssChnMode, HI_NULL);
 	    if (HI_SUCCESS != s32Ret)
 	    {
@@ -314,6 +320,7 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
 		VpssGrp = 0;
 	    VpssChn = 0;
 	    VencChn = 0;
+        printf("starting venc for channel %d\n", VencChn);
 	    s32Ret = SAMPLE_COMM_VENC_Start(VencChn, enPayLoad[0],\
 	                                   gs_enNorm, enSize[0], enRcMode,u32Profile);
 	    if (HI_SUCCESS != s32Ret)
@@ -377,7 +384,7 @@ void *SAMPLE_VENC_1080P_CLASSIC(HI_VOID *arg)
     if (HI_SUCCESS != s32Ret)
     {
         SAMPLE_PRT("Start Venc failed!\n");
-        goto END_VENC_1080P_CLASSIC_5;
+        goto END_VENC_1080P_CLASSIC_5;  
     }
 
     printf("please press twice ENTER to exit this sample\n");

@@ -799,12 +799,14 @@ HI_S32 SAMPLE_COMM_VENC_Start(VENC_CHN VencChn, PAYLOAD_TYPE_E enType, VIDEO_NOR
                        stH264Cbr.u32BitRate = 256; /* average bit rate */
                        break;
                   case PIC_QVGA:    /* 320 * 240 */
+                  case PIC_PHD:     /* 320 * 180 */
                   case PIC_CIF: 
 
                 	   stH264Cbr.u32BitRate = 512;
                        break;
 
                   case PIC_D1:
+                  case PIC_NHD:    /* 640 * 360 */
                   case PIC_VGA:	   /* 640 * 480 */
                 	   stH264Cbr.u32BitRate = 1024*2;
                        break;
@@ -1372,6 +1374,8 @@ HI_VOID* SAMPLE_COMM_VENC_GetVencStreamProc(HI_VOID *p)
         SAMPLE_PRT("input count invaild\n");
         return NULL;
     }
+    SAMPLE_PRT("iterating\n");
+    SAMPLE_PRT("total channel count: %d\n", s32ChnTotal);
     for (i = 0; i < s32ChnTotal; i++)
     {
         /* decide the stream file name, and open file to save stream */
@@ -1395,6 +1399,7 @@ HI_VOID* SAMPLE_COMM_VENC_GetVencStreamProc(HI_VOID *p)
 
         /* Set Venc Fd. */
         VencFd[i] = HI_MPI_VENC_GetFd(i);
+        SAMPLE_PRT("will select %d fd\n", HI_MPI_VENC_GetFd(i));
         if (VencFd[i] < 0)
         {
             SAMPLE_PRT("HI_MPI_VENC_GetFd failed with %#x!\n", 
@@ -1415,6 +1420,7 @@ HI_VOID* SAMPLE_COMM_VENC_GetVencStreamProc(HI_VOID *p)
         FD_ZERO(&read_fds);
         for (i = 0; i < s32ChnTotal; i++)
         {
+            SAMPLE_PRT("setting %d fd to %d\n", i, VencFd[i]); // fd == 15 /proc/1375/fd/15 -> /dev/venc
             FD_SET(VencFd[i], &read_fds);
         }
 
@@ -1428,6 +1434,7 @@ HI_VOID* SAMPLE_COMM_VENC_GetVencStreamProc(HI_VOID *p)
         }
         else if (s32Ret == 0)
         {
+            SAMPLE_PRT("here!\n");
             SAMPLE_PRT("get venc stream time out, exit thread\n");
             continue;
         }
@@ -1591,6 +1598,7 @@ HI_VOID *SAMPLE_COMM_VENC_GetVencStreamProc_Svc_t(void *p)
 
         /* Set Venc Fd. */
         VencFd[i] = HI_MPI_VENC_GetFd(i);
+        SAMPLE_PRT("will select %d fd\n", HI_MPI_VENC_GetFd(i));
         if (VencFd[i] < 0)
         {
             SAMPLE_PRT("HI_MPI_VENC_GetFd failed with %#x!\n", 

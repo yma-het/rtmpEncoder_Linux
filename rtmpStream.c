@@ -1,5 +1,7 @@
 #include "rtmpStream.h"
 
+//Fix resolution
+
 RTMP * AllocRtmp()
 {
 	RTMP *rtmp=NULL;

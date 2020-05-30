@@ -59,6 +59,14 @@ HI_S32 SAMPLE_COMM_SYS_GetPicSize(VIDEO_NORM_E enNorm, PIC_SIZE_E enPicSize, SIZ
             pstSize->u32Width  = 320;
             pstSize->u32Height = 240;
             break;
+        case PIC_PHD:     /* 320 * 180 */
+            pstSize->u32Width  = 320;
+            pstSize->u32Height = 180;
+            break;        
+        case PIC_NHD:     /* 640 * 360 */
+            pstSize->u32Width  = 640;
+            pstSize->u32Height = 360;
+            break;
         case PIC_VGA:     /* 640 * 480 */
             pstSize->u32Width  = 640;
             pstSize->u32Height = 480;
